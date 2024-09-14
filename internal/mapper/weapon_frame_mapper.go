@@ -4,6 +4,7 @@ import (
 	"log"
 	"reflect"
 	"strconv"
+	"strings"
 
 	"github.com/iambaangkok/Card-Maker/internal/entity"
 	"github.com/iambaangkok/Card-Maker/internal/reader"
@@ -43,7 +44,14 @@ func (w WeaponFrameMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponFrame 
 		if err != nil { log.Fatal("ammo per mag must be int") }
 		price, err := strconv.Atoi(line[7])
 		if err != nil { log.Fatal("price must be int") }
-		// tags := line[8]
+		tagStrs := strings.Split(line[8], "/")
+		var tags []entity.Tag
+		for _, tagStr := range tagStrs {
+			tag, exists := entity.TagNameMap[tagStr]
+			if !exists { log.Fatal("invalid tag") }
+			tags = append(tags, tag)
+		}
+
 		weaponFrames = append(weaponFrames, 
 		entity.WeaponFrame{
 			Name: line[0],
@@ -54,6 +62,7 @@ func (w WeaponFrameMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponFrame 
 			MaxRange: maxRange,
 			AmmoPerMag: ammoPerMag,
 			Price: price,
+			Tags: tags,
 		})
 	}
 	return weaponFrames
