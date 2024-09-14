@@ -1,0 +1,5 @@
+csv:
+  dir: "./csvs"
+  entities:
+  - name: "WeaponFrame"
+
