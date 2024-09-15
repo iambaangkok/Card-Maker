@@ -12,10 +12,18 @@ func main() {
 	csvReader := reader.CSVReaderImpl{
 		Config: cfg,
 	}
-	weaponFrameMapper := mapper.WeaponFrameMapperImpl{}
+	effectMapper := mapper.EffectMapperImpl{}
 
-	csvFile := csvReader.Read("WeaponFrame")
-	weaponFrames := weaponFrameMapper.Map(csvFile)
+	effectsCSV := csvReader.Read("Effects")
+	effectsNameMap := effectMapper.MapToMap(effectsCSV)
+
+	weaponFrameMapper := mapper.WeaponFrameMapperImpl{
+		ExistingEffects: effectsNameMap,
+	}
+
+
+	weaponFrameCSV := csvReader.Read("WeaponFrame")
+	weaponFrames := weaponFrameMapper.Map(weaponFrameCSV)
 	for _, weaponFrame := range weaponFrames {
 		weaponFrame.Print()
 	}

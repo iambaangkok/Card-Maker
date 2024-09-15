@@ -15,6 +15,7 @@ type WeaponFrameMapper interface {
 }
 
 type WeaponFrameMapperImpl struct {
+	ExistingEffects map[string]entity.Effect
 }
 
 func (w WeaponFrameMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponFrame {
@@ -25,7 +26,7 @@ func (w WeaponFrameMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponFrame 
 		log.Println("mapping line", row, line)
 
 		expectedFieldCount := reflect.TypeOf(entity.WeaponFrame{}).NumField()
-		if len(line) <= expectedFieldCount {
+		if len(line) != expectedFieldCount {
 			log.Fatal("invalid field count")
 			continue
 		}
@@ -51,6 +52,31 @@ func (w WeaponFrameMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponFrame 
 			if !exists { log.Fatal("invalid tag") }
 			tags = append(tags, tag)
 		}
+		effectStrs := strings.Split(line[9], "/")
+		var effects []entity.Effect
+		for _, effectStr := range effectStrs {
+			val := strings.Split(effectStr, ":")
+			effectName := val[0]
+			if effectName == "-" {
+				continue
+			}
+
+			effect, exists := w.ExistingEffects[effectName]
+			if !exists { log.Fatal("invalid effect name") }
+
+			if effect.HasLevel {
+				if len(val) == 1 { 
+					effect.Level = 1
+				}else{
+					level, err := strconv.Atoi(val[1])
+					if err != nil {
+						log.Fatal("level must be int")
+					}
+					effect.Level = level
+				}
+			}
+			effects = append(effects, effect)
+		}
 
 		weaponFrames = append(weaponFrames, 
 		entity.WeaponFrame{
@@ -63,6 +89,7 @@ func (w WeaponFrameMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponFrame 
 			AmmoPerMag: ammoPerMag,
 			Price: price,
 			Tags: tags,
+			Effects: effects,
 		})
 	}
 	return weaponFrames

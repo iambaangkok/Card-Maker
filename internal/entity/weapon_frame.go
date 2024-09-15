@@ -15,7 +15,7 @@ type WeaponFrame struct {
 	AmmoPerMag int
 	Price      int
 	Tags       []Tag
-	// Effects    []Effects
+	Effects    []Effect
 }
 
 func (w WeaponFrame) Print() {
