@@ -6,10 +6,10 @@ import (
 )
 
 type Effect struct {
-	Name       	string
-	Type 		string
-	HasLevel	bool
-	Level		int
+	Name        string
+	Type        string
+	HasLevel    bool
+	Level       int
 	Description string
 }
 

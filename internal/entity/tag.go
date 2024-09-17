@@ -4,7 +4,7 @@ type Tag struct {
 	Name string
 }
 
-var Tags = []string{"Kinetic", "Mag-Fed"}
+var Tags = []string{"Kinetic", "Mag-Fed", "AERO", "Sight", "Barrel", "Muzzle", "Rail", "Magazine", "Stock"}
 
 var TagNameMap = getTagNameMap()
 

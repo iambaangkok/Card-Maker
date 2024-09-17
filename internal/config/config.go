@@ -10,6 +10,7 @@ const configPath = "app.yaml"
 
 type Config struct {
 	CSV	CSVConfig `yaml:"csv"`
+	Renderer RendererConfig `yaml:"renderer"`
 }
 type CSVConfig struct {
 	Entities []EntityConfig `yaml:"entities"`
@@ -18,6 +19,11 @@ type CSVConfig struct {
 
 type EntityConfig struct {
 	Name string `yaml:"name"`
+}
+
+type RendererConfig struct {
+	URL string `yaml:"url"`
+	OutputDir string `yaml:"output-dir"`
 }
 
 

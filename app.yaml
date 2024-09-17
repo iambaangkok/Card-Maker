@@ -3,3 +3,7 @@ csv:
   entities:
   - name: "WeaponFrame"
 
+renderer:
+  url: "https://iambaangkok.github.io/FLATLINE-Companion-App/"
+  output-dir: "./output"
+
