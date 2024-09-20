@@ -1,0 +1,45 @@
+<style>
+    body {
+        margin: 0;
+    }
+    .hello {
+        color: rebeccapurple;
+        background-color: aquamarine;
+        width: 6.5cm;
+        height: 9.5cm;
+
+        font-size: 8pt;
+    }
+</style>
+
+<body>
+    <div class="hello">
+        <div>Name: {{.Name}}</div>
+        <div>Type: {{.Type.Name}}</div>
+        <div>Damage: {{.Damage}}</div>
+        <div>FireRate: {{.FireRate}}</div>
+        <div>Accuracy: {{.Accuracy}}</div>
+        <div>MaxRange: {{.MaxRange}}</div>
+        <div>AmmoPerMag: {{.AmmoPerMag}}</div>
+        <div>Price: {{.Price}}</div>
+        <div>Tags:
+            {{range .Tags}}
+            <li>{{.Name}}</li>
+            {{end}}
+        </div>
+        <div>Effects:
+            {{range .Effects}}
+            <li>
+                {{.Name}}
+                <ul>
+                    <li>Type: {{.Type}}</li>
+                    {{if .HasLevel}}
+                    <li>Level: {{.Level}}</l>
+                    {{end}}
+                    <li>Description: {{.Description}}</li>
+                </ul>
+            </li>
+            {{end}}
+        </div>
+    </div>
+</body>

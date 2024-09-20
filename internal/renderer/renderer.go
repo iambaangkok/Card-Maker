@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
 	"github.com/iambaangkok/Card-Maker/internal/config"
 )
@@ -15,8 +16,69 @@ type ChromeRenderer interface {
 
 type ChromeRendererImpl struct {
 	Config config.Config
-	ctx context.Context
-	cancel context.CancelFunc
+}
+
+func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string) error {
+	outputPath := filepath.Join(c.Config.Renderer.OutputDir, outputFileName)
+
+	ctx, cancel := chromedp.NewContext(context.Background())
+	defer cancel()
+
+	return chromedp.Run(ctx,
+		chromedp.Navigate("about:blank"),
+		chromedp.ActionFunc(func(ctx context.Context) error {
+			frameTree, err := page.GetFrameTree().Do(ctx)
+			if err != nil {
+				return err
+			}
+
+			return page.SetDocumentContent(frameTree.Frame.ID, html).Do(ctx)
+		}),
+		chromedp.ActionFunc(func(ctx context.Context) error {
+			buf, err := page.CaptureScreenshot().
+				WithFormat(page.CaptureScreenshotFormatPng).
+				WithQuality(100).
+				WithClip(&page.Viewport{
+					X: 0,
+					Y: 0,
+					Width: 245.669,
+					Height: 359.055,
+					Scale: 2,
+				}).
+				Do(ctx)
+			if err != nil {
+				return err
+			}
+			return os.WriteFile(outputPath, buf, 0644)
+		}),
+	)
+}
+
+
+func (c ChromeRendererImpl) RenderHTMLToPDF(html string, outputFileName string) error {
+	outputPath := filepath.Join(c.Config.Renderer.OutputDir, outputFileName)
+
+	ctx, cancel := chromedp.NewContext(context.Background())
+	defer cancel()
+
+	return chromedp.Run(ctx,
+		chromedp.Navigate("about:blank"),
+		chromedp.ActionFunc(func(ctx context.Context) error {
+			frameTree, err := page.GetFrameTree().Do(ctx)
+			if err != nil {
+				return err
+			}
+
+			return page.SetDocumentContent(frameTree.Frame.ID, html).Do(ctx)
+		}),
+		chromedp.ActionFunc(func(ctx context.Context) error {
+			buf, _, err := page.PrintToPDF().WithPrintBackground(false).Do(ctx)
+			if err != nil {
+				return err
+			}
+			return os.WriteFile(outputPath, buf, 0644)
+		}),
+	)
 }
 
 func (c ChromeRendererImpl) RenderElement(sel string, outputFileName string) error {
