@@ -1,45 +1,187 @@
+<!-- CSS -->
 <style>
     body {
         margin: 0;
+        background-color: transparent;
     }
-    .hello {
+    /* .hello {
         color: rebeccapurple;
         background-color: aquamarine;
         width: 6.5cm;
         height: 9.5cm;
 
         font-size: 8pt;
-    }
+    } */
 </style>
 
-<body>
-    <div class="hello">
-        <div>Name: {{.Name}}</div>
-        <div>Type: {{.Type.Name}}</div>
-        <div>Damage: {{.Damage}}</div>
-        <div>FireRate: {{.FireRate}}</div>
-        <div>Accuracy: {{.Accuracy}}</div>
-        <div>MaxRange: {{.MaxRange}}</div>
-        <div>AmmoPerMag: {{.AmmoPerMag}}</div>
-        <div>Price: {{.Price}}</div>
-        <div>Tags:
-            {{range .Tags}}
-            <li>{{.Name}}</li>
+<!-- DEFINE TEMPLATE -->
+{{define "svg-hexagram-outline"}}
+<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M9.49998 5.25L10.475 7.35L12.875 7.05L11.375 9L12.8 10.875L10.4 10.575L9.49998 12.75L8.52498 10.65L6.12498 10.95L7.62498 9L6.19998 7.125L8.59998 7.425L9.49998 5.25ZM9.49998 1.5L7.62498 5.775L2.97498 5.25L5.74998 9L3.04998 12.75L7.69998 12.225L9.49998 16.5L11.375 12.225L16.025 12.675L13.25 9L15.95 5.25L11.3 5.775L9.49998 1.5Z" fill="black"/>
+</svg>
+{{end}}
+{{define "svg-ammunition"}}
+<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5.03781 15.212L2.99181 13.0179L3.54033 12.5064L5.58633 14.7005L5.03781 15.212ZM11.1085 8.5255L12.754 6.991L11.731 5.89397L10.0855 7.42847L8.75123 7.6472L4.08885 11.9949L6.13484 14.189L10.7972 9.84126L11.1085 8.5255ZM14.9851 3.88499C14.9851 3.88499 13.9251 3.84798 12.8281 4.87098L12.2796 5.38247L13.3026 6.4795L13.8511 5.96801C13.8511 5.96801 14.9481 4.94501 14.9851 3.88499ZM1.96882 11.9209L-0.0771781 9.72685L0.471337 9.21535L2.51733 11.4094L1.96882 11.9209ZM8.0395 5.23441L9.68505 3.69991L8.66205 2.60288L7.0165 4.13738L5.68223 4.35611L1.01985 8.70385L3.06585 10.8979L7.72823 6.55017L8.0395 5.23441ZM11.9161 0.593902C11.9161 0.593902 10.8561 0.556886 9.75908 1.57988L9.21057 2.09138L10.2336 3.18841L10.7821 2.67691C10.7821 2.67691 11.8791 1.65392 11.9161 0.593902ZM8.1068 18.5031L6.06081 16.309L6.60932 15.7975L8.65532 17.9916L8.1068 18.5031ZM14.1775 11.8166L15.823 10.2821L14.8 9.18506L13.1545 10.7196L11.8202 10.9383L7.15784 15.286L9.20383 17.4801L13.8662 13.1324L14.1775 11.8166ZM18.0541 7.17609C18.0541 7.17609 16.9941 7.13907 15.8971 8.16207L15.3486 8.67357L16.3715 9.7706L16.9201 9.2591C16.9201 9.2591 18.0171 8.2361 18.0541 7.17609Z" fill="black"/>
+</svg>
+{{end}}
+{{define "svg-dice-d6"}}
+<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10.2875 10.125C10.2875 10.7025 9.9575 11.1225 9.5 11.1225C9.0425 11.1225 8.6375 10.7025 8.6375 10.125L8.6225 9.585C8.6225 9.585 8.9075 9 9.4625 9.075C9.92 9.075 10.2875 9.5475 10.2875 10.125ZM16.25 3.75V14.25C16.25 15.0825 15.5825 15.75 14.75 15.75H4.25C3.425 15.75 2.75 15.0825 2.75 14.25V3.75C2.75 2.925 3.425 2.25 4.25 2.25H14.75C15.5825 2.25 16.25 2.925 16.25 3.75ZM11.4125 10.0575C11.375 8.5875 10.3925 8.1525 9.8975 8.1525C9.0575 8.1525 8.645 8.6475 8.645 8.6475C8.645 8.6475 8.6675 7.125 10.5425 7.1475V6.2475C10.5425 6.2475 7.4975 5.955 7.475 9.495C7.4525 12.645 10.0775 12 10.0775 12C10.0775 12 11.4575 11.6025 11.4125 10.0575Z" fill="black"/>
+</svg>
+{{end}}
+{{define "svg-magazine-pistol"}}
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10.5 0.75L9 2.25H5.25L6.75 15.75H6V17.25H13.5V15.75L12 0.75M6.75 3.75H9L9.18 5.25H6.93M7.1025 6.75H9.3525L9.5325 8.25H7.2825M7.455 9.75H9.705L9.885 11.25H7.635M7.8075 12.75H10.0575L10.2375 14.25H7.9875L7.8075 12.75Z" fill="black"/>
+</svg>
+{{end}}
+{{define "svg-ruler"}}
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.04248 13.77L2.36998 12.45L3.43498 13.5L4.22998 12.7125L3.16498 11.655L4.22998 10.59L6.08248 12.45L6.87748 11.655L5.02498 9.79501L6.08248 8.73751L7.14748 9.79501L7.94248 9.00001L6.87748 7.94251L7.94248 6.87751L9.79498 8.73751L10.59 7.94251L8.73748 6.08251L9.79498 5.02501L10.8525 6.08251L11.655 5.28751L10.59 4.23001L11.655 3.16501L13.5 5.02501L14.3025 4.23001L12.45 2.37001L13.77 1.04251L16.9575 4.23001L4.22998 16.9575L1.04248 13.77Z" fill="black"/>
+</svg>
+{{end}}
+{{define "svg-currency-eur"}}
+<svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10.25 11.875C8.375 11.875 6.74 10.81 5.93 9.25H10.25L11 7.75H5.435C5.3975 7.5025 5.375 7.255 5.375 7C5.375 6.745 5.3975 6.4975 5.435 6.25H10.25L11 4.75H5.93C6.74 3.19 8.375 2.125 10.25 2.125C11.4575 2.125 12.5675 2.5675 13.4225 3.3025L14.75 1.975C13.5575 0.9025 11.975 0.25 10.25 0.25C7.31 0.25 4.82 2.125 3.875 4.75H1.25L0.5 6.25H3.545C3.5 6.4975 3.5 6.745 3.5 7C3.5 7.255 3.5 7.5025 3.545 7.75H1.25L0.5 9.25H3.875C4.82 11.875 7.31 13.75 10.25 13.75C11.9825 13.75 13.5575 13.0975 14.75 12.025L13.415 10.6975C12.5675 11.4325 11.465 11.875 10.25 11.875Z" fill="black"/>
+</svg>
+{{end}}
+<!-- <body> -->
+  <div class="WeaponCardBw65x95" style="width: 245.67px; height: 359.05px; padding-bottom: 0.05px; background: white; border-radius: 21px; overflow: hidden; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+    <div class="Main" style="align-self: stretch; flex: 1 1 0; padding: 5px; border-radius: 21px; overflow: hidden; border: 2px black solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+      <div class="Top" style="align-self: stretch; height: 30px; padding-left: 5px; padding-right: 5px;
+      padding-top: 2px; padding-bottom: 2px; flex-direction: column; justify-content: flex-start;
+      align-items: flex-start; gap: 10px; display: flex">
+        <div class="WeaponName" style="width: 232px; height: 23px; color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+            {{.Name}}
+        </div>
+      </div>
+      <div class="Image" style="align-self: stretch; height: 80px; padding: 20px;
+      border: 1px black solid;">
+        <img src={{.Image}} class="FrameC1" style="
+        height: 100%; max-width: 100%; display: block; margin:auto;
+        align-self: normal; flex: 0 1 0; object-fit: contain;"/>
+      </div>
+      <div class="Bottom" style="align-self: stretch; flex: 1 1 0; padding: 5px; flex-direction: column;
+      align-self: stretch; justify-content: space-between; align-items: flex-start; display: flex">
+        <div class="Top" style="align-self: stretch; height: 128px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
+          <div class="Statsandprice" style="align-self: stretch; justify-content: flex-start; align-items: center; display: inline-flex">
+            <div class="Stats" style="flex: 1 1 0; height: 40px; padding-left: 2px; padding-right: 2px; justify-content: space-between; align-items: center; display: flex">
+              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
+                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    {{.Damage}}
+                  </div>
+                </div>
+                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
+                  <div class="HexagramOutline" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
+                    {{template "svg-hexagram-outline"}}
+                    <!-- <img src="../svg/ammunition.svghexagram-outline.png" class="Vector" style="width: 13.05px; height: 15px; border-color: black;"> -->
+                  </div>
+                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">damage</div>
+                </div>
+              </div>
+              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
+                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    {{.FireRate}}
+                  </div>
+                </div>
+                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
+                  <div class="Ammunition" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
+                    {{template "svg-ammunition"}}
+                    <!-- <img src="../svg/ammunition.svg" class="Vector" style="width: 12px; height: 15px; transform: rotate(47deg); transform-origin: 0 0;"> -->
+                  </div>
+                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">fire rate</div>
+                </div>
+              </div>
+              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
+                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    {{.Accuracy}}+
+                  </div>
+                </div>
+                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
+                  <div class="DiceD6" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
+                    {{template "svg-dice-d6"}}
+                    <!-- <img src="../svg/dice-d6.svg" class="Vector" style="width: 13.50px; height: 13.50px;"> -->
+                  </div>
+                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">accuracy</div>
+                </div>
+              </div>
+              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
+                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    {{.AmmoPerMag}}
+                  </div>
+                </div>
+                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
+                  <div class="MagazinePistol" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
+                    {{template "svg-magazine-pistol"}}
+                    <!-- <img src="../svg/magazine-pistol.svg" class="Vector" style="width: 8.25px; height: 16.50px;"> -->
+                  </div>
+                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">mag size</div>
+                </div>
+              </div>
+              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
+                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    {{.MaxRange}}
+                  </div>
+                </div>
+                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
+                  <div class="Ruler" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
+                    {{template "svg-ruler"}}
+                    <!-- <img src="../svg/ruler.svg" class="Vector" style="width: 15.92px; height: 15.92px;"> -->
+                  </div>
+                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">max range</div>
+                </div>
+              </div>
+            </div>
+            <div class="Price" style="justify-content: flex-start; align-items: center; display: flex">
+              <div class="CurrencyEur" style="width: 18px; height: 18px; padding-top: 2.25px; padding-bottom: 2.25px; padding-left: 1.50px; padding-right: 2.25px; justify-content: center; align-items: center; display: flex">
+                {{template "svg-currency-eur"}}
+                <!-- <img src="../svg/currency-eur.svg" class="Vector" style="width: 14.25px; height: 13.50px;"> -->
+              </div>
+              <div class="Amount" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                {{.Price}}
+              </div>
+            </div>
+          </div>
+          <div class="Effects" style="align-self: stretch; height: 39px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: flex">
+            {{range .Effects}}
+            <div class="Effect" style="align-self: stretch; height: 39px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+              <div class="Nameandlevel" style="justify-content: center; align-items: center; display: inline-flex">
+                <div class="Name" style="color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    {{.Name}} {{.Type}}
+                </div>
+                {{if .HasLevel}}
+                <div class="Level" style="color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word"> ({{.Level}})</div>
+                {{end}}
+              </div>
+              <div class="Description" style="align-self: stretch; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                <div class="Description" style="flex: 1 1 0; color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+                    {{.Description}}
+                </div>
+              </div>
+            </div>
             {{end}}
         </div>
-        <div>Effects:
-            {{range .Effects}}
-            <li>
-                {{.Name}}
-                <ul>
-                    <li>Type: {{.Type}}</li>
-                    {{if .HasLevel}}
-                    <li>Level: {{.Level}}</l>
-                    {{end}}
-                    <li>Description: {{.Description}}</li>
-                </ul>
-            </li>
-            {{end}}
+        </div>
+        <div class="Bottom2" style="align-self: stretch; flex: 1 1 0; flex-direction: column;
+          justify-content: end; align-items: flex-start; gap: 3px; display: flex">
+            <!-- <div class="Compatibles" style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 3px; display: inline-flex">
+              <div class="Compatibles" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">Compatibles:</div>
+              <div class="PistolSmgArSr" style="color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">Pistol, SMG, AR, SR</div>
+            </div> -->
+            <div class="Tags" style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 3px; display: inline-flex">
+              <div class="Tags" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">Tags:</div>
+              <div class="Tag1Tag2Tag33333" style="color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+                {{range .Tags}}
+                      {{.Name}}
+                  {{end}}
+              </div>
+            </div>
         </div>
     </div>
-</body>
+  </div>
+<!-- </body> -->

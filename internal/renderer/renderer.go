@@ -4,6 +4,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"sync"
 
 	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
@@ -24,8 +25,23 @@ func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string) 
 	ctx, cancel := chromedp.NewContext(context.Background())
 	defer cancel()
 
+	var wg sync.WaitGroup
+	wg.Add(1)
+
 	return chromedp.Run(ctx,
 		chromedp.Navigate("about:blank"),
+		// setup the listener to listen for the page.EventLoadEventFired
+		chromedp.ActionFunc(func(ctx context.Context) error {
+			lctx, cancel := context.WithCancel(ctx)
+			chromedp.ListenTarget(lctx, func(ev interface{}) {
+				if _, ok := ev.(*page.EventLoadEventFired); ok {
+					wg.Done()
+					// remove the event listener
+					cancel()
+				}
+			})
+			return nil
+		}),
 		chromedp.ActionFunc(func(ctx context.Context) error {
 			frameTree, err := page.GetFrameTree().Do(ctx)
 			if err != nil {
@@ -34,6 +50,11 @@ func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string) 
 
 			return page.SetDocumentContent(frameTree.Frame.ID, html).Do(ctx)
 		}),
+		// wait for page.EventLoadEventFired
+		chromedp.ActionFunc(func(ctx context.Context) error {
+			wg.Wait()
+			return nil
+		}),
 		chromedp.ActionFunc(func(ctx context.Context) error {
 			buf, err := page.CaptureScreenshot().
 				WithFormat(page.CaptureScreenshotFormatPng).
@@ -41,8 +62,8 @@ func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string) 
 				WithClip(&page.Viewport{
 					X: 0,
 					Y: 0,
-					Width: 245.669,
-					Height: 359.055,
+					Width: 246,//245.669,
+					Height: 359,//359.055,
 					Scale: 2,
 				}).
 				Do(ctx)

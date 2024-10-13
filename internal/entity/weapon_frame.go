@@ -26,3 +26,7 @@ func (w WeaponFrame) Print() {
 	}
 	fmt.Println(values)
 }
+
+func (w WeaponFrame) Image() string{
+	return fmt.Sprintf(`http://localhost:8081/static/img/%s.png`, w.Name)
+}

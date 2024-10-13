@@ -4,6 +4,9 @@ import (
 	"bytes"
 	"html/template"
 	"log"
+	"net/http"
+	"os"
+	"path"
 
 	"github.com/iambaangkok/Card-Maker/internal/config"
 	"github.com/iambaangkok/Card-Maker/internal/mapper"
@@ -46,6 +49,12 @@ func main() {
 		weaponPart.Print()
 	}
 
+	// serve static files for html
+	go func () {
+		http.Handle("/static/img/", http.StripPrefix("/static/img/",
+		http.FileServer(http.Dir(path.Join("./internal/template", "/img/")))))
+		http.ListenAndServe("localhost:8081", nil)
+	}()
 
 	// load html template
 	template, err := template.ParseFiles("./internal/template/html/WeaponFrame.html")
@@ -62,9 +71,14 @@ func main() {
 			log.Fatal("error while applying html")
 		}
 		parsedHtml := buf.String()
-	
+		outputDir := "./output/"
+		outputFilePath := outputDir + "WeaponFrame_" + weaponFrame.Name + ".html"
+		err := os.WriteFile(outputFilePath, []byte(parsedHtml), 0644)
+		if err != nil {
+			log.Fatal("error while saving parsed html")
+		}
 		// render to png
-		outputFilePath := "WeaponFrame_" + weaponFrame.Name + ".png"
+		outputFilePath = "WeaponFrame_" + weaponFrame.Name + ".png"
 		err = renderer.RenderHTMLToPNG(parsedHtml, outputFilePath)
 		if err != nil {
 			log.Fatal(err)
