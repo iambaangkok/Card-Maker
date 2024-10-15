@@ -1,8 +1,13 @@
 package mapper
 
 import (
+	"fmt"
+	"html/template"
+	"image"
+	_ "image/png"
 	"log"
-	"reflect"
+	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -25,11 +30,11 @@ func (w WeaponPartMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponPart {
 	for row, line := range csvFile.Records {
 		log.Println("mapping line", row, line)
 
-		expectedFieldCount := reflect.TypeOf(entity.WeaponPart{}).NumField()
-		if len(line) != expectedFieldCount {
-			log.Fatal("invalid field count")
-			continue
-		}
+		// expectedFieldCount := reflect.TypeOf(entity.WeaponPart{}).NumField()
+		// if len(line) != expectedFieldCount {
+		// 	log.Fatal("invalid field count")
+		// 	continue
+		// }
 
 		damage, err := strconv.Atoi(line[3])
 		if err != nil { log.Fatal("damage must be int") }
@@ -87,6 +92,32 @@ func (w WeaponPartMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponPart {
 			}
 			effects = append(effects, effect)
 		}
+		
+		// ImgTag
+		imgTagStr := `<img src=%s class="FrameC1" style=%s />`
+		// imageServerPath
+		imageServerPath := fmt.Sprintf(`"http://localhost:8081/static/img/weaponparts/%s.png"`, line[0])
+		// imageStyle
+		// resp, err := http.Get(w.Image())
+		filePath := filepath.Join("./internal/template/img/weaponparts/", line[0] + ".png")
+		log.Println(filePath)
+		reader, err := os.Open(filePath)
+		if err != nil {
+			log.Fatal(err)
+		}
+		// reader := resp.Body
+		defer reader.Close()
+		im, _, err := image.DecodeConfig(reader)
+		if err != nil {
+			log.Fatal(err)
+		}
+		divisor := 6
+		imageStyle := fmt.Sprintf(`"width: auto; height: 100%%; max-width: %dpx; max-height: %dpx;
+		margin:auto; align-self: center; flex: 0 1 0; object-fit: contain;"`,
+		im.Width/divisor, im.Height/divisor)
+		imgTagStr = fmt.Sprintf(imgTagStr, imageServerPath, imageStyle)
+		imgTag := template.HTML(imgTagStr)
+		println("IMGTAG", imgTagStr)
 
 		weaponParts = append(weaponParts, 
 		entity.WeaponPart{
@@ -103,6 +134,7 @@ func (w WeaponPartMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponPart {
 			Compatibles: compatibles,
 			Tags: tags,
 			Effects: effects,
+			ImgTag: imgTag,
 		})
 	}
 	return weaponParts

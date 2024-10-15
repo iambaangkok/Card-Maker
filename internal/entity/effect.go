@@ -3,6 +3,7 @@ package entity
 import (
 	"fmt"
 	"reflect"
+	"strings"
 )
 
 type Effect struct {
@@ -20,4 +21,8 @@ func (w Effect) Print() {
 		values[i] = v.Field(i).Interface()
 	}
 	fmt.Println(values)
+}
+
+func (e Effect) GetTypeLowercase() string {
+	return strings.ToLower(e.Type)
 }

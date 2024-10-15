@@ -50,10 +50,14 @@
         </div>
       </div>
       <div class="Image" style="align-self: stretch; height: 80px; padding: 20px;
-      border: 1px black solid;">
-        <img src={{.Image}} class="FrameC1" style="
-        height: 100%; max-width: 100%; display: block; margin:auto;
-        align-self: normal; flex: 0 1 0; object-fit: contain;"/>
+      border: 1px black solid; display: flex;">
+        {{.ImgTag}}
+        <!-- <img src="http://localhost:8081/static/img/weaponparts/Tactical Stock.png" class="FrameC1" style="width: auto; height: 50%; max-width: 324px; max-height: 174px; display: block; margin:auto; align-self: normal; flex: 0 1 0; object-fit: contain;" /> -->
+
+        <!-- <img src={{.Image}} class="FrameC1" style="
+        width:auto; height: 100%; max-width: 100%; display: block; margin:auto;
+        align-self: normal; flex: 0 1 0; object-fit: contain;" /> -->
+        <!--  -->
       </div>
       <div class="Bottom" style="align-self: stretch; flex: 1 1 0; padding: 5px; flex-direction: column;
       align-self: stretch; justify-content: space-between; align-items: flex-start; display: flex">
@@ -168,83 +172,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="Statsandprice" style="align-self: stretch; justify-content: flex-start; align-items: center; display: inline-flex">
-            <div class="Stats" style="flex: 1 1 0; height: 40px; padding-left: 2px; padding-right: 2px; justify-content: space-between; align-items: center; display: flex">
-              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
-                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-                    {{.Damage}}
-                  </div>
-                </div>
-                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
-                  <div class="HexagramOutline" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
-                    {{template "svg-hexagram-outline"}}
-                  </div>
-                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">damage</div>
-                </div>
-              </div>
-              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
-                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-                    {{.FireRate}}
-                  </div>
-                </div>
-                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
-                  <div class="Ammunition" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
-                    {{template "svg-ammunition"}}
-                  </div>
-                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">fire rate</div>
-                </div>
-              </div>
-              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
-                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-                    {{.Accuracy}}+
-                  </div>
-                </div>
-                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
-                  <div class="DiceD6" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
-                    {{template "svg-dice-d6"}}
-                  </div>
-                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">accuracy</div>
-                </div>
-              </div>
-              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
-                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-                    {{.AmmoPerMag}}
-                  </div>
-                </div>
-                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
-                  <div class="MagazinePistol" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
-                    {{template "svg-magazine-pistol"}}
-                  </div>
-                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">mag size</div>
-                </div>
-              </div>
-              <div class="Statcol" style="padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-                <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
-                  <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-                    {{.MaxRange}}
-                  </div>
-                </div>
-                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
-                  <div class="Ruler" style="width: 18px; height: 18px; justify-content: center; align-items: center; display: inline-flex">
-                    {{template "svg-ruler"}}
-                  </div>
-                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">max range</div>
-                </div>
-              </div>
-            </div>
-            <div class="Price" style="justify-content: flex-start; align-items: center; display: flex">
-              <div class="CurrencyEur" style="width: 18px; height: 18px; padding-top: 2.25px; padding-bottom: 2.25px; padding-left: 1.50px; padding-right: 2.25px; justify-content: center; align-items: center; display: flex">
-                {{template "svg-currency-eur"}}
-              </div>
-              <div class="Amount" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-                {{.Price}}
-              </div>
-            </div>
-          </div> -->
           <div class="Effects" style="align-self: stretch; height: 39px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: flex">
             {{range .Effects}}
             <div class="Effect" style="align-self: stretch; height: 39px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
@@ -274,12 +201,20 @@
         </div>
         <div class="Bottom2" style="align-self: stretch; flex: 1 1 0; flex-direction: column;
           justify-content: end; align-items: flex-start; gap: 3px; display: flex">
-            <!-- <div class="Compatibles" style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 3px; display: inline-flex">
-              <div class="Compatibles" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">Compatibles:</div>
-              <div class="PistolSmgArSr" style="color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">Pistol, SMG, AR, SR</div>
-            </div> -->
+            <div class="Compatibles" style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 3px; display: inline-flex">
+              <div class="Compatibles" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                Compatibles:
+              </div>
+              <div class="PistolSmgArSr" style="color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+                {{range .Compatibles}}
+                      {{.Name}}
+                  {{end}}
+              </div>
+            </div>
             <div class="Tags" style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 3px; display: inline-flex">
-              <div class="Tags" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">Tags:</div>
+              <div class="Tags" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                Tags:
+              </div>
               <div class="Tag1Tag2Tag33333" style="color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">
                 {{range .Tags}}
                       {{.Name}}

@@ -56,8 +56,9 @@ func main() {
 		http.ListenAndServe("localhost:8081", nil)
 	}()
 
-	// load html template
-	template, err := template.ParseFiles("./internal/template/html/WeaponFrame.html")
+	// WEAPON FRAMES
+	// load html tem
+	tem, err := template.ParseFiles("./internal/template/html/WeaponFrame.html")
 	if err != nil {
 		log.Fatal("unable to read html template")
 	}
@@ -66,7 +67,7 @@ func main() {
 		data := weaponFrame
 
 		var buf bytes.Buffer
-		err = template.Execute(&buf, data)
+		err = tem.Execute(&buf, data)
 		if err != nil {
 			log.Fatal("error while applying html")
 		}
@@ -87,6 +88,37 @@ func main() {
 		log.Print("rendered ", outputFilePath)
 	}
 
+	// WEAPON PARTS
+	// load html template
+	tem, err = template.ParseFiles("./internal/template/html/WeaponPart.html")
+	if err != nil {
+		log.Fatal("unable to read html template")
+	}
+
+	for _, weaponPart := range weaponParts {
+		data := weaponPart
+
+		var buf bytes.Buffer
+		err = tem.Execute(&buf, data)
+		if err != nil {
+			log.Fatal("error while applying html")
+		}
+		parsedHtml := buf.String()
+		outputDir := "./output/"
+		outputFilePath := outputDir + "WeaponPart_" + weaponPart.Name + ".html"
+		err := os.WriteFile(outputFilePath, []byte(parsedHtml), 0644)
+		if err != nil {
+			log.Fatal("error while saving parsed html")
+		}
+		// render to png
+		outputFilePath = "WeaponPart_" + weaponPart.Name + ".png"
+		err = renderer.RenderHTMLToPNG(parsedHtml, outputFilePath)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		log.Print("rendered ", outputFilePath)
+	}
 
 	
 
