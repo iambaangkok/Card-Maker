@@ -117,7 +117,6 @@ func (w WeaponPartMapperImpl) Map(csvFile reader.CSVFile) []entity.WeaponPart {
 		im.Width/divisor, im.Height/divisor)
 		imgTagStr = fmt.Sprintf(imgTagStr, imageServerPath, imageStyle)
 		imgTag := template.HTML(imgTagStr)
-		println("IMGTAG", imgTagStr)
 
 		weaponParts = append(weaponParts, 
 		entity.WeaponPart{

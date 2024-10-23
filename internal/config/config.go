@@ -10,6 +10,7 @@ const configPath = "app.yaml"
 
 type Config struct {
 	CSV	CSVConfig `yaml:"csv"`
+	HTML HTMLTemplateConfig `yaml:"html"`
 	Renderer RendererConfig `yaml:"renderer"`
 }
 type CSVConfig struct {
@@ -19,6 +20,10 @@ type CSVConfig struct {
 
 type EntityConfig struct {
 	Name string `yaml:"name"`
+}
+
+type HTMLTemplateConfig struct {
+	OutputHTMLEnabled bool `yaml:"output-html-enabled"`
 }
 
 type RendererConfig struct {

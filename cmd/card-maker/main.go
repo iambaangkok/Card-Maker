@@ -72,14 +72,16 @@ func main() {
 			log.Fatal("error while applying html")
 		}
 		parsedHtml := buf.String()
-		outputDir := "./output/"
-		outputFilePath := outputDir + "WeaponFrame_" + weaponFrame.Name + ".html"
-		err := os.WriteFile(outputFilePath, []byte(parsedHtml), 0644)
-		if err != nil {
-			log.Fatal("error while saving parsed html")
+		if cfg.HTML.OutputHTMLEnabled {
+			outputDir := "./output/"
+			outputFilePath := outputDir + "WeaponFrame_" + weaponFrame.Name + ".html"
+			err := os.WriteFile(outputFilePath, []byte(parsedHtml), 0644)
+			if err != nil {
+				log.Fatal("error while saving parsed html")
+			}
 		}
 		// render to png
-		outputFilePath = "WeaponFrame_" + weaponFrame.Name + ".png"
+		outputFilePath := "WeaponFrame_" + weaponFrame.Name + ".png"
 		err = renderer.RenderHTMLToPNG(parsedHtml, outputFilePath)
 		if err != nil {
 			log.Fatal(err)
@@ -104,14 +106,17 @@ func main() {
 			log.Fatal("error while applying html")
 		}
 		parsedHtml := buf.String()
-		outputDir := "./output/"
-		outputFilePath := outputDir + "WeaponPart_" + weaponPart.Name + ".html"
-		err := os.WriteFile(outputFilePath, []byte(parsedHtml), 0644)
-		if err != nil {
-			log.Fatal("error while saving parsed html")
+		if cfg.HTML.OutputHTMLEnabled {
+			outputDir := "./output/"
+			outputFilePath := outputDir + "WeaponPart_" + weaponPart.Name + ".html"
+			err := os.WriteFile(outputFilePath, []byte(parsedHtml), 0644)
+			if err != nil {
+				log.Fatal("error while saving parsed html")
+			}
 		}
+		
 		// render to png
-		outputFilePath = "WeaponPart_" + weaponPart.Name + ".png"
+		outputFilePath := "WeaponPart_" + weaponPart.Name + ".png"
 		err = renderer.RenderHTMLToPNG(parsedHtml, outputFilePath)
 		if err != nil {
 			log.Fatal(err)
