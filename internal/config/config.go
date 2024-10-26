@@ -29,6 +29,9 @@ type HTMLTemplateConfig struct {
 type RendererConfig struct {
 	URL string `yaml:"url"`
 	OutputDir string `yaml:"output-dir"`
+	RenderWeaponFrameEnabled bool `yaml:"render-weapon-frame-enabled"`
+	RenderWeaponPartEnabled bool `yaml:"render-weapon-part-enabled"`
+	RenderItemEnabled bool `yaml:"render-item-enabled"`
 }
 
 

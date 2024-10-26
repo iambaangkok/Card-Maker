@@ -1,0 +1,104 @@
+<!-- CSS -->
+<style>
+    body {
+        margin: 0;
+        background-color: transparent;
+    }
+</style>
+
+<!-- DEFINE TEMPLATE -->
+{{define "svg-currency-eur"}}
+<svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10.25 11.875C8.375 11.875 6.74 10.81 5.93 9.25H10.25L11 7.75H5.435C5.3975 7.5025 5.375 7.255 5.375 7C5.375 6.745 5.3975 6.4975 5.435 6.25H10.25L11 4.75H5.93C6.74 3.19 8.375 2.125 10.25 2.125C11.4575 2.125 12.5675 2.5675 13.4225 3.3025L14.75 1.975C13.5575 0.9025 11.975 0.25 10.25 0.25C7.31 0.25 4.82 2.125 3.875 4.75H1.25L0.5 6.25H3.545C3.5 6.4975 3.5 6.745 3.5 7C3.5 7.255 3.5 7.5025 3.545 7.75H1.25L0.5 9.25H3.875C4.82 11.875 7.31 13.75 10.25 13.75C11.9825 13.75 13.5575 13.0975 14.75 12.025L13.415 10.6975C12.5675 11.4325 11.465 11.875 10.25 11.875Z" fill="black"/>
+</svg>
+{{end}}
+<!-- <body> -->
+  <div class="ItemCardBw65x95" style="width: 245.67px; height: 359.05px; padding-bottom: 0.05px;
+  background: white; border-radius: 0px; overflow: hidden; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+    <div class="Main" style="align-self: stretch; flex: 1 1 0; padding: 5px; border-radius: 21px;
+    overflow: hidden; border: 2px black solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+      <div class="Top" style="align-self: stretch; height: 30px; padding-left: 5px; padding-right: 5px;
+      padding-top: 2px; padding-bottom: 2px; flex-direction: column; justify-content: flex-start;
+      align-items: flex-start; gap: 10px; display: flex">
+        <div class="WeaponName" style="width: 232px; height: 23px; color: black; font-size: 20px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+            {{.Name}}
+        </div>
+      </div>
+      <div class="Image" style="align-self: stretch; height: 80px; padding: 20px;
+      border: 1px black solid; display: flex;">
+        {{.ImgTag}}
+      </div>
+      <div class="Bottom" style="align-self: stretch; flex: 1 1 0; padding: 5px; flex-direction: column;
+      align-self: stretch; justify-content: space-between; align-items: flex-start; display: flex">
+        <div class="Top" style="align-self: stretch; height: 128px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
+          <div class="Statsandprice" style="align-self: stretch; justify-content: space-between; align-items: center; display: inline-flex">
+            <div class="Stats" style="flex: 1 1 0; height: 40px; padding-left: 2px; padding-right: 2px;
+            justify-content: start; align-items: center; display: flex">
+              <div class="Uses" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+              {{if .HasUsageLimit}}
+                uses:
+                <div class="UsageBox" style="width: 35px; height: 40px; padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+                  <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
+                    <div class="HexagramOutline" style="width: 22px; height: 22px; position: relative; border: 1px black solid"></div>
+                    <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+                      0
+                    </div>
+                  </div>
+                </div>
+              {{else}}
+                <span style="opacity: 0.3;">no usage limit</span>
+              {{end}}
+              </div>
+              {{range .GetUsageLimitArray}}
+              <div class="UsageBox" style="width: 22px; height: 40px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+                <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
+                  <div class="HexagramOutline" style="width: 22px; height: 22px; position: relative; border: 1px black solid"></div>
+                  <div class="Subtext" style="color: black; font-size: 8px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+                    {{.}}
+                  </div>
+                </div>
+              </div>
+              {{end}}
+            </div>
+            <div class="Price" style="width: 25px; justify-content: flex-start; align-items: center; display: flex; ">
+              <div class="CurrencyEur" style="width: 18px; height: 18px; padding-top: 2.25px; padding-bottom: 2.25px; padding-left: 1.50px; padding-right: 2.25px; justify-content: center; align-items: center; display: flex">
+                {{template "svg-currency-eur"}}
+              </div>
+              <div class="Amount" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                {{.Price}}
+              </div>
+            </div>
+          </div>
+          <div class="Effects" style="align-self: stretch; height: 39px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: flex">
+            {{range .Effects}}
+            <div class="Effect" style="align-self: stretch; height: 39px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+              <div class="Nameandlevel" style="justify-content: center; align-items: center; display: inline-flex;
+              gap: 2px;">
+                <div class="Name" style="color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    {{.Name}} 
+                </div>
+                {{if .HasLevel}}
+                  <span class="Level" style="color: black; font-size: 12px; font-family: Inter; font-weight: 700;
+                  word-wrap: break-word;"> 
+                  ({{.Level}})
+                  </span>
+                {{end}}
+                <span style="color: gray; font-size: 10px; font-family: Inter; font-weight: 400;">
+                  {{.GetTypeLowercase }}
+                </span>
+              </div>
+              <div class="Description" style="align-self: stretch; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                <div class="Description" style="flex: 1 1 0; color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+                    {{.Description}}
+                </div>
+              </div>
+            </div>
+            {{end}}
+        </div>
+        </div>
+        <div class="Bottom2" style="align-self: stretch; flex: 1 1 0; flex-direction: column;
+          justify-content: end; align-items: flex-start; gap: 3px; display: flex">
+        </div>
+    </div>
+  </div>
+<!-- </body> -->

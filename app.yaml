@@ -9,4 +9,7 @@ html:
 renderer:
   url: "https://iambaangkok.github.io/FLATLINE-Companion-App/"
   output-dir: "./output"
+  render-weapon-frame-enabled: false
+  render-weapon-part-enabled: false
+  render-item-enabled: true
 
