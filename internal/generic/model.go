@@ -1,0 +1,70 @@
+package generic
+
+// FieldSchema describes a single field on a card type.
+type FieldSchema struct {
+	Name     string      `yaml:"name" json:"name"`
+	Type     string      `yaml:"type" json:"type"` // e.g. "string", "int", "bool", "string_list"
+	Required bool        `yaml:"required" json:"required"`
+	Default  interface{} `yaml:"default,omitempty" json:"default,omitempty"`
+}
+
+// CardTypeSchema defines a card type, its data source files, and template.
+type CardTypeSchema struct {
+	ID        string        `yaml:"id" json:"id"`
+	DataFiles []string      `yaml:"data_files" json:"data_files"`
+	Template  string        `yaml:"template" json:"template"`
+	Fields    []FieldSchema `yaml:"fields" json:"fields"`
+}
+
+// ProjectConfig groups card types and paths for a single project/game.
+type ProjectConfig struct {
+	Name        string           `yaml:"name" json:"name"`
+	DataDir     string           `yaml:"data_dir" json:"data_dir"`
+	TemplateDir string           `yaml:"template_dir" json:"template_dir"`
+	ImageDir    string           `yaml:"image_dir" json:"image_dir"`
+	OutputDir   string           `yaml:"output_dir" json:"output_dir"`
+	CardTypes   []CardTypeSchema `yaml:"card_types" json:"card_types"`
+}
+
+// GenericCard is a generic representation of a card instance.
+type GenericCard struct {
+	TypeID string                 `yaml:"type_id" json:"type_id"`
+	ID     string                 `yaml:"id" json:"id"`
+	Fields map[string]interface{} `yaml:"fields" json:"fields"`
+}
+
+// TypeRegistry allows lookup of card type schemas by ID.
+type TypeRegistry interface {
+	Get(id string) (CardTypeSchema, bool)
+	List() []CardTypeSchema
+}
+
+// InMemoryTypeRegistry is a simple in-memory implementation of TypeRegistry.
+type InMemoryTypeRegistry struct {
+	types map[string]CardTypeSchema
+}
+
+// NewInMemoryTypeRegistry constructs a registry from the given schemas.
+func NewInMemoryTypeRegistry(schemas []CardTypeSchema) *InMemoryTypeRegistry {
+	m := make(map[string]CardTypeSchema, len(schemas))
+	for _, s := range schemas {
+		m[s.ID] = s
+	}
+	return &InMemoryTypeRegistry{types: m}
+}
+
+// Get returns the schema for the given id, if present.
+func (r *InMemoryTypeRegistry) Get(id string) (CardTypeSchema, bool) {
+	s, ok := r.types[id]
+	return s, ok
+}
+
+// List returns all registered schemas.
+func (r *InMemoryTypeRegistry) List() []CardTypeSchema {
+	out := make([]CardTypeSchema, 0, len(r.types))
+	for _, s := range r.types {
+		out = append(out, s)
+	}
+	return out
+}
+

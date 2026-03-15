@@ -1,0 +1,77 @@
+- type_id: weapon_frame
+  id: bling-mk2
+  fields:
+    name: BLING MK2
+    type: SMG
+    damage: 1
+    fire_rate: 7
+    accuracy: 4
+    max_range: 3
+    ammo_per_mag: 5
+    price: 2
+    tags:
+      - Kinetic
+      - Mag-Fed
+
+- type_id: weapon_frame
+  id: vend
+  fields:
+    name: VEND
+    type: SMG
+    damage: 2
+    fire_rate: 4
+    accuracy: 4
+    max_range: 4
+    ammo_per_mag: 5
+    price: 3
+    tags:
+      - Kinetic
+      - Mag-Fed
+
+- type_id: weapon_frame
+  id: sgx
+  fields:
+    name: SGX
+    type: AR
+    damage: 3
+    fire_rate: 3
+    accuracy: 4
+    max_range: 4
+    ammo_per_mag: 5
+    price: 4
+    tags:
+      - Kinetic
+      - Mag-Fed
+
+- type_id: weapon_frame
+  id: mardin
+  fields:
+    name: Mardin
+    type: Pistol
+    damage: 4
+    fire_rate: 2
+    accuracy: 4
+    max_range: 3
+    ammo_per_mag: 3
+    price: 3
+    tags:
+      - Kinetic
+      - Mag-Fed
+
+- type_id: weapon_frame
+  id: sr300
+  fields:
+    name: SR300
+    type: SR
+    damage: 5
+    fire_rate: 1
+    accuracy: 4
+    max_range: 5
+    ammo_per_mag: 5
+    price: 7
+    tags:
+      - Kinetic
+      - Mag-Fed
+    effects:
+      - Higher Velocity
+

@@ -1,0 +1,34 @@
+name: example-weapon-project
+data_dir: "./data/example"
+template_dir: "./template/example/html"
+image_dir: "./template/example/img"
+output_dir: "./output/example"
+
+card_types:
+  - id: weapon_frame
+    template: "WeaponFrame.html"
+    data_files:
+      - "weapon_frames.yaml"
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: type
+        type: string
+        required: true
+      - name: damage
+        type: int
+        required: false
+      - name: fire_rate
+        type: int
+        required: false
+      - name: accuracy
+        type: int
+        required: false
+      - name: max_range
+        type: int
+        required: false
+      - name: ammo_per_mag
+        type: int
+        required: false
+

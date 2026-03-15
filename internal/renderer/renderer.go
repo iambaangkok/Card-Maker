@@ -20,9 +20,24 @@ type ChromeRendererImpl struct {
 }
 
 func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string) error {
-	outputPath := filepath.Join(c.Config.Renderer.OutputDir, outputFileName)
+	outputPath := outputFileName
+	if !filepath.IsAbs(outputFileName) && filepath.Dir(outputFileName) == "." {
+		// No directory component provided; write into the configured output directory.
+		outputPath = filepath.Join(c.Config.Renderer.OutputDir, outputFileName)
+	}
 
-	ctx, cancel := chromedp.NewContext(context.Background())
+	// Fix CORS when loading images from localhost FileServer
+	opts := append(chromedp.DefaultExecAllocatorOptions[:],
+		// This disables the Private Network Access checks entirely
+		chromedp.Flag("disable-features", "BlockInsecurePrivateNetworkRequests"),
+		// Common flags for dev environments
+		chromedp.Flag("disable-web-security", true),
+	)
+
+	allocCtx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
+	defer cancel()
+
+	ctx, cancel := chromedp.NewContext(allocCtx)
 	defer cancel()
 
 	var wg sync.WaitGroup
@@ -77,7 +92,10 @@ func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string) 
 
 
 func (c ChromeRendererImpl) RenderHTMLToPDF(html string, outputFileName string) error {
-	outputPath := filepath.Join(c.Config.Renderer.OutputDir, outputFileName)
+	outputPath := outputFileName
+	if !filepath.IsAbs(outputFileName) && filepath.Dir(outputFileName) == "." {
+		outputPath = filepath.Join(c.Config.Renderer.OutputDir, outputFileName)
+	}
 
 	ctx, cancel := chromedp.NewContext(context.Background())
 	defer cancel()

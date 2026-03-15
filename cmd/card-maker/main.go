@@ -2,21 +2,34 @@ package main
 
 import (
 	"bytes"
+	"flag"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
 	"path"
+	"path/filepath"
+	"time"
 
 	"github.com/iambaangkok/Card-Maker/internal/config"
+	"github.com/iambaangkok/Card-Maker/internal/generic"
 	"github.com/iambaangkok/Card-Maker/internal/mapper"
 	"github.com/iambaangkok/Card-Maker/internal/reader"
 	"github.com/iambaangkok/Card-Maker/internal/renderer"
 )
 
 func main() {
+	projectFlag := flag.String("project", "", "path to project config file (YAML/JSON) for generic mode")
+	flag.Parse()
+
 	cfg := config.LoadConfig()
-	
+
+	// If --project is provided, use the new generic engine path.
+	if projectFlag != nil && *projectFlag != "" {
+		runGeneric(cfg, *projectFlag)
+		return
+	}
+
 	csvReader := reader.CSVReaderImpl{
 		Config: cfg,
 	}
@@ -175,4 +188,36 @@ func main() {
 		}
 	}
 }
+
+func runGeneric(cfg config.Config, projectConfigPath string) {
+	log.Printf("running in generic mode with project config %s", projectConfigPath)
+
+	project, err := generic.LoadProjectConfig(projectConfigPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	staticImgDir := filepath.Join(project.ImageDir)
+	go func() {
+		http.Handle("/static/img/", http.StripPrefix("/static/img/",
+			http.FileServer(http.Dir(staticImgDir))))
+		if err := http.ListenAndServe("localhost:8081", nil); err != nil {
+			log.Printf("static file server error: %v", err)
+		}
+	}()
+
+	log.Print("waiting 2 seconds for static file server to start")
+	time.Sleep(2 * time.Second)
+
+	reg := generic.NewInMemoryTypeRegistry(project.CardTypes)
+
+	r := renderer.ChromeRendererImpl{
+		Config: cfg,
+	}
+
+	if err := generic.RenderProject(project, reg, r, cfg.HTML.OutputHTMLEnabled); err != nil {
+		log.Fatal(err)
+	}
+}
+
 
