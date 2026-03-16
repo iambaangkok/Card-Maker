@@ -4,6 +4,10 @@ template_dir: "./template/example/html"
 image_dir: "./template/example/img"
 output_dir: "./output/example"
 
+# Reference data (not card types). Loaded once and passed to all templates.
+reference_data:
+  effects: "effects.yaml"
+
 card_types:
   - id: weapon_frame
     template: "WeaponFrame.html"
@@ -30,5 +34,71 @@ card_types:
         required: false
       - name: ammo_per_mag
         type: int
+        required: false
+
+  - id: weapon_part
+    template: "WeaponPart.html"
+    data_files:
+      - "weapon_parts.yaml"
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: manufacturer
+        type: string
+        required: false
+      - name: type
+        type: string
+        required: true
+      - name: damage
+        type: int
+        required: false
+      - name: fire_rate
+        type: int
+        required: false
+      - name: accuracy
+        type: int
+        required: false
+      - name: min_range
+        type: int
+        required: false
+      - name: max_range
+        type: int
+        required: false
+      - name: ammo_per_mag
+        type: int
+        required: false
+      - name: price
+        type: int
+        required: false
+      - name: compatibles
+        type: string_list
+        required: false
+      - name: tags
+        type: string_list
+        required: false
+      - name: effects
+        type: string_list
+        required: false
+
+  - id: item
+    template: "Item.html"
+    data_files:
+      - "items.yaml"
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: usage_limit
+        type: int
+        required: false
+      - name: price
+        type: int
+        required: false
+      - name: usage_boxes
+        type: int_list
+        required: false
+      - name: effects
+        type: string_list
         required: false
 

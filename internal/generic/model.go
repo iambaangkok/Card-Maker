@@ -18,12 +18,13 @@ type CardTypeSchema struct {
 
 // ProjectConfig groups card types and paths for a single project/game.
 type ProjectConfig struct {
-	Name        string           `yaml:"name" json:"name"`
-	DataDir     string           `yaml:"data_dir" json:"data_dir"`
-	TemplateDir string           `yaml:"template_dir" json:"template_dir"`
-	ImageDir    string           `yaml:"image_dir" json:"image_dir"`
-	OutputDir   string           `yaml:"output_dir" json:"output_dir"`
-	CardTypes   []CardTypeSchema `yaml:"card_types" json:"card_types"`
+	Name          string           `yaml:"name" json:"name"`
+	DataDir       string           `yaml:"data_dir" json:"data_dir"`
+	TemplateDir   string           `yaml:"template_dir" json:"template_dir"`
+	ImageDir      string           `yaml:"image_dir" json:"image_dir"`
+	OutputDir     string           `yaml:"output_dir" json:"output_dir"`
+	CardTypes     []CardTypeSchema `yaml:"card_types" json:"card_types"`
+	ReferenceData map[string]string `yaml:"reference_data,omitempty" json:"reference_data,omitempty"` // key -> data file (e.g. "effects" -> "effects.yaml")
 }
 
 // GenericCard is a generic representation of a card instance.

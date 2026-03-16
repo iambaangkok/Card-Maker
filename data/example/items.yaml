@@ -1,0 +1,116 @@
+- type_id: item
+  id: aegis
+  fields:
+    name: AEGIS
+    usage_limit: 0
+    price: 4
+    usage_boxes: []
+    effects: [Reflect:1]
+
+- type_id: item
+  id: ammo-box
+  fields:
+    name: Ammo Box
+    usage_limit: 2
+    price: 3
+    usage_boxes: [1, 2]
+    effects: [Deploy Ammo Box, Refill Ammo]
+
+- type_id: item
+  id: breaching-charge
+  fields:
+    name: Breaching Charge
+    usage_limit: 2
+    price: 5
+    usage_boxes: [1, 2]
+    effects: [Place Breaching Charge, Breach]
+
+- type_id: item
+  id: bulldozer
+  fields:
+    name: Bulldozer
+    usage_limit: 0
+    price: 3
+    usage_boxes: []
+    effects: [Power Kick]
+
+- type_id: item
+  id: cortex
+  fields:
+    name: CORTEX
+    usage_limit: 0
+    price: 4
+    usage_boxes: []
+    effects: [Overload]
+
+- type_id: item
+  id: drone
+  fields:
+    name: Drone
+    usage_limit: 2
+    price: 3
+    usage_boxes: [1, 2]
+    effects: [Scout]
+
+- type_id: item
+  id: stim
+  fields:
+    name: Stim
+    usage_limit: 2
+    price: 3
+    usage_boxes: [1, 2]
+    effects: [Stim Heal, Stim Revive]
+
+- type_id: item
+  id: flexi-2
+  fields:
+    name: FLEXI-2
+    usage_limit: 0
+    price: 3
+    usage_boxes: []
+    effects: [Nimble:2]
+
+- type_id: item
+  id: flashbang
+  fields:
+    name: Flashbang
+    usage_limit: 3
+    price: 5
+    usage_boxes: [1, 2, 3]
+    effects: [Flashbang]
+
+- type_id: item
+  id: frag-grenade
+  fields:
+    name: Frag Grenade
+    usage_limit: 3
+    price: 5
+    usage_boxes: [1, 2, 3]
+    effects: [Frag Grenade]
+
+- type_id: item
+  id: vulnera
+  fields:
+    name: Vulnera
+    usage_limit: 2
+    price: 6
+    usage_boxes: [1, 2]
+    effects: [Weaken]
+
+- type_id: item
+  id: opticamo
+  fields:
+    name: OptiCamo
+    usage_limit: 2
+    price: 5
+    usage_boxes: [1, 2]
+    effects: [Cloak]
+
+- type_id: item
+  id: x-glove
+  fields:
+    name: X-Glove
+    usage_limit: 0
+    price: 3
+    usage_boxes: []
+    effects: [Hard Throw]

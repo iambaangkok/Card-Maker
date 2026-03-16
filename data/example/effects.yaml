@@ -1,0 +1,143 @@
+# Reference data: effect definitions (not a card type).
+# Cards reference effects by name (e.g. "Nimble", "Reflect:1").
+# Used for validation, tooltips, or displaying full descriptions.
+
+- name: Nimble
+  type: Passive
+  has_level: true
+  description: "Movement +1 per level."
+
+- name: "Vision of the Rising Sun"
+  type: Passive
+  has_level: false
+  description: "If this weapon is fully fully slotted and all made from CSB parts, +1 accuracy."
+
+- name: Headhunt
+  type: Skill
+  has_level: false
+  description: "Shoot action: before hit rolls, may apply +1 damage and -2 accuracy."
+
+- name: "Wall Bang"
+  type: Passive
+  has_level: false
+  description: "Shoot action: before hit rolls, may shoot through 2cm-thick full walls with -1 accuracy. or through 2cm-thick half-walls without accuracy penalty."
+
+- name: Tattered
+  type: Passive
+  has_level: true
+  description: "Movement -1 per level."
+
+- name: Compensating
+  type: Active
+  has_level: true
+  description: "After hit rolls, may move up to 1 point per level from a die to another die with lower points."
+
+- name: "Burst Control"
+  type: Active
+  has_level: true
+  description: "After hit rolls, if fire rate > 1: may add up to 1 point per level to a die that does not hit yet, if fire rate = 1: +1 point to the next shoot action if it is with the same weapon."
+
+- name: Handling
+  type: Active
+  has_level: true
+  description: "May reroll 1 hit roll die per level. Each die can only be rerolled by handling once."
+
+- name: "Point Aim"
+  type: Skill
+  has_level: false
+  description: "Shoot action: before hit rolls, may apply +2 fire rate and -2 accuracy."
+
+- name: "Quick Reload"
+  type: Passive
+  has_level: false
+  description: "May use 1 bonus action to reload. Cancels Slow Reload."
+
+- name: "Slow Reload"
+  type: Passive
+  has_level: false
+  description: "Reloading costs 1 action & 1 bonus action."
+
+- name: "Super Slow Reload"
+  type: Passive
+  has_level: false
+  description: "Reloading costs 2 action & 2 bonus action. Will consume next turn's actions."
+
+- name: "Higher Velocity"
+  type: Passive
+  has_level: true
+  description: "Shoot action against target with evade reaction skill: +1 to your roll against evade per level."
+
+- name: Reflect
+  type: Reactive
+  has_level: true
+  description: "When attacked, reduce the total amount of damage by 1 / lvl. Deal the reduced damage back to that enemy."
+
+- name: "Deploy Ammo Box"
+  type: Skill
+  has_level: false
+  description: "Cost 1 bonus action, 1 use: Place an ammo box token on a grid within 3x3 grid radius."
+
+- name: "Refill Ammo"
+  type: Skill
+  has_level: false
+  description: "Cost 1 bonus action: Remove an ammo box token within 3x3 grid radius. Gain 2 ammo magazine of your choosing."
+
+- name: "Place Breaching Charge"
+  type: Skill
+  has_level: false
+  description: "Cost 1 bonus action 1 use: Place a breaching charge at an adjacent door."
+
+- name: Breach
+  type: Skill
+  has_level: false
+  description: "Cost 1 bonus action: Explode any placed breaching charge(s), destroying the door(s). The unit directly behind the door(s) takes 3 damage. This Player Phase, units behind the door within 3x2 grid gets Stunned. Stunned units skip a turn."
+
+- name: "Power Kick"
+  type: Skill
+  has_level: false
+  description: "Cost 1 action: target an enemy within 3x3 grid radius with LOS, deal 1 true damage and move the target away up to 3 grid."
+
+- name: Overload
+  type: Active
+  has_level: false
+  description: "Once per Player Phase per player, may activate to trade 2 HP for 1 of the following effects: 1) Move 3 grid. 2) Gain 1 action. If your HP is <= 0 after activating, you may use the effects before going into downed state."
+
+- name: Scout
+  type: Skill
+  has_level: false
+  description: "Cost 1 bonus action, 1 use: Reveal the tile on the other side of a door and spawn enemies in that tile. Player must be adjacent to that door."
+
+- name: Flashbang
+  type: Skill
+  has_level: false
+  description: "Cost 1 bonus action, 1 use: Throw a flashbang to a point within 5 grid radius with LOS. All units in 2 grid radius of the flashbang gets Stunned. Stunned units skip a turn."
+
+- name: "Frag Grenade"
+  type: Skill
+  has_level: false
+  description: "Cost 1 action, 1 use: Throw a grenade to a point within 5 grid radius with LOS. At the beginning of next Player Phase, all units in 2 grid radius with LOS from the explosion takes 1-3 damage depending on the distance from the explosion. 3 at the same grid, 1 at 2 grid radius."
+
+- name: Weaken
+  type: Skill
+  has_level: false
+  description: "Cost 1 bonus action, 1 use: Mark an enemy within LOS until it dies. Marked enemies has their armor reduced by 1. Does not stack."
+
+- name: Cloak
+  type: Active
+  has_level: false
+  description: "Cost 1 use, Can be used at any time during enemy phase. Enemies cannot target you this enemy phase, may move up to 3 grid."
+
+- name: "Stim Heal"
+  type: Skill
+  has_level: false
+  description: "Cost 1 action, 1 use: Heal a player within 3x3 grid radius for 3 HP."
+
+- name: "Stim Revive"
+  type: Skill
+  has_level: false
+  description: "Cost 1 action, 1 use: Revive a downed player within 3x3 grid radius and give them 2 HP."
+
+- name: "Hard Throw"
+  type: Passive
+  has_level: false
+  description: "Throwables gain +3 grid to throw range, and their effect will occur immediately when they are thrown."

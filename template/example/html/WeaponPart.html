@@ -38,7 +38,7 @@
 </svg>
 {{end}}
 <!-- <body> -->
-  <div class="WeaponCardBw65x95" style="width: 245.67px; height: 359.05px; padding-bottom: 0.05px;
+  <div class="WeaponPartCardBw65x95" style="width: 245.67px; height: 359.05px; padding-bottom: 0.05px;
   background: white; border-radius: 0px; overflow: hidden; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
     <div class="Main" style="align-self: stretch; flex: 1 1 0; padding: 5px; border-radius: 21px;
     overflow: hidden; border: 2px black solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
@@ -50,10 +50,9 @@
         </div>
       </div>
       <div class="Image" style="align-self: stretch; height: 80px; padding: 20px;
-      border: 1px black solid;">
-        {{$imgFileName := index .Card.Fields "name" }}
-        <img src="http://localhost:8081/static/img/weaponframes/{{$imgFileName}}.png" class="FrameC1" style="
-        height: 100%; max-width: 100%; display: block; margin:auto;
+      border: 1px black solid; display: flex;">
+        <img src="http://localhost:8081/static/img/weaponparts/{{ index .Card.Fields "name" }}.png" class="FrameC1" style="
+        width: auto; height: 100%; max-width: 100%; display: block; margin:auto;
         align-self: normal; flex: 0 1 0; object-fit: contain;"/>
       </div>
       <div class="Bottom" style="align-self: stretch; flex: 1 1 0; padding: 5px; flex-direction: column;
@@ -117,7 +116,7 @@
               <div class="Statcol" style="width: 40px; padding-left: 2px; padding-right: 2px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
               <div class="Number" style="flex-direction: column; justify-content: center; align-items: center; display: flex">
                   <div class="Number" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-                    {{ index .Card.Fields "max_range" }}
+                    [{{ index .Card.Fields "min_range" }}, {{ index .Card.Fields "max_range" }}]
                   </div>
                 </div>
                 <div class="Icon" style="flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
@@ -152,11 +151,23 @@
             {{end}}
         </div>
         </div>
-        <div class="Bottom2" style="alignSelf: stretch; flex: 1 1 0; flex-direction: column;
+        <div class="Bottom2" style="align-self: stretch; flex: 1 1 0; flex-direction: column;
           justify-content: end; align-items: flex-start; gap: 3px; display: flex">
+            <div class="Compatibles" style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 3px; display: inline-flex">
+              <div class="Compatibles" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                Compatibles:
+              </div>
+              <div class="PistolSmgArSr" style="color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+                {{with .Card.Fields.compatibles}}
+                  {{range $i, $c := .}}{{if $i}}, {{end}}{{ $c }}{{end}}
+                {{end}}
+              </div>
+            </div>
             <div class="Tags" style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 3px; display: inline-flex">
-              <div class="TagsLabel" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">Tags:</div>
-              <div class="TagsValue" style="color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+              <div class="Tags" style="color: black; font-size: 10px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                Tags:
+              </div>
+              <div class="Tag1Tag2Tag33333" style="color: black; font-size: 10px; font-family: Inter; font-weight: 400; word-wrap: break-word">
                 {{with .Card.Fields.tags}}
                   {{range $i, $t := .}}{{if $i}}, {{end}}{{ $t }}{{end}}
                 {{end}}
@@ -166,4 +177,3 @@
     </div>
   </div>
 <!-- </body> -->
-

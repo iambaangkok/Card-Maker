@@ -1,0 +1,475 @@
+- type_id: weapon_part
+  id: aero-reflex-sight
+  fields:
+    name: AERO Reflex Sight
+    manufacturer: CSB
+    type: Sight
+    damage: 0
+    fire_rate: 0
+    accuracy: 1
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 4
+    compatibles: [Pistol, SMG, AR]
+    tags: [AERO, Sight]
+    effects: [Nimble]
+
+- type_id: weapon_part
+  id: aim-point-sight
+  fields:
+    name: Aim Point Sight
+    manufacturer: CSB
+    type: Sight
+    damage: 0
+    fire_rate: 0
+    accuracy: 1
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 2
+    compatibles: [Pistol, SMG, AR, SR]
+    tags: [Sight]
+    effects: []
+
+- type_id: weapon_part
+  id: csb-holo-sight
+  fields:
+    name: CSB Holo Sight
+    manufacturer: CSB
+    type: Sight
+    damage: 0
+    fire_rate: 0
+    accuracy: 1
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 5
+    compatibles: [SMG, AR, SR]
+    tags: [Sight]
+    effects: [Vision of the Rising Sun]
+
+- type_id: weapon_part
+  id: 8x-headhunter-scope
+  fields:
+    name: 8X Headhunter Scope
+    manufacturer: CSB
+    type: Sight
+    damage: 0
+    fire_rate: 0
+    accuracy: 2
+    min_range: 1
+    max_range: 2
+    ammo_per_mag: 0
+    price: 7
+    compatibles: [AR, SR]
+    tags: [Sight]
+    effects: [Headhunt]
+
+- type_id: weapon_part
+  id: ir-heatsense-scope
+  fields:
+    name: IR HeatSense Scope
+    manufacturer: CSB
+    type: Sight
+    damage: 0
+    fire_rate: 0
+    accuracy: 1
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 10
+    compatibles: [AR, SR]
+    tags: [Sight]
+    effects: [Wall Bang]
+
+- type_id: weapon_part
+  id: tactical-stock
+  fields:
+    name: Tactical Stock
+    manufacturer: CSB
+    type: Stock
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 3
+    compatibles: [Pistol, SMG, AR, SR]
+    tags: [Stock]
+    effects: [Handling]
+
+- type_id: weapon_part
+  id: aero-light-barrel
+  fields:
+    name: AERO Light Barrel
+    manufacturer: CSB
+    type: Barrel
+    damage: 0
+    fire_rate: 0
+    accuracy: 1
+    min_range: 0
+    max_range: 1
+    ammo_per_mag: 0
+    price: 6
+    compatibles: [SMG, AR]
+    tags: [AERO, Barrel]
+    effects: [Nimble]
+
+- type_id: weapon_part
+  id: boosted-barrel
+  fields:
+    name: Boosted Barrel
+    manufacturer: CSB
+    type: Barrel
+    damage: 0
+    fire_rate: 2
+    accuracy: 0
+    min_range: 0
+    max_range: 1
+    ammo_per_mag: -2
+    price: 6
+    compatibles: [SMG, AR]
+    tags: [Barrel]
+    effects: []
+
+- type_id: weapon_part
+  id: extended-barrel
+  fields:
+    name: Extended Barrel
+    manufacturer: CSB
+    type: Barrel
+    damage: 0
+    fire_rate: 0
+    accuracy: 1
+    min_range: 1
+    max_range: 2
+    ammo_per_mag: 0
+    price: 5
+    compatibles: [SMG, AR, SR]
+    tags: [Barrel]
+    effects: []
+
+- type_id: weapon_part
+  id: marksman-barrel
+  fields:
+    name: Marksman Barrel
+    manufacturer: CSB
+    type: Barrel
+    damage: 0
+    fire_rate: 0
+    accuracy: 2
+    min_range: 2
+    max_range: 3
+    ammo_per_mag: 0
+    price: 7
+    compatibles: [AR, SR]
+    tags: [Barrel]
+    effects: [Tattered:2]
+
+- type_id: weapon_part
+  id: short-barrel
+  fields:
+    name: Short Barrel
+    manufacturer: CSB
+    type: Barrel
+    damage: 0
+    fire_rate: 0
+    accuracy: 1
+    min_range: 0
+    max_range: 1
+    ammo_per_mag: 0
+    price: 3
+    compatibles: [SMG, AR, SR]
+    tags: [Barrel]
+    effects: []
+
+- type_id: weapon_part
+  id: suppressed-barrel
+  fields:
+    name: Suppressed Barrel
+    manufacturer: CSB
+    type: Barrel
+    damage: 0
+    fire_rate: 0
+    accuracy: 1
+    min_range: 0
+    max_range: 1
+    ammo_per_mag: 0
+    price: 5
+    compatibles: [Pistol, SMG, AR]
+    tags: [Barrel]
+    effects: [Handling]
+
+- type_id: weapon_part
+  id: compensator
+  fields:
+    name: Compensator
+    manufacturer: CSB
+    type: Muzzle
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 3
+    compatibles: [Pistol, SMG, AR]
+    tags: [Muzzle]
+    effects: [Compensating]
+
+- type_id: weapon_part
+  id: muzzle-brake
+  fields:
+    name: Muzzle Brake
+    manufacturer: CSB
+    type: Muzzle
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 3
+    compatibles: [Pistol, SMG, AR, SR]
+    tags: [Muzzle]
+    effects: [Burst Control]
+
+- type_id: weapon_part
+  id: suppressor
+  fields:
+    name: Suppressor
+    manufacturer: CSB
+    type: Muzzle
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 3
+    compatibles: [Pistol, SMG, AR, SR]
+    tags: [Muzzle]
+    effects: [Handling]
+
+- type_id: weapon_part
+  id: aero-angled-foregrip
+  fields:
+    name: AERO Angled Foregrip
+    manufacturer: CSB
+    type: Rail
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 5
+    compatibles: [Pistol, SMG, AR]
+    tags: [AERO, Rail]
+    effects: [Handling, Nimble]
+
+- type_id: weapon_part
+  id: relo-foregrip
+  fields:
+    name: RELO Foregrip
+    manufacturer: CSB
+    type: Rail
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 5
+    compatibles: [Pistol, SMG, AR]
+    tags: [Rail]
+    effects: [Handling, Quick Reload]
+
+- type_id: weapon_part
+  id: vertical-foregrip
+  fields:
+    name: Vertical Foregrip
+    manufacturer: CSB
+    type: Rail
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 5
+    compatibles: [Pistol, SMG, AR]
+    tags: [Rail]
+    effects: [Handling:2]
+
+- type_id: weapon_part
+  id: 5mw-laser
+  fields:
+    name: 5mW Laser
+    manufacturer: CSB
+    type: Rail
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 5
+    compatibles: [SMG, AR]
+    tags: [Rail]
+    effects: [Point Aim]
+
+- type_id: weapon_part
+  id: generic-mag
+  fields:
+    name: Generic Mag
+    manufacturer: CSB
+    type: Mag
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 1
+    price: 1
+    compatibles: [Pistol, SMG, AR, SR]
+    tags: [Magazine]
+    effects: []
+
+- type_id: weapon_part
+  id: extended-mag
+  fields:
+    name: Extended Mag
+    manufacturer: CSB
+    type: Mag
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 2
+    price: 3
+    compatibles: [Pistol, SMG, AR]
+    tags: [Magazine]
+    effects: []
+
+- type_id: weapon_part
+  id: quick-mag
+  fields:
+    name: Quick Mag
+    manufacturer: CSB
+    type: Mag
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 1
+    price: 5
+    compatibles: [Pistol, SMG, AR, SR]
+    tags: [Magazine]
+    effects: [Quick Reload]
+
+- type_id: weapon_part
+  id: ap-mag
+  fields:
+    name: AP Mag
+    manufacturer: CSB
+    type: Mag
+    damage: 1
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: -2
+    price: 5
+    compatibles: [SMG, AR, SR]
+    tags: [Magazine]
+    effects: []
+
+- type_id: weapon_part
+  id: drum-mag
+  fields:
+    name: Drum Mag
+    manufacturer: CSB
+    type: Mag
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 4
+    price: 5
+    compatibles: [SMG, AR]
+    tags: [Magazine]
+    effects: [Tattered, Slow Reload]
+
+- type_id: weapon_part
+  id: box-mag
+  fields:
+    name: Box Mag
+    manufacturer: CSB
+    type: Mag
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 8
+    price: 5
+    compatibles: [SMG, AR, SR]
+    tags: [Magazine]
+    effects: [Tattered, Super Slow Reload]
+
+- type_id: weapon_part
+  id: aero-light-stock
+  fields:
+    name: AERO Light Stock
+    manufacturer: CSB
+    type: Stock
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 5
+    compatibles: [SMG, AR, SR]
+    tags: [AERO, Stock]
+    effects: [Nimble]
+
+- type_id: weapon_part
+  id: foldable-stock
+  fields:
+    name: Foldable Stock
+    manufacturer: CSB
+    type: Stock
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: -1
+    max_range: 0
+    ammo_per_mag: 0
+    price: 4
+    compatibles: [SMG, AR, SR]
+    tags: [Stock]
+    effects: [Nimble]
+
+- type_id: weapon_part
+  id: heavy-stock
+  fields:
+    name: Heavy Stock
+    manufacturer: CSB
+    type: Stock
+    damage: 0
+    fire_rate: 0
+    accuracy: 0
+    min_range: 0
+    max_range: 0
+    ammo_per_mag: 0
+    price: 5
+    compatibles: [SMG, AR, SR]
+    tags: [Stock]
+    effects: [Handling:2, Tattered]

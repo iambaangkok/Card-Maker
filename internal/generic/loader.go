@@ -67,3 +67,38 @@ func LoadCards(schema CardTypeSchema, dataDir string) ([]GenericCard, error) {
 	return all, nil
 }
 
+// LoadReferenceData loads reference data files declared in project.ReferenceData.
+// Returns a map of key -> loaded data (typically []map[string]interface{} for YAML lists).
+func LoadReferenceData(project ProjectConfig) (map[string]interface{}, error) {
+	out := make(map[string]interface{})
+	if project.ReferenceData == nil {
+		return out, nil
+	}
+
+	for key, file := range project.ReferenceData {
+		fullPath := filepath.Join(project.DataDir, file)
+		data, err := os.ReadFile(fullPath)
+		if err != nil {
+			return nil, fmt.Errorf("read reference data %q (%s): %w", key, fullPath, err)
+		}
+
+		var loaded interface{}
+		switch ext := filepath.Ext(fullPath); ext {
+		case ".yaml", ".yml", "":
+			if err := yaml.Unmarshal(data, &loaded); err != nil {
+				return nil, fmt.Errorf("unmarshal reference data %q: %w", key, err)
+			}
+		case ".json":
+			if err := json.Unmarshal(data, &loaded); err != nil {
+				return nil, fmt.Errorf("unmarshal reference data %q: %w", key, err)
+			}
+		default:
+			return nil, fmt.Errorf("unsupported reference data extension %q for %s", ext, fullPath)
+		}
+
+		out[key] = loaded
+	}
+
+	return out, nil
+}
+

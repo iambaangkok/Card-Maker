@@ -111,13 +111,13 @@ A single Go binary acts as a **generic card rendering engine**. It is configured
 - **Responsibilities:**
   - Provide a consistent template context for all card types:
     - `Card`: `GenericCard`
-    - Optional helpers: derived values (e.g., arrays for bullet icons, formatted text).
+    - `ReferenceData`: `map[string]interface{}` for lookup data (e.g. effects).
   - Optionally support type-specific view-model adaptors:
     - e.g., for weapon cards, convert generic fields into a struct implementing existing helper methods (`HasDamage`, etc.).
   - Define a clear contract for templates to avoid tight coupling to Go internals.
 - **Interfaces:**
-  - `type TemplateContext struct { Card GenericCard; Type CardTypeSchema; Helpers map[string]any }`
-  - `BuildContext(card GenericCard, schema CardTypeSchema) TemplateContext`
+  - `type TemplateContext struct { Card GenericCard; Schema CardTypeSchema; ReferenceData map[string]interface{} }`
+  - Reference data loading is **generic**: any key in `project.ReferenceData` maps to a YAML/JSON file; no hard-coded effect-specific logic in the loader.
 
 ### 3.5 Rendering Orchestrator
 
@@ -167,11 +167,13 @@ type CardTypeSchema struct {
 }
 
 type ProjectConfig struct {
-    Name       string           `yaml:"name" json:"name"`
-    DataDir    string           `yaml:"data_dir" json:"data_dir"`
-    TemplateDir string          `yaml:"template_dir" json:"template_dir"`
-    OutputDir  string           `yaml:"output_dir" json:"output_dir"`
-    CardTypes  []CardTypeSchema `yaml:"card_types" json:"card_types"`
+    Name          string           `yaml:"name" json:"name"`
+    DataDir       string           `yaml:"data_dir" json:"data_dir"`
+    TemplateDir   string           `yaml:"template_dir" json:"template_dir"`
+    ImageDir      string           `yaml:"image_dir" json:"image_dir"`
+    OutputDir     string           `yaml:"output_dir" json:"output_dir"`
+    CardTypes     []CardTypeSchema `yaml:"card_types" json:"card_types"`
+    ReferenceData map[string]string `yaml:"reference_data,omitempty" json:"reference_data,omitempty"` // key -> file (generic)
 }
 
 type GenericCard struct {
@@ -181,7 +183,36 @@ type GenericCard struct {
 }
 ```
 
-### 4.2 Example YAML Schemas
+### 4.2 Reference Data (Non-Card Types)
+
+Reference data is loaded once per project and passed to all templates. It is **generic**: any key can map to any YAML/JSON file. Common use: effect definitions, tag glossaries, etc.
+
+```go
+// ProjectConfig
+ReferenceData map[string]string  // key -> file path (e.g. "effects" -> "effects.yaml")
+
+// TemplateContext
+ReferenceData map[string]interface{}  // key -> loaded data (e.g. "effects" -> []map[string]interface{})
+```
+
+**Config example:**
+```yaml
+reference_data:
+  effects: "effects.yaml"
+  # Future: tags: "tags.yaml", abilities: "abilities.yaml"
+```
+
+**effects.yaml structure** (each entry: `name`, `type`, `has_level`, `description`):
+```yaml
+- name: Nimble
+  type: Passive
+  has_level: true
+  description: "Movement +1 per level."
+```
+
+**Template usage:** Templates access via `.ReferenceData.effects` and look up by name. Effects are not a card type; they are lookup data for cards that reference them.
+
+### 4.3 Example YAML Schemas
 
 **Card type schema example (weapon frame):**
 
@@ -240,23 +271,36 @@ card-maker --project cookcook --config configs/app.yaml --output-dir ./output/co
 
 ### 5.2 Template Context
 
-Templates will receive a context with at least:
+Templates receive:
 
 ```go
 type TemplateContext struct {
-    Card   GenericCard
-    Schema CardTypeSchema
+    Card          GenericCard
+    Schema        CardTypeSchema
+    ReferenceData map[string]interface{}  // e.g. "effects" -> []map[string]interface{}
 }
 ```
 
-Within HTML templates, fields are accessed as:
-
+**Field access:**
 ```gotemplate
 {{ .Card.Fields.name }}
 {{ index .Card.Fields "damage" }}
 ```
 
-Type-specific helpers (if needed) can be injected via `template.FuncMap`.
+**Reference data (effects) in templates:** Templates can look up effect descriptions:
+
+```gotemplate
+{{range .Card.Fields.effects}}
+  {{$effectName := .}}
+  {{range $.ReferenceData.effects}}
+    {{if eq .name $effectName}}
+      <span title="{{.description}}">{{.name}}</span>
+    {{end}}
+  {{end}}
+{{end}}
+```
+
+Note: Effect strings may include level (e.g. `Reflect:1`). Templates must parse `name` or `name:level` and match against effects. A `template.FuncMap` helper (e.g. `effectLookup`) can simplify this lookup when needed.
 
 ---
 
@@ -315,10 +359,35 @@ Targets:
 
 ### Phase 4: Migrate Existing Weapon Project to Generic Engine
 
-- Convert `Effects.csv`, `WeaponFrame.csv`, `WeaponPart.csv`, and `Item.csv` to YAML/JSON under a project data directory.
-- Define corresponding `CardTypeSchema` entries and templates.
-- Adjust templates to use `GenericCard` fields (or lightweight adaptors + `FuncMap`).
-- Compare generated PNGs/PDFs against legacy outputs to check for regressions.
+- [x] Convert `Effects.csv` to `effects.yaml` as **reference data** (not a card type).
+- [x] Add `reference_data` to `ProjectConfig` and `LoadReferenceData` (generic: any key → any YAML/JSON file).
+- [x] Pass `ReferenceData` into `TemplateContext` for all card types.
+- [x] Convert `WeaponFrame.csv`, `WeaponPart.csv`, and `Item.csv` to YAML under `data/example/`.
+- [x] Define `CardTypeSchema` entries for `weapon_frame`, `weapon_part`, `item`.
+- [x] Adjust templates to use `GenericCard` fields.
+- [ ] **Port effects usage to HTML templates:** Use `.ReferenceData.effects` in `WeaponPart.html` and `Item.html` to optionally display effect type badges or tooltips (e.g. `title="{{.description}}"`). Add a `template.FuncMap` helper (e.g. `effectLookup`) to resolve `"Reflect:1"` → effect name + level when matching against reference data.
+- [ ] **Port all items and weapon parts data:** Complete migration so `weapon_parts.yaml` has all 25 entries from `WeaponPart.csv` and `items.yaml` has all 13 entries from `Item.csv` (currently 6 and 7 respectively).
+- [ ] Compare generated PNGs/PDFs against legacy outputs to check for regressions.
+
+**Phase 4a: Effects Usage in Templates**
+
+- Ensure `LoadReferenceData` remains generic (no effect-specific code; any `reference_data` key loads any YAML/JSON).
+- Add optional `template.FuncMap` helper (e.g. `effectLookup(effectStr string, effects []map[string]interface{}) (name, description string)`) to parse `"Reflect:1"` and look up in effects list.
+- Update `WeaponPart.html` and `Item.html` to use `.ReferenceData.effects` for effect display (e.g. tooltip with description, or type badge).
+- Templates must handle effects with level suffix (`Name:Level`) when matching reference data.
+
+**Phase 4b: Complete Data Migration**
+
+| Source | Target | Current | Target |
+|--------|--------|--------|--------|
+| `WeaponPart.csv` | `weapon_parts.yaml` | 6 entries | 25 entries |
+| `Item.csv` | `items.yaml` | 7 entries | 13 entries |
+
+**WeaponPart.csv columns:** Name, Manufacturer, Type, Damage, FireRate, Accuracy, MinRange, MaxRange, AmmoPerMag, Price, Compatibles, Tags, Effects.
+
+**Item.csv columns:** Name, UsageLimit, Price, Effects.
+
+Convert compatibles/tags from `Pistol/SMG/AR` to `[Pistol, SMG, AR]`. Convert effects from `Nimble/Handling:2` to `[Nimble, Handling:2]`. Add `usage_boxes: [1, 2, ...]` for items with `usage_limit > 0`.
 
 ### Phase 5: Add CookCook Project
 
@@ -362,7 +431,8 @@ Targets:
 
 ## Next Steps
 
-1. Confirm this plan aligns with the desired level of generality and the YAML/JSON direction.
-2. Implement Phase 1 and Phase 2 behind a feature flag to avoid disturbing existing behavior.
-3. Once stable, proceed with migrating the weapon project and adding the CookCook project configuration and templates.
+1. Implement Phase 4a (effects usage in templates) and Phase 4b (complete data migration).
+2. Run `/implement Card-maker-generic-refactor` to execute remaining tasks.
+3. Compare generated PNGs against legacy outputs for regression validation.
+4. Proceed with CookCook project (Phase 5) once weapon project migration is complete.
 
