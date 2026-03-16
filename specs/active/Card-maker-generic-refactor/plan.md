@@ -210,7 +210,13 @@ reference_data:
   description: "Movement +1 per level."
 ```
 
-**Template usage:** Templates access via `.ReferenceData.effects` and look up by name. Effects are not a card type; they are lookup data for cards that reference them.
+**Template usage:** Templates use the generic `refLookup` FuncMap helper and specify which fields to use:
+
+```gotemplate
+{{with refLookup "effects" . "name" "description"}}{{.}}{{end}}
+```
+
+`refLookup(refKey, lookupValue, keyField, returnField)` — looks up in `ReferenceData[refKey]` (a list of maps), matches by `keyField` (parsing `"X:Y"` to get `X`), returns the `returnField` value. The template chooses key and return fields (e.g. `"name"`/`"description"`, `"id"`/`"label"`).
 
 ### 4.3 Example YAML Schemas
 
@@ -287,20 +293,18 @@ type TemplateContext struct {
 {{ index .Card.Fields "damage" }}
 ```
 
-**Reference data (effects) in templates:** Templates can look up effect descriptions:
+**Reference data lookup:** Use the generic `refLookup(refKey, lookupValue, keyField, returnField)` helper:
 
 ```gotemplate
 {{range .Card.Fields.effects}}
-  {{$effectName := .}}
-  {{range $.ReferenceData.effects}}
-    {{if eq .name $effectName}}
-      <span title="{{.description}}">{{.name}}</span>
-    {{end}}
+  <div class="Effect">...</div>
+  {{with refLookup "effects" . "name" "description"}}
+  <div class="Description">{{.}}</div>
   {{end}}
 {{end}}
 ```
 
-Note: Effect strings may include level (e.g. `Reflect:1`). Templates must parse `name` or `name:level` and match against effects. A `template.FuncMap` helper (e.g. `effectLookup`) can simplify this lookup when needed.
+The template specifies `keyField` (field to match, e.g. `"name"`) and `returnField` (field to return, e.g. `"description"` or `"type"`). Parses `"Name:Level"` to extract key for matching.
 
 ---
 
@@ -372,7 +376,7 @@ Targets:
 **Phase 4a: Effects Usage in Templates**
 
 - Ensure `LoadReferenceData` remains generic (no effect-specific code; any `reference_data` key loads any YAML/JSON).
-- Add optional `template.FuncMap` helper (e.g. `effectLookup(effectStr string, effects []map[string]interface{}) (name, description string)`) to parse `"Reflect:1"` and look up in effects list.
+- Use generic `refLookup(refKey, lookupValue)` FuncMap helper for any reference data key.
 - Update `WeaponPart.html` and `Item.html` to use `.ReferenceData.effects` for effect display (e.g. tooltip with description, or type badge).
 - Templates must handle effects with level suffix (`Name:Level`) when matching reference data.
 
@@ -426,6 +430,15 @@ Convert compatibles/tags from `Pistol/SMG/AR` to `[Pistol, SMG, AR]`. Convert ef
 - Should multiple templates per card type (variants/skins) be supported in the first iteration?
 - Do we need per-project overrides for renderer viewport size and DPI, or is one global setting sufficient?
 - How will ingredient-type cards for CookCook handle multilingual text, if at all?
+
+---
+
+## Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.1 | 2026-03-16 | [REFINED] Generalized reference data injection: replaced `effectLookup` with `refLookup(refKey, lookupValue)` for any reference_data key |
+| 1.2 | 2026-03-16 | [REFINED] `refLookup` now accepts `keyField` and `returnField` — templates specify which field to match and which to return |
 
 ---
 

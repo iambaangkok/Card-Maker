@@ -18,31 +18,38 @@ type TemplateContext struct {
 	ReferenceData map[string]interface{} // e.g. "effects" -> []map[string]interface{}
 }
 
-// buildTemplateFuncMap creates a FuncMap with effectLookup that uses refData.
-// effectLookup(effectStr) returns the effect description for tooltips; parses "Name:Level" to match by name.
+// buildTemplateFuncMap creates a FuncMap with refLookup for generic reference data injection.
+// refLookup(refKey, lookupValue, keyField, returnField) looks up in refData[refKey], matches by keyField
+// (parsing "X:Y" to get "X"), returns the returnField value. Templates specify which fields to use.
 func buildTemplateFuncMap(refData map[string]interface{}) template.FuncMap {
-	effectMap := make(map[string]string)
-	if effects, ok := refData["effects"]; ok {
-		if list, ok := effects.([]interface{}); ok {
+	return template.FuncMap{
+		"refLookup": func(refKey string, lookupValue interface{}, keyField, returnField string) interface{} {
+			data, ok := refData[refKey]
+			if !ok {
+				return ""
+			}
+			list, ok := data.([]interface{})
+			if !ok {
+				return ""
+			}
+			lookupStr := fmt.Sprint(lookupValue)
+			keyVal := lookupStr
+			if idx := strings.Index(lookupStr, ":"); idx >= 0 {
+				keyVal = lookupStr[:idx]
+			}
 			for _, e := range list {
-				if m, ok := e.(map[string]interface{}); ok {
-					if name, ok := m["name"].(string); ok {
-						if desc, ok := m["description"].(string); ok {
-							effectMap[name] = desc
-						}
+				m, ok := e.(map[string]interface{})
+				if !ok {
+					continue
+				}
+				if fmt.Sprint(m[keyField]) == keyVal {
+					if v, ok := m[returnField]; ok {
+						return v
 					}
+					return ""
 				}
 			}
-		}
-	}
-	return template.FuncMap{
-		"effectLookup": func(v interface{}) string {
-			effectStr := fmt.Sprint(v)
-			name := effectStr
-			if idx := strings.Index(effectStr, ":"); idx >= 0 {
-				name = effectStr[:idx]
-			}
-			return effectMap[name]
+			return ""
 		},
 	}
 }

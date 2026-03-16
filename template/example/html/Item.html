@@ -68,7 +68,7 @@
               {{range .}}
               <div class="Effect" style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
                 <div class="Name" style="color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">{{ . }}</div>
-                {{with effectLookup .}}
+                {{with refLookup "effects" . "name" "description"}}
                 <div class="Description" style="color: #444; font-size: 9px; font-family: Inter; font-weight: 400; word-wrap: break-word">{{ . }}</div>
                 {{end}}
               </div>
