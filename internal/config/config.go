@@ -9,17 +9,8 @@ import (
 const configPath = "app.yaml"
 
 type Config struct {
-	CSV	CSVConfig `yaml:"csv"`
-	HTML HTMLTemplateConfig `yaml:"html"`
-	Renderer RendererConfig `yaml:"renderer"`
-}
-type CSVConfig struct {
-	Entities []EntityConfig `yaml:"entities"`
-	Dir string `yaml:"dir"`
-}
-
-type EntityConfig struct {
-	Name string `yaml:"name"`
+	HTML     HTMLTemplateConfig `yaml:"html"`
+	Renderer RendererConfig    `yaml:"renderer"`
 }
 
 type HTMLTemplateConfig struct {
@@ -27,11 +18,8 @@ type HTMLTemplateConfig struct {
 }
 
 type RendererConfig struct {
-	URL string `yaml:"url"`
+	URL       string `yaml:"url"`
 	OutputDir string `yaml:"output-dir"`
-	RenderWeaponFrameEnabled bool `yaml:"render-weapon-frame-enabled"`
-	RenderWeaponPartEnabled bool `yaml:"render-weapon-part-enabled"`
-	RenderItemEnabled bool `yaml:"render-item-enabled"`
 }
 
 

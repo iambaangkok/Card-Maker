@@ -405,12 +405,10 @@ Convert compatibles/tags from `Pistol/SMG/AR` to `[Pistol, SMG, AR]`. Convert ef
 
 ### Phase 6: Cleanup & Hardening
 
-- Remove or deprecate legacy, game-specific entities and mappers as appropriate.
-- Improve logging and error messages.
-- Add basic tests for:
-  - Config loading.
-  - YAML/JSON parsing and validation.
-  - Template execution for at least one card type.
+- [x] Remove legacy path from main.go — generic-only; `--project` required.
+- [x] Simplify config: remove CSV config and per-entity render flags (RenderWeaponFrameEnabled, etc.).
+- [x] Simplify app.yaml: keep only html and renderer sections.
+- [ ] Add basic tests for: config loading, YAML parsing, template execution (deferred).
 
 ---
 
@@ -442,6 +440,7 @@ Convert compatibles/tags from `Pistol/SMG/AR` to `[Pistol, SMG, AR]`. Convert ef
 | 1.1 | 2026-03-16 | [REFINED] Generalized reference data injection: replaced `effectLookup` with `refLookup(refKey, lookupValue)` for any reference_data key |
 | 1.2 | 2026-03-16 | [REFINED] `refLookup` now accepts `keyField` and `returnField` — templates specify which field to match and which to return |
 | 1.3 | 2026-03-16 | [ADD] Per-card-type `render` flag; verbose render progress logging (type X/Y, card I/J) |
+| 1.4 | 2026-03-16 | [DONE] Phase 6 cleanup: generic-only main, simplified config, removed legacy code path |
 
 ---
 
