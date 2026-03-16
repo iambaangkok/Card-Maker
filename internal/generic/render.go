@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"html/template"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -73,7 +74,14 @@ func RenderProject(project ProjectConfig, reg TypeRegistry, r renderer.ChromeRen
 
 	fnMap := buildTemplateFuncMap(refData)
 
-	for _, schema := range reg.List() {
+	schemas := reg.List()
+
+	for typeIdx, schema := range schemas {
+		if schema.Render != nil && !*schema.Render {
+			log.Printf("skip %q (render: false)", schema.ID)
+			continue
+		}
+
 		templatePath := filepath.Join(project.TemplateDir, schema.Template)
 		t, err := template.New(filepath.Base(templatePath)).Funcs(fnMap).ParseFiles(templatePath)
 		if err != nil {
@@ -87,7 +95,11 @@ func RenderProject(project ProjectConfig, reg TypeRegistry, r renderer.ChromeRen
 			return fmt.Errorf("load cards for type %q: %w", schema.ID, err)
 		}
 
-		for _, card := range cards {
+		totalCards := len(cards)
+		log.Printf("[%d/%d] %q: %d cards", typeIdx+1, len(schemas), schema.ID, totalCards)
+
+		for cardIdx, card := range cards {
+			log.Printf("  [%d/%d] %s", cardIdx+1, totalCards, card.ID)
 			ctx := TemplateContext{
 				Card:          card,
 				Schema:        schema,

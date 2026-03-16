@@ -14,6 +14,7 @@ type CardTypeSchema struct {
 	DataFiles []string      `yaml:"data_files" json:"data_files"`
 	Template  string        `yaml:"template" json:"template"`
 	Fields    []FieldSchema `yaml:"fields" json:"fields"`
+	Render    *bool         `yaml:"render,omitempty" json:"render,omitempty"` // if nil or true, render; if false, skip
 }
 
 // ProjectConfig groups card types and paths for a single project/game.

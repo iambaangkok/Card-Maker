@@ -13,6 +13,7 @@ card_types:
     template: "WeaponFrame.html"
     data_files:
       - "weapon_frames.yaml"
+    render: true
     fields:
       - name: name
         type: string
@@ -40,6 +41,7 @@ card_types:
     template: "WeaponPart.html"
     data_files:
       - "weapon_parts.yaml"
+    render: true
     fields:
       - name: name
         type: string
@@ -85,6 +87,7 @@ card_types:
     template: "Item.html"
     data_files:
       - "items.yaml"
+    render: true
     fields:
       - name: name
         type: string

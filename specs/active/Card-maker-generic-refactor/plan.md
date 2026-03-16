@@ -164,6 +164,7 @@ type CardTypeSchema struct {
     DataFiles []string      `yaml:"data_files" json:"data_files"`
     Template  string        `yaml:"template" json:"template"`
     Fields    []FieldSchema `yaml:"fields" json:"fields"`
+    Render    *bool         `yaml:"render,omitempty" json:"render,omitempty"` // nil/true = render; false = skip
 }
 
 type ProjectConfig struct {
@@ -225,6 +226,7 @@ reference_data:
 ```yaml
 id: weapon_frame
 template: WeaponFrame.html
+render: true   # optional; omit or true = render, false = skip
 data_files:
   - weapon_frames.yaml
 fields:
@@ -439,6 +441,7 @@ Convert compatibles/tags from `Pistol/SMG/AR` to `[Pistol, SMG, AR]`. Convert ef
 |---------|------|---------|
 | 1.1 | 2026-03-16 | [REFINED] Generalized reference data injection: replaced `effectLookup` with `refLookup(refKey, lookupValue)` for any reference_data key |
 | 1.2 | 2026-03-16 | [REFINED] `refLookup` now accepts `keyField` and `returnField` — templates specify which field to match and which to return |
+| 1.3 | 2026-03-16 | [ADD] Per-card-type `render` flag; verbose render progress logging (type X/Y, card I/J) |
 
 ---
 
