@@ -11,8 +11,9 @@
 - [x] Update plan.md Phase 6 checklist
 - [ ] Add basic tests (deferred)
 
-## Next: Phase 5 (CookCook Project)
+## Phase 5 (CookCook Project) — DONE
 
-- [ ] Define cookcook project configuration
-- [ ] Add ingredient card type and data
-- [ ] Create ingredient template
+- [x] Define cookcook project configuration
+- [x] Add ingredient card type and data (5 sample ingredients)
+- [x] Create ingredient template
+- [x] Verify render: `card-maker --project configs/cookcook-project.yaml`

@@ -1,0 +1,129 @@
+- type_id: ingredient
+  id: coconut-milk
+  fields:
+    name: Coconut Milk
+    category: Base / Liquid
+    description: Rich coconut cream base for soups and curries.
+    icon: coconut-milk
+    market_price: 2
+    sell_value: 1
+
+- type_id: ingredient
+  id: chili-curry-paste
+  fields:
+    name: Chili / Curry Paste
+    category: Spice Base
+    description: The foundation of Thai curries and stir-fries.
+    icon: chili-curry-paste
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: aromatics
+  fields:
+    name: Aromatics
+    category: Lemongrass / Galangal / Kaffir Lime
+    description: Essential Thai aromatics for soups, curries, and salads.
+    icon: aromatics
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: fresh-herbs
+  fields:
+    name: Fresh Herbs
+    category: Basil / Cilantro
+    description: Sweet basil, holy basil, and cilantro for vibrant finish.
+    icon: fresh-herbs
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: tamarind-lime
+  fields:
+    name: Sour Agents
+    category: Tamarind / Lime
+    description: Sour agents for pad thai, som tam, and soups.
+    icon: tamarind-lime
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: umami-base
+  fields:
+    name: Umami Base
+    category: Shrimp Paste / Fish Sauce
+    description: Fermented umami base for authentic Thai flavor.
+    icon: umami-base
+    market_price: 4
+    sell_value: 3
+
+- type_id: ingredient
+  id: warm-spices-nuts
+  fields:
+    name: Warm Spices / Nuts
+    category: Peanuts / Cinnamon / Star Anise
+    description: Roasted peanuts and warm spices for massaman and khao soi.
+    icon: warm-spices-nuts
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: clear-broth
+  fields:
+    name: Clear Broth
+    category: Soup Base
+    description: For gaeng jued, tom saep, and khao man gai.
+    icon: clear-broth
+    market_price: 2
+    sell_value: 1
+
+- type_id: ingredient
+  id: vegetables-fruits
+  fields:
+    name: Vegetables / Fruits
+    category: Bamboo / Eggplant / Pineapple
+    description: Fresh produce for stir-fries, curries, and salads.
+    icon: vegetables-fruits
+    market_price: 2
+    sell_value: 1
+
+- type_id: ingredient
+  id: carbs
+  fields:
+    name: Carbs
+    category: Rice / Noodles / Potatoes
+    description: Rice, noodles, and potatoes for hearty Thai dishes.
+    icon: carbs
+    market_price: 2
+    sell_value: 1
+
+- type_id: ingredient
+  id: meat-poultry
+  fields:
+    name: Meat / Poultry
+    category: Protein
+    description: Chicken, pork, or beef for curries and stir-fries.
+    icon: meat-poultry
+    market_price: 5
+    sell_value: 4
+
+- type_id: ingredient
+  id: seafood
+  fields:
+    name: Seafood
+    category: Protein
+    description: Shrimp, fish, and shellfish for tom yum and curries.
+    icon: seafood
+    market_price: 5
+    sell_value: 4
+
+- type_id: ingredient
+  id: specialty-extras
+  fields:
+    name: Specialty Extras
+    category: Blood / Fermented / Roasted Rice
+    description: Blood, fermented items, and roasted rice powder.
+    icon: specialty-extras
+    market_price: 4
+    sell_value: 3

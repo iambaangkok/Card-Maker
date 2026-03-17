@@ -1,0 +1,30 @@
+name: cookcook
+data_dir: "./data/cookcook"
+template_dir: "./template/cookcook/html"
+image_dir: "./template/cookcook/img"
+output_dir: "./output/cookcook"
+
+card_types:
+  - id: ingredient
+    template: "Ingredient.html"
+    data_files:
+      - "ingredients.yaml"
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: category
+        type: string
+        required: true
+      - name: description
+        type: string
+        required: false
+      - name: icon
+        type: string
+        required: false
+      - name: market_price
+        type: int
+        required: false
+      - name: sell_value
+        type: int
+        required: false

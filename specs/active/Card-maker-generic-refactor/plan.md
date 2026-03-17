@@ -397,11 +397,11 @@ Convert compatibles/tags from `Pistol/SMG/AR` to `[Pistol, SMG, AR]`. Convert ef
 
 ### Phase 5: Add CookCook Project
 
-- Define a `cookcook` project configuration with:
-  - `ingredient` and any other needed card types.
-  - YAML/JSON data files representing ingredient cards.
-  - Initial simple ingredient template (to be designed separately).
-- Verify CookCook cards render successfully through the same engine.
+- [x] Define `configs/cookcook-project.yaml` with `ingredient` card type.
+- [x] Create `data/cookcook/ingredients.yaml` with 5 sample ingredients (Coconut Milk, Chili/Curry Paste, Tamarind/Lime, Shrimp Paste/Umami, Meat/Poultry).
+- [x] Create `template/cookcook/html/Ingredient.html` — simple card with name, category, description, market_price, sell_value, optional icon.
+- [x] Create `template/cookcook/img/ingredients/` for ingredient images.
+- [x] Verify CookCook cards render successfully through the same engine.
 
 ### Phase 6: Cleanup & Hardening
 
@@ -441,6 +441,7 @@ Convert compatibles/tags from `Pistol/SMG/AR` to `[Pistol, SMG, AR]`. Convert ef
 | 1.2 | 2026-03-16 | [REFINED] `refLookup` now accepts `keyField` and `returnField` — templates specify which field to match and which to return |
 | 1.3 | 2026-03-16 | [ADD] Per-card-type `render` flag; verbose render progress logging (type X/Y, card I/J) |
 | 1.4 | 2026-03-16 | [DONE] Phase 6 cleanup: generic-only main, simplified config, removed legacy code path |
+| 1.5 | 2026-03-17 | [DONE] Phase 5: CookCook project — ingredient card type, 5 sample cards, Ingredient.html template |
 
 ---
 
