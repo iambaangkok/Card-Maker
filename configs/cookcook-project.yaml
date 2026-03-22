@@ -4,11 +4,16 @@ template_dir: "./template/cookcook/html"
 image_dir: "./template/cookcook/img"
 output_dir: "./output/cookcook"
 
+# PNG clip (CSS px) — poker 63.5×88.9 mm @ 96dpi; matches cookcook ingredient templates.
+default_viewport_width: 240
+default_viewport_height: 336
+
 card_types:
   - id: ingredient
     template: "Ingredient.html"
     data_files:
       - "ingredients.yaml"
+    render: false
     fields:
       - name: name
         type: string
@@ -20,6 +25,72 @@ card_types:
         type: string
         required: false
       - name: icon
+        type: string
+        required: false
+      - name: market_price
+        type: int
+        required: false
+      - name: sell_value
+        type: int
+        required: false
+  - id: ingredient_2
+    template: "Ingredient_2.html"
+    data_files:
+      - "ingredients.yaml"
+    render: false
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: category
+        type: string
+        required: true
+      - name: description
+        type: string
+        required: false
+      - name: flavor_text
+        type: string
+        required: false
+      - name: icon
+        type: string
+        required: false
+      - name: circle_color
+        type: string
+        required: false
+      - name: inner_color
+        type: string
+        required: false
+      - name: market_price
+        type: int
+        required: false
+      - name: sell_value
+        type: int
+        required: false
+  - id: ingredient_3
+    template: "Ingredient_3.html"
+    data_files:
+      - "ingredients.yaml"
+    render: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: category
+        type: string
+        required: true
+      - name: description
+        type: string
+        required: false
+      - name: flavor_text
+        type: string
+        required: false
+      - name: icon
+        type: string
+        required: false
+      - name: circle_color
+        type: string
+        required: false
+      - name: inner_color
         type: string
         required: false
       - name: market_price

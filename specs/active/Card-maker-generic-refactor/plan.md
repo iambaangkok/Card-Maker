@@ -131,6 +131,7 @@ A single Go binary acts as a **generic card rendering engine**. It is configured
       - Execute template to produce HTML.
       - Optionally write raw HTML to disk (config flag).
       - Call `ChromeRendererImpl.RenderHTMLToPNG` / `RenderHTMLToPDF`.
+  - **Card size (viewport):** PNG clip is configured per project and optional per card type in the project YAML: `default_viewport_width` / `default_viewport_height`, and per schema `viewport_width` / `viewport_height` (CSS px; must match the template’s outer card box). Resolution order: card type → project defaults → built-in fallback `renderer.CardViewportWidth` / `CardViewportHeight` (poker **240×336**, 63.5×88.9 mm @ 96 DPI).
   - Ensure errors are logged with sufficient context.
 - **Interfaces:**
   - `RenderProject(cfg ProjectConfig, registry TypeRegistry, renderer ChromeRenderer) error`

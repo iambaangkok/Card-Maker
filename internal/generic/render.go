@@ -96,7 +96,8 @@ func RenderProject(project ProjectConfig, reg TypeRegistry, r renderer.ChromeRen
 		}
 
 		totalCards := len(cards)
-		log.Printf("[%d/%d] %q: %d cards", typeIdx+1, len(schemas), schema.ID, totalCards)
+		vpW, vpH := ResolveViewport(project, schema)
+		log.Printf("[%d/%d] %q: %d cards (viewport %.2f×%.2f)", typeIdx+1, len(schemas), schema.ID, totalCards, vpW, vpH)
 
 		for cardIdx, card := range cards {
 			log.Printf("  [%d/%d] %s", cardIdx+1, totalCards, card.ID)
@@ -122,7 +123,7 @@ func RenderProject(project ProjectConfig, reg TypeRegistry, r renderer.ChromeRen
 			}
 
 			imgPath := filepath.Join(project.OutputDir, baseName+".png")
-			if err := r.RenderHTMLToPNG(htmlStr, imgPath); err != nil {
+			if err := r.RenderHTMLToPNG(htmlStr, imgPath, vpW, vpH); err != nil {
 				return fmt.Errorf("render png for card %q of type %q: %w", card.ID, schema.ID, err)
 			}
 		}

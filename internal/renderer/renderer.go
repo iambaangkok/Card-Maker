@@ -11,6 +11,11 @@ import (
 	"github.com/iambaangkok/Card-Maker/internal/config"
 )
 
+// Card viewport for PNG capture: standard poker playing card at CSS 96 DPI —
+// 2.5 in × 3.5 in (63.5 mm × 88.9 mm) → 240 × 336 px.
+const CardViewportWidth = 240
+const CardViewportHeight = 336
+
 type ChromeRenderer interface {
 	RenderElement()
 }
@@ -19,7 +24,14 @@ type ChromeRendererImpl struct {
 	Config config.Config
 }
 
-func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string) error {
+// RenderHTMLToPNG renders HTML to a PNG clipped to viewportWidth×viewportHeight CSS pixels (Scale 2 device pixels).
+func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string, viewportWidth, viewportHeight float64) error {
+	if viewportWidth <= 0 {
+		viewportWidth = CardViewportWidth
+	}
+	if viewportHeight <= 0 {
+		viewportHeight = CardViewportHeight
+	}
 	outputPath := outputFileName
 	if !filepath.IsAbs(outputFileName) && filepath.Dir(outputFileName) == "." {
 		// No directory component provided; write into the configured output directory.
@@ -75,11 +87,11 @@ func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string) 
 				WithFormat(page.CaptureScreenshotFormatPng).
 				WithQuality(100).
 				WithClip(&page.Viewport{
-					X: 0,
-					Y: 0,
-					Width: 246,//245.669,
-					Height: 359,//359.055,
-					Scale: 2,
+					X:      0,
+					Y:      0,
+					Width:  viewportWidth,
+					Height: viewportHeight,
+					Scale:  2,
 				}).
 				Do(ctx)
 			if err != nil {

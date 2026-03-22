@@ -15,6 +15,10 @@ type CardTypeSchema struct {
 	Template  string        `yaml:"template" json:"template"`
 	Fields    []FieldSchema `yaml:"fields" json:"fields"`
 	Render    *bool         `yaml:"render,omitempty" json:"render,omitempty"` // if nil or true, render; if false, skip
+	// ViewportWidth/Height: optional PNG clip in CSS pixels (must match root card box in the template).
+	// If unset, project defaults apply; if those are unset, renderer built-in defaults apply.
+	ViewportWidth  *float64 `yaml:"viewport_width,omitempty" json:"viewport_width,omitempty"`
+	ViewportHeight *float64 `yaml:"viewport_height,omitempty" json:"viewport_height,omitempty"`
 }
 
 // ProjectConfig groups card types and paths for a single project/game.
@@ -26,6 +30,9 @@ type ProjectConfig struct {
 	OutputDir     string           `yaml:"output_dir" json:"output_dir"`
 	CardTypes     []CardTypeSchema `yaml:"card_types" json:"card_types"`
 	ReferenceData map[string]string `yaml:"reference_data,omitempty" json:"reference_data,omitempty"` // key -> data file (e.g. "effects" -> "effects.yaml")
+	// Default viewport for all card types unless overridden per schema (CSS px; match template outer size).
+	DefaultViewportWidth  *float64 `yaml:"default_viewport_width,omitempty" json:"default_viewport_width,omitempty"`
+	DefaultViewportHeight *float64 `yaml:"default_viewport_height,omitempty" json:"default_viewport_height,omitempty"`
 }
 
 // GenericCard is a generic representation of a card instance.

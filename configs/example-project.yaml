@@ -4,6 +4,10 @@ template_dir: "./template/example/html"
 image_dir: "./template/example/img"
 output_dir: "./output/example"
 
+# PNG clip (CSS px) — must match outer card box in example templates (65×95 mm style).
+default_viewport_width: 245.67
+default_viewport_height: 359.05
+
 # Reference data (not card types). Loaded once and passed to all templates.
 reference_data:
   effects: "effects.yaml"
