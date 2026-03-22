@@ -7,8 +7,7 @@
   - .PNG
 
 - You need the fonts in you computer
-- Not sure if image importing works ):
-  - might have to serve the static images with http.FileServer
+- Images are served from a local file server on localhost:8081
 
 ## Usage
 

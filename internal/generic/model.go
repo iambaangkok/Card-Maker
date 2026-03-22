@@ -19,6 +19,8 @@ type CardTypeSchema struct {
 	// If unset, project defaults apply; if those are unset, renderer built-in defaults apply.
 	ViewportWidth  *float64 `yaml:"viewport_width,omitempty" json:"viewport_width,omitempty"`
 	ViewportHeight *float64 `yaml:"viewport_height,omitempty" json:"viewport_height,omitempty"`
+	// OutputScale: PNG resolution multiplier vs CSS viewport (Chromedp Scale). E.g. 2 → 480×672 px from 240×336 layout.
+	OutputScale *float64 `yaml:"output_scale,omitempty" json:"output_scale,omitempty"`
 }
 
 // ProjectConfig groups card types and paths for a single project/game.
@@ -33,6 +35,8 @@ type ProjectConfig struct {
 	// Default viewport for all card types unless overridden per schema (CSS px; match template outer size).
 	DefaultViewportWidth  *float64 `yaml:"default_viewport_width,omitempty" json:"default_viewport_width,omitempty"`
 	DefaultViewportHeight *float64 `yaml:"default_viewport_height,omitempty" json:"default_viewport_height,omitempty"`
+	// DefaultOutputScale: project-wide PNG scale unless a card type sets output_scale.
+	DefaultOutputScale *float64 `yaml:"default_output_scale,omitempty" json:"default_output_scale,omitempty"`
 }
 
 // GenericCard is a generic representation of a card instance.

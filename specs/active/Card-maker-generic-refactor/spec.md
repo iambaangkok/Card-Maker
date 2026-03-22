@@ -3,7 +3,7 @@
 **Task ID:** cook-food-cardgame-card-maker-refactor  
 **Created:** 2026-03-15  
 **Status:** Ready for Planning  
-**Version:** 1.0
+**Version:** 1.1
 
 ## 1. Problem Statement
 
@@ -122,6 +122,20 @@
 
 **Priority:** Should Have
 
+### FR-7: Configurable PNG output scale (“zoom” / resolution multiplier)
+**Description:** The HTML layout is defined in CSS pixels (viewport). The PNG raster resolution should be configurable as a multiplier of that viewport so designers can export sharper print assets (e.g. 2×) without changing template dimensions.
+
+**User Story:**
+> As a game designer, I want to set an output scale for my project (and optionally per card type) so that PNGs are rendered at higher resolution—like 2× zoom—for print quality while keeping the same on-screen card size in the template.
+
+**Acceptance Criteria:**
+- [ ] Project YAML supports `default_output_scale` (positive number, e.g. `2` for 2× device pixels vs CSS viewport).
+- [ ] Each card type schema may override with `output_scale`; precedence is card type → project default → engine default (`2`).
+- [ ] Output PNG pixel dimensions equal viewport width/height × scale (within renderer limits); template/CSS viewport size is unchanged.
+- [ ] Values outside a safe range are clamped or rejected with a clear log; behavior is documented.
+
+**Priority:** Must Have
+
 ## 4. Non-Functional Requirements
 
 - **Technology Stack:** Must remain in Go, using the existing Go `html/template` engine and the current HTML → PNG/PDF workflow via `chromedp`. No new major runtime dependencies beyond what is already in use unless absolutely necessary.
@@ -151,6 +165,7 @@
 | CSV contains unknown columns not present in schema | Tool logs a warning or error depending on configuration (fail-fast vs tolerant). |
 | Template refers to a field that is not defined | Rendering fails for that card with a clear error stating template name and missing field. |
 | Asset (image/font) referenced in template is missing | Renderer logs a warning and continues if possible; behavior is documented. |
+| `output_scale` missing or invalid | Use project default, then engine default; extreme values clamped (e.g. 0.25–10). |
 | Multiple projects share the same card type name | Namespaces or separate configuration files avoid collisions; this is described in project config conventions. |
 
 | Error | User Message | System Action |
@@ -179,6 +194,7 @@
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.1 | 2026-03-15 | [ADD] FR-7: configurable PNG `output_scale` (project + per card type). |
 | 1.0 | 2026-03-15 | Initial specification for generic, data-driven Card-Maker refactor. |
 
 ## Next Steps

@@ -1,8 +1,21 @@
+# - type_id: ingredient
+#   id: bubu
+#   fields:
+#     name: Bubu Motka
+#     category: My Love
+#     description: My very lovely wifey with knifey. 
+#     flavor_text: "My very lovely wifey with knifey."
+#     icon: coconut-milk
+#     circle_color: "#ea580c"
+#     inner_color: "#ffedd5"
+#     market_price: 2
+#     sell_value: 1
+
 - type_id: ingredient
   id: coconut-milk
   fields:
-    name: Coconut Milk
-    category: Base / Liquid
+    name: CoconutMilk
+    category: Soup Base
     description: Rich coconut cream base for soups and curries.
     flavor_text: "e.g. Chaokoh coconut cream — adds creamy richness to curries"
     icon: coconut-milk
@@ -14,10 +27,10 @@
 - type_id: ingredient
   id: chili-curry-paste
   fields:
-    name: Chili / Curry Paste
+    name: CurryPaste
     category: Spice Base
     description: The foundation of Thai curries and stir-fries.
-    flavor_text: "e.g. Red curry paste — defines heat and depth of the dish"
+    flavor_text: "(Chili / Curry Paste) e.g. Red curry paste — defines heat and depth of the dish"
     icon: chili-curry-paste
     circle_color: "#b91c1c"
     inner_color: "#fee2e2"
@@ -28,9 +41,9 @@
   id: aromatics
   fields:
     name: Aromatics
-    category: Lemongrass / Galangal / Kaffir Lime
+    category: Aromatics
     description: Essential Thai aromatics for soups, curries, and salads.
-    flavor_text: "e.g. Fresh lemongrass — brings citrusy, herbal notes"
+    flavor_text: "(Lemongrass / Galangal / Kaffir Lime) e.g. Fresh lemongrass — brings citrusy, herbal notes"
     icon: aromatics
     circle_color: "#16a34a"
     inner_color: "#dcfce7"
@@ -40,10 +53,10 @@
 - type_id: ingredient
   id: fresh-herbs
   fields:
-    name: Fresh Herbs
-    category: Basil / Cilantro
+    name: FreshHerbs
+    category: Fresh Herbs
     description: Sweet basil, holy basil, and cilantro for vibrant finish.
-    flavor_text: "e.g. Holy basil — adds peppery kick to stir-fries"
+    flavor_text: "(Basil / Cilantro) e.g. Holy basil — adds peppery kick to stir-fries"
     icon: fresh-herbs
     circle_color: "#22c55e"
     inner_color: "#d1fae5"
@@ -53,10 +66,10 @@
 - type_id: ingredient
   id: tamarind-lime
   fields:
-    name: Sour Agents
-    category: Tamarind / Lime
+    name: SourAgents
+    category: Sour Agents
     description: Sour agents for pad thai, som tam, and soups.
-    flavor_text: "e.g. Tamarind pulp — balances sweetness in pad thai"
+    flavor_text: "(Tamarind / Lime) e.g. Tamarind pulp — balances sweetness in pad thai"
     icon: tamarind-lime
     circle_color: "#d97706"
     inner_color: "#fef3c7"
@@ -66,10 +79,10 @@
 - type_id: ingredient
   id: umami-base
   fields:
-    name: Umami Base
-    category: Shrimp Paste / Fish Sauce
+    name: UmamiBase
+    category: Umami Base
     description: Fermented umami base for authentic Thai flavor.
-    flavor_text: "e.g. Nam pla — the soul of Thai savory dishes"
+    flavor_text: "(Shrimp Paste / Fish Sauce) e.g. Nam pla — the soul of Thai savory dishes"
     icon: umami-base
     circle_color: "#7c3aed"
     inner_color: "#ede9fe"
@@ -79,10 +92,10 @@
 - type_id: ingredient
   id: warm-spices-nuts
   fields:
-    name: Warm Spices / Nuts
-    category: Peanuts / Cinnamon / Star Anise
+    name: WarmSpices
+    category: Warm Spices
     description: Roasted peanuts and warm spices for massaman and khao soi.
-    flavor_text: "e.g. Roasted peanuts — crunch and depth in massaman"
+    flavor_text: "(Peanuts / Cinnamon / Star Anise) e.g. Roasted peanuts — crunch and depth in massaman"
     icon: warm-spices-nuts
     circle_color: "#92400e"
     inner_color: "#fed7aa"
@@ -92,7 +105,7 @@
 - type_id: ingredient
   id: clear-broth
   fields:
-    name: Clear Broth
+    name: ClearBroth
     category: Soup Base
     description: For gaeng jued, tom saep, and khao man gai.
     flavor_text: "e.g. Chicken stock — light base for clear soups"
@@ -105,10 +118,10 @@
 - type_id: ingredient
   id: vegetables-fruits
   fields:
-    name: Vegetables / Fruits
-    category: Bamboo / Eggplant / Pineapple
+    name: Produce
+    category: Produce
     description: Fresh produce for stir-fries, curries, and salads.
-    flavor_text: "e.g. Thai eggplant — soaks up curry, adds texture"
+    flavor_text: "(Bamboo / Eggplant / Pineapple) e.g. Thai eggplant — soaks up curry, adds texture"
     icon: vegetables-fruits
     circle_color: "#0d9488"
     inner_color: "#ccfbf1"
@@ -119,9 +132,9 @@
   id: carbs
   fields:
     name: Carbs
-    category: Rice / Noodles / Potatoes
+    category: Carbs
     description: Rice, noodles, and potatoes for hearty Thai dishes.
-    flavor_text: "e.g. Jasmine rice — the foundation of every meal"
+    flavor_text: "(Rice / Noodles / Potatoes) e.g. Jasmine rice — the foundation of every meal"
     icon: carbs
     circle_color: "#ca8a04"
     inner_color: "#fef9c3"
@@ -131,10 +144,10 @@
 - type_id: ingredient
   id: meat-poultry
   fields:
-    name: Meat / Poultry
+    name: Meat
     category: Protein
     description: Chicken, pork, or beef for curries and stir-fries.
-    flavor_text: "e.g. Chicken thigh — stays tender in curries"
+    flavor_text: "(Meat / Poultry) e.g. Chicken thigh — stays tender in curries"
     icon: meat-poultry
     circle_color: "#dc2626"
     inner_color: "#fecaca"
@@ -147,7 +160,7 @@
     name: Seafood
     category: Protein
     description: Shrimp, fish, and shellfish for tom yum and curries.
-    flavor_text: "e.g. Tiger prawns — sweet, firm, perfect for tom yum"
+    flavor_text: "(Seafood) e.g. Tiger prawns — sweet, firm, perfect for tom yum"
     icon: seafood
     circle_color: "#0369a1"
     inner_color: "#bae6fd"
@@ -157,10 +170,10 @@
 - type_id: ingredient
   id: specialty-extras
   fields:
-    name: Specialty Extras
-    category: Blood / Fermented / Roasted Rice
+    name: Specialty
+    category: Specialty
     description: Blood, fermented items, and roasted rice powder.
-    flavor_text: "e.g. Khao khua — toasted rice adds nutty crunch"
+    flavor_text: "(Blood / Fermented / Roasted Rice) e.g. Khao khua — toasted rice adds nutty crunch"
     icon: specialty-extras
     circle_color: "#475569"
     inner_color: "#e2e8f0"

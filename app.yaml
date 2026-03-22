@@ -1,5 +1,5 @@
 html:
-  output-html-enabled: false
+  output-html-enabled: true
 
 renderer:
   url: "https://iambaangkok.github.io/FLATLINE-Companion-App/"

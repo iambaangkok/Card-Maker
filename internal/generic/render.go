@@ -57,8 +57,8 @@ func buildTemplateFuncMap(refData map[string]interface{}) template.FuncMap {
 
 // RenderProject renders all cards for the given project configuration using
 // the provided registry and renderer. It expects template paths in the
-// schemas to be relative to project.TemplateDir, and writes outputs into
-// project.OutputDir.
+// schemas to be relative to project.TemplateDir. Each card type writes into
+// project.OutputDir/<schema_id>/ (e.g. output/cookcook/ingredient_3/).
 //
 // If writeHTML is true, the parsed HTML for each card is written alongside
 // the rendered image.
@@ -96,8 +96,14 @@ func RenderProject(project ProjectConfig, reg TypeRegistry, r renderer.ChromeRen
 		}
 
 		totalCards := len(cards)
+		typeOutDir := filepath.Join(project.OutputDir, schema.ID)
+		if err := os.MkdirAll(typeOutDir, 0o755); err != nil {
+			return fmt.Errorf("create output dir for type %q: %w", schema.ID, err)
+		}
+
 		vpW, vpH := ResolveViewport(project, schema)
-		log.Printf("[%d/%d] %q: %d cards (viewport %.2f×%.2f)", typeIdx+1, len(schemas), schema.ID, totalCards, vpW, vpH)
+		outScale := ResolveOutputScale(project, schema)
+		log.Printf("[%d/%d] %q: %d cards → %q (viewport %.2f×%.2f, output_scale %.2f)", typeIdx+1, len(schemas), schema.ID, totalCards, typeOutDir, vpW, vpH, outScale)
 
 		for cardIdx, card := range cards {
 			log.Printf("  [%d/%d] %s", cardIdx+1, totalCards, card.ID)
@@ -116,14 +122,14 @@ func RenderProject(project ProjectConfig, reg TypeRegistry, r renderer.ChromeRen
 			baseName := fmt.Sprintf("%s_%s", schema.ID, card.ID)
 
 			if writeHTML {
-				htmlPath := filepath.Join(project.OutputDir, baseName+".html")
+				htmlPath := filepath.Join(typeOutDir, baseName+".html")
 				if err := os.WriteFile(htmlPath, []byte(htmlStr), 0o644); err != nil {
 					return fmt.Errorf("write html %q: %w", htmlPath, err)
 				}
 			}
 
-			imgPath := filepath.Join(project.OutputDir, baseName+".png")
-			if err := r.RenderHTMLToPNG(htmlStr, imgPath, vpW, vpH); err != nil {
+			imgPath := filepath.Join(typeOutDir, baseName+".png")
+			if err := r.RenderHTMLToPNG(htmlStr, imgPath, vpW, vpH, outScale); err != nil {
 				return fmt.Errorf("render png for card %q of type %q: %w", card.ID, schema.ID, err)
 			}
 		}

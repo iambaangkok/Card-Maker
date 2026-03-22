@@ -7,6 +7,8 @@ output_dir: "./output/cookcook"
 # PNG clip (CSS px) — poker 63.5×88.9 mm @ 96dpi; matches cookcook ingredient templates.
 default_viewport_width: 240
 default_viewport_height: 336
+# PNG resolution = viewport × this (e.g. 2 → 480×672 px for poker layout).
+default_output_scale: 4
 
 card_types:
   - id: ingredient
@@ -91,6 +93,9 @@ card_types:
         type: string
         required: false
       - name: inner_color
+        type: string
+        required: false
+      - name: center_type_align
         type: string
         required: false
       - name: market_price

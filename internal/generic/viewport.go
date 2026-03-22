@@ -21,3 +21,16 @@ func ResolveViewport(project ProjectConfig, schema CardTypeSchema) (width, heigh
 	}
 	return width, height
 }
+
+// ResolveOutputScale returns the Chromedp screenshot scale (PNG pixel multiplier vs viewport).
+// Precedence: card type → project default → renderer.DefaultOutputScale.
+func ResolveOutputScale(project ProjectConfig, schema CardTypeSchema) float64 {
+	s := renderer.DefaultOutputScale
+	if project.DefaultOutputScale != nil && *project.DefaultOutputScale > 0 {
+		s = *project.DefaultOutputScale
+	}
+	if schema.OutputScale != nil && *schema.OutputScale > 0 {
+		s = *schema.OutputScale
+	}
+	return s
+}

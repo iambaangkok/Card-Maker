@@ -5,8 +5,10 @@ import (
 	"os"
 	"path/filepath"
 	"sync"
+	"time"
 
 	"github.com/chromedp/cdproto/page"
+	"github.com/chromedp/cdproto/runtime"
 	"github.com/chromedp/chromedp"
 	"github.com/iambaangkok/Card-Maker/internal/config"
 )
@@ -16,6 +18,10 @@ import (
 const CardViewportWidth = 240
 const CardViewportHeight = 336
 
+// DefaultOutputScale is the Chromedp screenshot device scale factor: output PNG is
+// viewport×scale device pixels (e.g. 2 → 2× resolution for print).
+const DefaultOutputScale = 2.0
+
 type ChromeRenderer interface {
 	RenderElement()
 }
@@ -24,13 +30,23 @@ type ChromeRendererImpl struct {
 	Config config.Config
 }
 
-// RenderHTMLToPNG renders HTML to a PNG clipped to viewportWidth×viewportHeight CSS pixels (Scale 2 device pixels).
-func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string, viewportWidth, viewportHeight float64) error {
+// RenderHTMLToPNG renders HTML to a PNG clipped to viewportWidth×viewportHeight CSS pixels.
+// outputScale multiplies device pixels (PNG size = viewport × scale); use DefaultOutputScale if <= 0.
+func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string, viewportWidth, viewportHeight, outputScale float64) error {
 	if viewportWidth <= 0 {
 		viewportWidth = CardViewportWidth
 	}
 	if viewportHeight <= 0 {
 		viewportHeight = CardViewportHeight
+	}
+	if outputScale <= 0 {
+		outputScale = DefaultOutputScale
+	}
+	if outputScale < 0.25 {
+		outputScale = 0.25
+	}
+	if outputScale > 10 {
+		outputScale = 10
 	}
 	outputPath := outputFileName
 	if !filepath.IsAbs(outputFileName) && filepath.Dir(outputFileName) == "." {
@@ -82,6 +98,16 @@ func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string, 
 			wg.Wait()
 			return nil
 		}),
+		// Web fonts (e.g. Google Fonts) load after DOM load; wait before screenshot.
+		chromedp.Evaluate(
+			`document.fonts ? document.fonts.ready : Promise.resolve()`,
+			nil,
+			func(p *runtime.EvaluateParams) *runtime.EvaluateParams {
+				return p.WithAwaitPromise(true)
+			},
+		),
+		// Brief pause so layout/paint can settle after fonts apply.
+		chromedp.Sleep(100 * time.Millisecond),
 		chromedp.ActionFunc(func(ctx context.Context) error {
 			buf, err := page.CaptureScreenshot().
 				WithFormat(page.CaptureScreenshotFormatPng).
@@ -91,7 +117,7 @@ func (c ChromeRendererImpl) RenderHTMLToPNG(html string, outputFileName string, 
 					Y:      0,
 					Width:  viewportWidth,
 					Height: viewportHeight,
-					Scale:  2,
+					Scale:  outputScale,
 				}).
 				Do(ctx)
 			if err != nil {
