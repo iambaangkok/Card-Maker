@@ -42,9 +42,13 @@
 <svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="#fff" stroke="#0d0d0d" stroke-width="1.25"/><path d="M9 10h.01M15 10h.01M8.5 15c1.5 1.5 4.5 1.5 6 0" stroke="#0d0d0d" stroke-width="1.2" stroke-linecap="round"/></svg>
 {{end}}
 
+{{/*  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">  */}}
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Forum&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
 {{/*  DEFINE STYLES  */}}
 <style>
@@ -89,11 +93,12 @@
   .circle .circle-svg { display: block; }
   /* ~24px: same visual size as circle SVG (24×24) */
   .type-label {
-    padding: 6px 10px 6px 54px;
+    margin: 10px 10px 0 10px;
+    padding: 6px 10px 6px 50px;
     min-height: 40px;
     display: flex;
     align-items: center;
-    font-family: "Google Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     font-size: 18px;
     line-height: 1.05;
     font-weight: 800;
@@ -103,37 +108,34 @@
     word-break: break-word;
   }
   .center-type {
-    flex: 1;
-    min-height: 0; /* lets flex child participate in flex sizing; enables vertical centering */
-    padding: 14px 0px;
+    padding: 10px 10px 12px;
+    margin: 0 0 0 0;
     width: 100%;
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* vertical center in the middle band */
-    align-items: stretch;
-    font-family: "Google Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-size: 46px;
-    font-weight: 900;
-    line-height: 0.70;
+    box-sizing: border-box;
+    display: block;
+    font-family: "Space Mono", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 0.73;
     /*line-height: 1.08;*/
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #0a0a0a;
-    word-break: break-all;
+    word-break: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
   }
   .center-type--left { text-align: left; }
   .center-type--right { text-align: right; }
   .flavor-text {
+    flex: 1;
+    min-height: 32px;
     padding: 8px 12px 10px;
     font-size: 8px;
     font-weight: 500;
     font-style: normal;
     color: #333;
     line-height: 1.45;
-    min-height: 32px;
   }
   .price-bar {
     display: flex;
@@ -179,9 +181,9 @@
     {{else if eq $icon "specialty-extras"}}{{template "svg-ing-specialty-extras" .}}
     {{else}}{{template "svg-ing-default" .}}{{end}}
   </div>
+  <div class="type-label">{{ index .Card.Fields "category" }}</div>
+  <div class="center-type {{if eq $cta "right"}}center-type--right{{else}}center-type--left{{end}}">{{ index .Card.Fields "name" }}</div>
   <div class="card-inner">
-    <div class="type-label">{{ index .Card.Fields "category" }}</div>
-    <div class="center-type {{if eq $cta "right"}}center-type--right{{else}}center-type--left{{end}}">{{ index .Card.Fields "name" }}</div>
     <div class="flavor-text">{{ or (index .Card.Fields "flavor_text") (index .Card.Fields "description") "" }}</div>
     <div class="price-bar">
       <span class="sell-value">Sell {{ index .Card.Fields "sell_value" }}</span>

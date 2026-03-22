@@ -14,7 +14,7 @@
 - type_id: ingredient
   id: coconut-milk
   fields:
-    name: CoconutMilk
+    name: Coconut Milk
     category: Soup Base
     description: Rich coconut cream base for soups and curries.
     flavor_text: "e.g. Chaokoh coconut cream — adds creamy richness to curries"
@@ -27,7 +27,7 @@
 - type_id: ingredient
   id: chili-curry-paste
   fields:
-    name: CurryPaste
+    name: Curry Paste
     category: Spice Base
     description: The foundation of Thai curries and stir-fries.
     flavor_text: "(Chili / Curry Paste) e.g. Red curry paste — defines heat and depth of the dish"
@@ -40,7 +40,7 @@
 - type_id: ingredient
   id: aromatics
   fields:
-    name: Aromatics
+    name: Flavor Base
     category: Aromatics
     description: Essential Thai aromatics for soups, curries, and salads.
     flavor_text: "(Lemongrass / Galangal / Kaffir Lime) e.g. Fresh lemongrass — brings citrusy, herbal notes"
@@ -53,7 +53,7 @@
 - type_id: ingredient
   id: fresh-herbs
   fields:
-    name: FreshHerbs
+    name: Fresh Herbs
     category: Fresh Herbs
     description: Sweet basil, holy basil, and cilantro for vibrant finish.
     flavor_text: "(Basil / Cilantro) e.g. Holy basil — adds peppery kick to stir-fries"
@@ -66,7 +66,7 @@
 - type_id: ingredient
   id: tamarind-lime
   fields:
-    name: SourAgents
+    name: Sour Agents
     category: Sour Agents
     description: Sour agents for pad thai, som tam, and soups.
     flavor_text: "(Tamarind / Lime) e.g. Tamarind pulp — balances sweetness in pad thai"
@@ -79,7 +79,7 @@
 - type_id: ingredient
   id: umami-base
   fields:
-    name: UmamiBase
+    name: Umami Base
     category: Umami Base
     description: Fermented umami base for authentic Thai flavor.
     flavor_text: "(Shrimp Paste / Fish Sauce) e.g. Nam pla — the soul of Thai savory dishes"
@@ -92,7 +92,7 @@
 - type_id: ingredient
   id: warm-spices-nuts
   fields:
-    name: WarmSpices
+    name: Warm Spices
     category: Warm Spices
     description: Roasted peanuts and warm spices for massaman and khao soi.
     flavor_text: "(Peanuts / Cinnamon / Star Anise) e.g. Roasted peanuts — crunch and depth in massaman"
@@ -105,7 +105,7 @@
 - type_id: ingredient
   id: clear-broth
   fields:
-    name: ClearBroth
+    name: Clear Broth
     category: Soup Base
     description: For gaeng jued, tom saep, and khao man gai.
     flavor_text: "e.g. Chicken stock — light base for clear soups"
