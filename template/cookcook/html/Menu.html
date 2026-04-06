@@ -1,4 +1,4 @@
-{{/*  DEFINE SVG ICONS  */}}
+{{/*  SVG icons (same keys as Ingredient_3 for optional menu circle)  */}}
 {{define "svg-ing-coconut-milk"}}
 <svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C9.5 6 6 8 6 13a6 6 0 1 0 12 0c0-5-3.5-7-6-11z" fill="#fff" stroke="#0d0d0d" stroke-width="1.25"/><path d="M12 8v5" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/></svg>
 {{end}}
@@ -41,20 +41,17 @@
 {{define "svg-ing-default"}}
 <svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="#fff" stroke="#0d0d0d" stroke-width="1.25"/><path d="M9 10h.01M15 10h.01M8.5 15c1.5 1.5 4.5 1.5 6 0" stroke="#0d0d0d" stroke-width="1.2" stroke-linecap="round"/></svg>
 {{end}}
-
-{{/*  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">  */}}
+{{define "svg-menu-default"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 10h14v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8z" fill="#fff" stroke="#0d0d0d" stroke-width="1.25" stroke-linejoin="round"/><path d="M8 10V8a4 4 0 0 1 8 0v2M9 6h6" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/><ellipse cx="12" cy="15" rx="4" ry="1.5" fill="#0d0d0d" opacity="0.12"/></svg>
+{{end}}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Forum&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Nanum+Myeongjo&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-{{/*  DEFINE STYLES  */}}
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; background: transparent; }
-  /* Poker: 63.5mm × 88.9mm ≈ 240×336px @ 96dpi */
   .card {
     width: 240px; height: 336px;
     background: #fff;
@@ -70,11 +67,12 @@
   }
   .card-inner {
     flex: 1;
-    margin: 10px;
-    border-radius: 20px 2px 2px 2px;
+    margin: 0 10px 10px;
+    border-radius: 2px 2px 20px 2px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    min-height: 0;
   }
   .circle {
     position: absolute;
@@ -87,11 +85,9 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
-    /* border: 2px solid rgba(0,0,0,0.12); */
     box-shadow: 0 2px 0 rgba(0,0,0,0.08);
   }
   .circle .circle-svg { display: block; }
-  /* ~24px: same visual size as circle SVG (24×24) */
   .type-label {
     margin: 10px 10px 0 10px;
     padding: 6px 10px 6px 50px;
@@ -99,27 +95,26 @@
     display: flex;
     align-items: center;
     font-family: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-size: 18px;
-    line-height: 1.05;
+    font-size: 14px;
+    line-height: 1.1;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     color: #1a1a1a;
     word-break: break-word;
   }
   .center-type {
-    padding: 10px 10px 12px;
-    margin: 0 0 0 0;
+    padding: 4px 16px 8px;
+    margin: 0;
     width: 100%;
     box-sizing: border-box;
     display: block;
     font-family: "Forum", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-size: 42px;
-    font-weight: 500;
-    line-height: 0.73;
-    /*line-height: 1.08;*/
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.05;
+    text-transform: none;
+    letter-spacing: 0.02em;
     color: #0a0a0a;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -127,45 +122,98 @@
   }
   .center-type--left { text-align: left; }
   .center-type--right { text-align: right; }
-  .flavor-text {
+  .menu-ingredients-wrap {
     flex: 1;
-    min-height: 32px;
-    padding: 8px 12px 10px;
-    font-size: 8px;
-    font-weight: 500;
-    font-style: normal;
+    min-height: 0;
+    overflow: hidden;
+    padding: 4px 6px 2px;
+  }
+  .menu-ingredients-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 7px;
+    line-height: 1.35;
+  }
+  .menu-ingredients-table td {
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    padding: 3px 4px 4px 0;
+    vertical-align: top;
+  }
+  .menu-ingredients-table tr:last-child td { border-bottom: none; }
+  .menu-ingredients-table .col-slot {
+    width: 38%;
+    font-weight: 700;
+    color: #111;
+    padding-right: 3px;
+  }
+  .menu-ingredients-table .col-req {
     color: #333;
-    line-height: 1.45;
+    word-break: break-word;
   }
-  .price-bar {
+  .menu-outcomes {
+    flex-shrink: 0;
+    padding: 6px 10px 6px;
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 6px 12px 8px;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
+    flex-direction: column;
+    gap: 5px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.5);
   }
-  .sell-value { color: #b91c1c; }
-  .buy-value { color: #15803d; }
+  .outcome {
+    font-size: 7px;
+    line-height: 1.4;
+    color: #333;
+  }
+  .outcome-tag {
+    font-family: "Google Sans Flex", sans-serif;
+    font-weight: 800;
+    font-size: 8px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #444;
+    margin-right: 4px;
+  }
+  .outcome-tag--normal { color: #15803d; }
+  .outcome-tag--perfect { color: #7c3aed; }
+  .outcome-vp {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    color: #0a0a0a;
+  }
+  .effect-code {
+    font-family: "Space Mono", monospace;
+    font-size: 6px;
+    color: #666;
+  }
+  .flavor-text {
+    flex-shrink: 0;
+    padding: 6px 10px 8px;
+    font-family: "Cardo", "Times New Roman", serif;
+    font-size: 8px;
+    font-weight: 400;
+    font-style: italic;
+    color: #444;
+    line-height: 1.4;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
 </style>
 
-{{/*  DEFINE CIRCLE AND INNER COLOR  */}}
-{{$circleColor := or (index .Card.Fields "circle_color") "#ea580c"}}
-{{$innerColor := or (index .Card.Fields "inner_color") "#fff7ed"}}
+{{$circleColor := or (index .Card.Fields "circle_color") "#0f766e"}}
+{{$innerColor := or (index .Card.Fields "inner_color") "#f0fdfa"}}
 
 <style>
-  .ingredient-card-v3 .circle { background-color: {{$circleColor}}; }
-  .ingredient-card-v3 .card-inner { background-color: {{$innerColor}}; }
+  .menu-card-v3 .circle { background-color: {{$circleColor}}; }
+  .menu-card-v3 .card-inner { background-color: {{$innerColor}}; }
 </style>
 
-{{/*  DEFINE ICON  */}}
 {{$icon := printf "%v" (or (index .Card.Fields "icon") "")}}
-{{$cta := printf "%v" (or (index .Card.Fields "center_type_align") "left")}}
+{{$align := printf "%v" (or (index .Card.Fields "title_align") "left")}}
+{{$grade := index .Card.Fields "grade"}}
 
-{{/*  HTML BODY  */}}
-<div class="card ingredient-card-v3">
-  <div class="circle" role="img" aria-label="{{ index .Card.Fields "name" }}">
+<div class="card menu-card-v3">
+  <div class="circle" role="img" aria-label="Menu">
     {{if eq $icon "coconut-milk"}}{{template "svg-ing-coconut-milk" .}}
     {{else if eq $icon "chili-curry-paste"}}{{template "svg-ing-chili-curry-paste" .}}
     {{else if eq $icon "aromatics"}}{{template "svg-ing-aromatics" .}}
@@ -179,15 +227,35 @@
     {{else if eq $icon "meat-poultry"}}{{template "svg-ing-meat-poultry" .}}
     {{else if eq $icon "seafood"}}{{template "svg-ing-seafood" .}}
     {{else if eq $icon "specialty-extras"}}{{template "svg-ing-specialty-extras" .}}
-    {{else}}{{template "svg-ing-default" .}}{{end}}
+    {{else}}{{template "svg-menu-default" .}}{{end}}
   </div>
-  <div class="type-label">{{ index .Card.Fields "category" }}</div>
-  <div class="center-type {{if eq $cta "right"}}center-type--right{{else}}center-type--left{{end}}">{{ index .Card.Fields "name" }}</div>
+  <div class="type-label">Menu · Grade {{if $grade}}{{printf "%v" $grade}}{{else}}?{{end}}</div>
+  <div class="center-type {{if eq $align "right"}}center-type--right{{else}}center-type--left{{end}}">{{ index .Card.Fields "name" }}</div>
   <div class="card-inner">
-    <div class="flavor-text">{{ or (index .Card.Fields "flavor_text") (index .Card.Fields "description") "" }}</div>
-    <div class="price-bar">
-      <span class="sell-value">Sell {{ index .Card.Fields "sell_value" }}</span>
-      <span class="buy-value">Buy {{ index .Card.Fields "market_price" }}</span>
+    <div class="menu-ingredients-wrap">
+      <table class="menu-ingredients-table" role="presentation">
+        {{ range index .Card.Fields "ingredients" }}
+        <tr>
+          <td class="col-slot">{{if index . "signature"}}★ {{end}}{{ index . "slot" }}</td>
+          <td class="col-req">{{ index . "requirement" }}</td>
+        </tr>
+        {{ end }}
+      </table>
     </div>
+    <div class="menu-outcomes">
+      <div class="outcome">
+        <span class="outcome-tag outcome-tag--normal">Normal</span>
+        <span class="outcome-vp">{{ index .Card.Fields "normal_vp" }} VP</span>
+        — {{ index .Card.Fields "normal_effect" }}
+        {{$ne := index .Card.Fields "normal_effect_id"}}{{if $ne}}<span class="effect-code">({{ $ne }})</span>{{end}}
+      </div>
+      <div class="outcome">
+        <span class="outcome-tag outcome-tag--perfect">Perfect</span>
+        <span class="outcome-vp">{{ index .Card.Fields "perfect_vp" }} VP</span>
+        — {{ index .Card.Fields "perfect_effect" }}
+        {{$pe := index .Card.Fields "perfect_effect_id"}}{{if $pe}}<span class="effect-code">({{ $pe }})</span>{{end}}
+      </div>
+    </div>
+    <div class="flavor-text">{{ index .Card.Fields "flavor_text" }}</div>
   </div>
 </div>

@@ -1,0 +1,428 @@
+{{/* Menu_2: title + "Menu ★…"; flex Core/Signature; Perfect rail vertical-rl. */}}
+{{/* SVGs aligned with Ingredient_4 / template/cookcook/svg (carbs = carbs-rice). Ring colours = Ingredient_4 saturated .circle. */}}
+{{define "svg-ing-coconut-milk"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 12 2 C 9.5 6 6 8 6 13 a 6 6 0 1 0 12 0 c 0-5-3.5-7-6-11 z" fill="#fff" stroke="#0d0d0d" stroke-width="1.25"/><path d="M 14 8 C 15 9 15 10 15 11" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/></svg>
+{{end}}
+{{define "svg-ing-clear-broth"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 12 2 C 9.5 6 6 8 6 13 a 6 6 0 1 0 12 0 c 0-5-3.5-7-6-11 z" fill="#0d0d0d" stroke="#ffffff" stroke-width="1.25"/><path d="M 14 8 C 15 9 15 10 15 11" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/></svg>
+{{end}}
+{{define "svg-ing-chili-curry-paste"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 11.395 4.36 C 25.125 7.06 24.106 21.63 11.421 22.521 C 9.994 22.572 4.824 22.165 3.041 17.656 C 2.659 14.141 11.625 21.706 13.764 16.561 C 14.121 13.784 10.071 13.861 7.626 11.721" fill="#ffffff" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/><path d="M 8.211 11.212 C 9.561 9.48 11.854 6.652 11.421 4.385 C 11.09 3.239 7.575 4.411 6.505 5.404 L 1.869 8.206 L 3.346 10.422 L 5.715 9.021 C 5.792 9.964 6.377 12.205 7.6 11.747 z" fill="#ffffff" stroke="#0d0d0d" stroke-width="1.25"/></svg>
+{{end}}
+{{define "svg-ing-aromatics"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 11 21 C 12 22 17 20 16 19 C 15 17 15 15 15 13 C 15 11 18 10 20 10 C 20 8 20 7 19 6 C 18 6 16 6 15 7 C 15.3333 5.6667 15.6667 4.3333 16 3 C 15 2 13 2 12 2 C 11 4 11 7 11 10 C 11 12 10 11 9 10 C 8 9 8 6 8 4 C 7 4 5 5 4 6 C 4 8 5 11 6 13 C 7 15 7 15 8 16 C 7 16.6667 6 17.3333 3 17 C 3 19 3 19 5 20 C 8 19 9 18 10 19 C 10.3333 19.6667 10.6667 20.3333 11 21 Z" fill="#af9356" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/><path d="M 4.824 9.938 C 5.715 8.996 6.912 8.537 8.313 8.435 M 6.301 13.453 C 6.81 12.18 8.008 11.033 9.46 10.499 M 7.473 15.364 C 8.543 14.116 10.682 12.791 13.102 12.867 M 15.038 15.287 C 13.484 14.676 11.727 15.542 9.714 16.663 M 10.122 19.108 C 11.879 19.083 13.433 18.522 14.758 17.631 M 5.002 17.147 C 6.097 17.707 6.276 17.962 6.505 19.363 M 11.345 4.283 C 12.389 4.258 13.917 4.156 15.471 5.048 M 11.115 7.977 C 12.669 7.926 14.605 8.563 15.114 10.091 M 17.942 10.295 C 18.324 9.225 17.916 7.951 16.999 7.187" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/></svg>
+{{end}}
+{{define "svg-ing-carbs"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 12 12 L 4 12 A 1 1 0 0 1 20 12 Z" fill="#ffffff" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/><path d="M 12 12 L 3 12 C 3 16 6 20 9 20 C 9 20 9 21 9 21 C 11 21 13 21 15 21 C 15 21 15 20 15 20 C 18 20 21 16 21 12 Z" fill="#90f8ff" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/><path d="M 6 11 L 7 10 M 8 8 L 9 7 M 11 9 L 10 10 M 12 6 L 11 7 M 14 11 L 15 10 M 15 7 L 14 8 M 18 10 L 17 11" stroke="#0d0d0d" stroke-width="0.85" stroke-linejoin="round"/></svg>
+{{end}}
+{{define "svg-ing-fresh-herbs"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 6.352 16.459 C 5.359 15.415 4.391 11.492 7.6 8.41 C 9.46 6.627 13.561 5.302 19.547 5.2 C 19.088 10.448 18.986 12.817 16.745 15.695 C 12.822 20.356 8.874 18.675 7.04 17.147 z" fill="#ffffff" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/><path d="M 3.499 21.222 C 6.505 16.051 11.472 11.517 14.987 8.843" stroke="#0d0d0d" stroke-width="1.25"/></svg>
+{{end}}
+{{define "svg-ing-umami-base"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 11 21 C 9 21 7 21 7 19 C 7 17 7 13 7 11 C 7 9 9 9 10 8 C 10 7.3333 10 6.6667 10 6 C 9 6 9 4 10 4 C 11 4 12.6667 4 14 4 C 15 4 15 6 14 6 C 14 6.6667 14 7.3333 14 8 C 15 9 17 9 17 11 C 17 12.6667 17 16.3333 17 19 C 17 21 15 21 13 21 Z" fill="#ffffff" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/><path d="M 12 10 C 12 13 10 13 10 15 C 10 16 11 17 12 17 C 13 17 14 16 14 15 C 14 13 12 13 12 10 Z" stroke="#0d0d0d" stroke-width="1.25"/></svg>
+{{end}}
+{{define "svg-ing-warm-spices-nuts"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 11.635 22.4947 C 9.8224 23.34 8.4935 22.8563 7.6482 21.0437 C 8.6767 16.1506 10.2499 7.6933 10.7947 4.1291 C 12.6073 3.2839 13.9363 3.7676 14.7815 5.5803 C 14.2977 6.9091 12.0625 6.8481 11.6399 5.9418 C 12.0625 6.8481 14.2977 6.9091 14.7815 5.5803 Z" fill="#8b3e11" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/><path d="M 5.5481 20.624 C 3.6163 20.1063 2.9091 18.8816 3.4268 16.9497 C 7.3598 13.8625 15.4848 6.7221 18.1931 4.3419 C 20.1249 4.8596 20.832 6.0843 20.3144 8.0162 C 19.0897 8.7233 17.4166 7.2397 17.6754 6.2738 C 17.4166 7.2397 19.0897 8.7233 20.3144 8.0162 Z" fill="#b45822" stroke="#0d0d0d" stroke-width="1.25"/></svg>
+{{end}}
+{{define "svg-ing-vegetables-fruits"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 12 5 C 10 5 10 3 8 3 C 6 3 7 7 5 5 C 2 3 2 7 4 9 C 6 11 5 11 5 13 C 5 16 7 21 12 21 C 17 21 19 16 19 13 C 19 11 18 11 20 9 C 22 7 22 3 19 5 C 16 7 18 3 16 3 C 14 3 14 5 12 5 Z" fill="#3a6140" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/><path d="M 12 21 C 7 21 5 16 6 13 C 7 11 8 10 9 11 C 10 12 11 10 12 10 C 13 10 14 12 15 11 C 16 10 17 11 18 13 C 19 16 17 21 12 21 Z" fill="#ebe4d4" stroke="#0d0d0d" stroke-width="0.85" stroke-linejoin="round"/></svg>
+{{end}}
+{{define "svg-ing-meat-poultry"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 8 9 C 7 4 15 0 19 4 C 22 7 24 14 12 22 C 9 24 2 23 3 18 C 4 14 9 14 8 9 Z" fill="#eb6e6e" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/><path d="M 10 9 C 9 5 15 3 17 5 C 22 9 19 14 12 20 C 9 23 4 20 5 18 C 7 14 11 13 10 9 Z" stroke="#ffffff" stroke-width="1" stroke-linejoin="round"/><path d="M 15 10 A 1 1 0 0 0 14 7 A 1 1 0 0 0 15 10 Z" fill="#ffffff" stroke="#0d0d0d" stroke-width="0.85" stroke-linejoin="round"/></svg>
+{{end}}
+{{define "svg-ing-seafood"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 24 12 Z M 6 8 C 1 10 1 14 6 16 C 11 18 17 11 19 16 C 20 18 21 17 22 18 C 22 14 22 9 22 5 C 21 6 20 5 19 7 C 17 12 11 6 6 8 Z" fill="#6ec4eb" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/><path d="M 7 9 C 8 11 8 13 7 15" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/></svg>
+{{end}}
+{{define "svg-ing-specialty-extras"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 12 2 L 9 10 L 1 10 L 7 15 L 5 23 L 12 18 L 19 23 L 17 15 L 23 10 L 15 10 L 12 2 Z" fill="#fab112" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/><path d="M 12 2 L 12 12 Z M 1 10 L 12 12 Z M 23 10 L 12 12 Z M 5 23 L 12 12 Z M 19 23 L 12 12 Z" stroke="#0d0d0d" stroke-width="0.5" stroke-linejoin="round"/></svg>
+{{end}}
+{{define "svg-ing-tamarind-lime"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 4 18 A 1 1 0 0 0 18 4 Z" fill="#20442b" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/><path d="M 5 17 A 1 1 0 0 0 17 5 Z" fill="#7ecf3c" stroke="#0d0d0d" stroke-width="0.85" stroke-linejoin="round"/><path d="M 10 12 A 1 1 0 0 0 12 10" fill="#ebe4d4" stroke="#0d0d0d" stroke-width="0.85" stroke-linejoin="round"/><path d="M 12.389 10.804 L 19.394 9.964 M 16.974 16.968 L 12.032 12.027 M 9.969 19.388 L 10.784 12.384" stroke="#0d0d0d" stroke-width="0.85" stroke-linejoin="round"/></svg>
+{{end}}
+{{define "svg-ing-default"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 12 2 C 9.5 6 6 8 6 13 a 6 6 0 1 0 12 0 c 0-5-3.5-7-6-11 z" fill="#fff" stroke="#0d0d0d" stroke-width="1.25"/><path d="M 14 8 C 15 9 15 10 15 11" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/></svg>
+{{end}}
+{{define "svg-menu-default"}}
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 10h14v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8z" fill="#fff" stroke="#0d0d0d" stroke-width="1.25" stroke-linejoin="round"/><path d="M8 10V8a4 4 0 0 1 8 0v2M9 6h6" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/><ellipse cx="12" cy="15" rx="4" ry="1.5" fill="#0d0d0d" opacity="0.12"/></svg>
+{{end}}
+
+{{/* Type-colored ring + SVG for one ingredient row (icon from data). */}}
+{{define "menu2-icon-ring"}}
+{{$rawIcon := index . "icon"}}
+{{if $rawIcon}}
+{{$rowIcon := printf "%v" $rawIcon}}
+<span class="menu-icon-ring menu-icon-ring--{{$rowIcon}}" role="presentation">
+<span class="ing-icon-wrap" role="img" aria-label="{{ index . "slot" }}">
+  {{if eq $rowIcon "coconut-milk"}}{{template "svg-ing-coconut-milk" .}}
+  {{else if eq $rowIcon "chili-curry-paste"}}{{template "svg-ing-chili-curry-paste" .}}
+  {{else if eq $rowIcon "aromatics"}}{{template "svg-ing-aromatics" .}}
+  {{else if eq $rowIcon "fresh-herbs"}}{{template "svg-ing-fresh-herbs" .}}
+  {{else if eq $rowIcon "tamarind-lime"}}{{template "svg-ing-tamarind-lime" .}}
+  {{else if eq $rowIcon "umami-base"}}{{template "svg-ing-umami-base" .}}
+  {{else if eq $rowIcon "warm-spices-nuts"}}{{template "svg-ing-warm-spices-nuts" .}}
+  {{else if eq $rowIcon "clear-broth"}}{{template "svg-ing-clear-broth" .}}
+  {{else if eq $rowIcon "vegetables-fruits"}}{{template "svg-ing-vegetables-fruits" .}}
+  {{else if eq $rowIcon "carbs"}}{{template "svg-ing-carbs" .}}
+  {{else if eq $rowIcon "meat-poultry"}}{{template "svg-ing-meat-poultry" .}}
+  {{else if eq $rowIcon "seafood"}}{{template "svg-ing-seafood" .}}
+  {{else if eq $rowIcon "specialty-extras"}}{{template "svg-ing-specialty-extras" .}}
+  {{else}}{{template "svg-ing-default" .}}{{end}}
+</span>
+</span>
+{{end}}
+{{end}}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Forum&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Nanum+Myeongjo&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: transparent; }
+  .card {
+    width: 240px; height: 336px;
+    background: #fff;
+    border: 4px solid #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    position: relative;
+    letter-spacing: 0.02em;
+  }
+  .card-inner {
+    flex: 1;
+    margin: 0 10px 10px;
+    border-radius: 2px 2px 20px 2px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+  }
+  .center-type {
+    padding: 4px 16px 8px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    font-family: "Forum", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.05;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .center-type--left { text-align: left; }
+  .center-type--right { text-align: right; }
+  .menu-ingredients-wrap {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    padding: 4px 6px 2px;
+  }
+  .menu-card-v2 .menu-ingredients-flex {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 7px;
+    line-height: 1.35;
+  }
+  .menu-card-v2 .menu2-flex-label {
+    padding: 2px 0 1px;
+    flex-shrink: 0;
+  }
+  .menu-card-v2 .menu2-core-row {
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    padding: 5px 2px 7px;
+    flex-shrink: 0;
+  }
+  .menu-card-v2 .menu2-sig-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 3px 0 4px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .menu-card-v2 .menu2-sig-row:last-child {
+    border-bottom: none;
+    padding-bottom: 2px;
+  }
+  .menu-card-v2 .menu2-sig-row__icons {
+    flex-shrink: 0;
+  }
+  .menu-card-v2 .menu2-sig-row__req {
+    flex: 1 1 0;
+    min-width: 0;
+    color: #333;
+    word-break: break-word;
+    align-self: center;
+  }
+  .menu-card-v2 .menu2-sig-row__req strong {
+    font-weight: 800;
+  }
+  .menu-card-v2 .menu2-legend {
+    font-family: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #475569;
+  }
+  .menu-card-v2 .menu2-legend--sub {
+    font-size: 7px;
+    letter-spacing: 0.12em;
+    color: #64748b;
+    padding-top: 4px;
+  }
+  .menu-card-v2 .menu2-legend--top {
+    padding: 2px 0 3px;
+    margin: 0;
+  }
+  .menu-card-v2 .menu2-header {
+    padding: 10px 14px 2px;
+  }
+  .menu-card-v2 .menu2-header--left { text-align: left; }
+  .menu-card-v2 .menu2-header--right { text-align: right; }
+  .menu-card-v2 .menu2-header--center { text-align: center; }
+  .menu-card-v2 .menu2-title {
+    font-family: "Forum", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+    word-break: break-word;
+  }
+  .menu-card-v2 .menu2-kind {
+    margin-top: 3px;
+    font-family: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #64748b;
+  }
+  .menu-card-v2 .menu2-stars {
+    color: #b45309;
+    letter-spacing: 0.12em;
+    margin-left: 0.35em;
+    font-weight: 800;
+    font-size: inherit;
+  }
+  .menu-card-v2 .ing-type-cell {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3px;
+    min-height: 22px;
+  }
+  .menu-card-v2 .menu2-nonsig-icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+  .menu-card-v2 .sig-star {
+    flex-shrink: 0;
+    color: #6d28d9;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 800;
+  }
+  .menu-card-v2 .menu-icon-ring {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+    background: #64748b;
+  }
+  .menu-card-v2 .menu-icon-ring .ing-icon-wrap svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+  /* Type rings: match Ingredient_4 saturated .circle */
+  .menu-card-v2 .menu-icon-ring--coconut-milk { background: #c2410c; }
+  .menu-card-v2 .menu-icon-ring--chili-curry-paste { background: #b91c1c; }
+  .menu-card-v2 .menu-icon-ring--aromatics { background: #a16207; }
+  .menu-card-v2 .menu-icon-ring--fresh-herbs { background: #0d9488; }
+  .menu-card-v2 .menu-icon-ring--tamarind-lime { background: #4ade80; }
+  .menu-card-v2 .menu-icon-ring--umami-base { background: #1a1209; }
+  .menu-card-v2 .menu-icon-ring--warm-spices-nuts { background: #ea580c; }
+  .menu-card-v2 .menu-icon-ring--clear-broth { background: #64748b; }
+  .menu-card-v2 .menu-icon-ring--vegetables-fruits { background: #15803d; }
+  .menu-card-v2 .menu-icon-ring--carbs { background: #a89886; }
+  .menu-card-v2 .menu-icon-ring--meat-poultry { background: #db2777; }
+  .menu-card-v2 .menu-icon-ring--seafood { background: #0369a1; }
+  .menu-card-v2 .menu-icon-ring--specialty-extras { background: #7c3aed; }
+  .menu-card-v2 .menu-icon-ring--default { background: #64748b; }
+  .menu-outcomes {
+    flex-shrink: 0;
+    padding: 6px 10px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.5);
+  }
+  .outcome {
+    font-size: 7px;
+    line-height: 1.4;
+    color: #333;
+  }
+  .outcome-tag {
+    font-family: "Google Sans Flex", sans-serif;
+    font-weight: 800;
+    font-size: 8px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #444;
+    margin-right: 4px;
+  }
+  .outcome-tag--normal { color: #15803d; }
+  .outcome-tag--perfect { color: #7c3aed; }
+  .outcome-vp {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    color: #0a0a0a;
+  }
+  .effect-code {
+    font-family: "Space Mono", monospace;
+    font-size: 6px;
+    color: #666;
+  }
+  .flavor-text {
+    flex-shrink: 0;
+    padding: 6px 10px 8px;
+    font-family: "Cardo", "Times New Roman", serif;
+    font-size: 8px;
+    font-weight: 400;
+    font-style: italic;
+    color: #444;
+    line-height: 1.4;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  /* Menu_2: main column + right rail with vertical Perfect (landscape-read cue) */
+  .menu-card-v2 .card-inner {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .menu-card-v2 .inner-stack {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .perfect-rail {
+    flex: 0 0 30px;
+    width: 30px;
+    min-height: 0;
+    align-self: stretch;
+    background: linear-gradient(180deg, rgba(124,58,237,0.07), rgba(124,58,237,0.16));
+    border-left: 1px solid rgba(124, 58, 237, 0.32);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 8px 0 8px 1px;
+  }
+  .perfect-rail__inner {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 6.5px;
+    line-height: 1.5;
+    color: #4c1d95;
+    max-height: 100%;
+    overflow: hidden;
+    text-align: start;
+  }
+  .perfect-rail__tag {
+    font-family: "Google Sans Flex", sans-serif;
+    font-weight: 800;
+    font-size: 7px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6d28d9;
+  }
+  .perfect-rail__vp {
+    font-weight: 700;
+    color: #1e1b4b;
+  }
+  .perfect-rail__inner .effect-code {
+    font-size: 5.5px;
+    color: #7e22ce;
+  }
+</style>
+
+{{$innerColor := or (index .Card.Fields "inner_color") "#fff7ed"}}
+
+<style>
+  .menu-card-v2 .card-inner { background-color: {{$innerColor}}; }
+</style>
+
+{{$align := printf "%v" (or (index .Card.Fields "title_align") "left")}}
+{{$grade := index .Card.Fields "grade"}}
+
+<div class="card menu-card-v2">
+  <header class="menu2-header menu2-header--{{if eq $align "right"}}right{{else if eq $align "left"}}left{{else}}center{{end}}">
+    <div class="menu2-title">{{ index .Card.Fields "name" }}</div>
+    <div class="menu2-kind" role="img" aria-label="Menu, grade {{if $grade}}{{printf "%v" $grade}}{{else}}unknown{{end}}">Menu <span class="menu2-stars" aria-hidden="true">{{ menuGradeStars $grade }}</span></div>
+  </header>
+  <div class="card-inner">
+    <div class="inner-stack">
+      <div class="menu-ingredients-wrap">
+        <div class="menu2-legend menu2-legend--top">Ingredients</div>
+        <div class="menu-ingredients-flex" role="group" aria-label="Menu ingredients">
+          <div class="menu2-legend menu2-legend--sub menu2-flex-label">Core</div>
+          <div class="menu2-core-row menu2-nonsig-icons">
+            {{ range index .Card.Fields "ingredients" }}{{ if not (index . "signature") }}{{ template "menu2-icon-ring" . }}{{ end }}{{ end }}
+          </div>
+          <div class="menu2-legend menu2-legend--sub menu2-flex-label">Signature</div>
+          {{ range index .Card.Fields "ingredients" }}{{ if index . "signature" }}
+          <div class="menu2-sig-row">
+            <div class="menu2-sig-row__icons">
+              <div class="ing-type-cell">
+                <span class="sig-star" aria-hidden="true">★</span>
+                {{ template "menu2-icon-ring" . }}
+              </div>
+            </div>
+            <div class="menu2-sig-row__req">{{ menuBoldOR (index . "requirement") }}</div>
+          </div>
+          {{ end }}{{ end }}
+        </div>
+      </div>
+      <div class="menu-outcomes">
+        <div class="outcome">
+          <span class="outcome-tag outcome-tag--normal">Normal</span>
+          <span class="outcome-vp">{{ index .Card.Fields "normal_vp" }} VP</span>
+          — {{ menuBoldOR (index .Card.Fields "normal_effect") }}
+          {{$ne := index .Card.Fields "normal_effect_id"}}{{if $ne}}<span class="effect-code">({{ $ne }})</span>{{end}}
+        </div>
+      </div>
+      <div class="flavor-text">{{ index .Card.Fields "flavor_text" }}</div>
+    </div>
+    <aside class="perfect-rail" aria-label="Perfect cook">
+      <div class="perfect-rail__inner">
+        <span class="perfect-rail__tag">Perfect</span>
+        <span class="perfect-rail__vp">{{ index .Card.Fields "perfect_vp" }} VP</span>
+        — {{ menuBoldOR (index .Card.Fields "perfect_effect") }}
+        {{$pe := index .Card.Fields "perfect_effect_id"}}{{if $pe}}<span class="effect-code">({{ $pe }})</span>{{end}}
+      </div>
+    </aside>
+  </div>
+</div>

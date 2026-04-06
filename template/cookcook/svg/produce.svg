@@ -1,0 +1,10 @@
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="
+M 12 5 C 10 5 10 3 8 3 C 6 3 7 7 5 5 C 2 3 2 7 4 9 C 6 11 5 11 5 13 C 5 16 7 21 12 21 C 17 21 19 16 19 13 C 19 11 18 11 20 9 C 22 7 22 3 19 5 C 16 7 18 3 16 3 C 14 3 14 5 12 5 Z 
+    " fill="#3a6140" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/>
+
+    <path d="
+M 12 21 C 7 21 5 16 6 13 C 7 11 8 10 9 11 C 10 12 11 10 12 10 C 13 10 14 12 15 11 C 16 10 17 11 18 13 C 19 16 17 21 12 21 Z
+    " fill="#ebe4d4" stroke="#0d0d0d"  stroke-width="0.85" stroke-linejoin="round"/>
+
+</svg>

@@ -72,6 +72,42 @@ card_types:
     template: "Ingredient_3.html"
     data_files:
       - "ingredients.yaml"
+    render: false
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: category
+        type: string
+        required: true
+      - name: description
+        type: string
+        required: false
+      - name: flavor_text
+        type: string
+        required: false
+      - name: icon
+        type: string
+        required: false
+      - name: circle_color
+        type: string
+        required: false
+      - name: inner_color
+        type: string
+        required: false
+      - name: center_type_align
+        type: string
+        required: false
+      - name: market_price
+        type: int
+        required: false
+      - name: sell_value
+        type: int
+        required: false
+  - id: ingredient_4
+    template: "Ingredient_4.html"
+    data_files:
+      - "ingredients.yaml"
     render: true
     fields:
       - name: name
@@ -103,4 +139,102 @@ card_types:
         required: false
       - name: sell_value
         type: int
+        required: false
+  - id: menu
+    template: "Menu.html"
+    data_files:
+      - "menus.yaml"
+    render: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: grade
+        type: int
+        required: true
+      # ingredients: list of rows { slot, requirement, icon?, signature? } — icon keys match Ingredient SVGs
+      - name: ingredients
+        type: list
+        required: true
+      - name: normal_vp
+        type: int
+        required: true
+      - name: normal_effect
+        type: string
+        required: true
+      - name: normal_effect_id
+        type: string
+        required: false
+      - name: perfect_vp
+        type: int
+        required: true
+      - name: perfect_effect
+        type: string
+        required: true
+      - name: perfect_effect_id
+        type: string
+        required: false
+      - name: flavor_text
+        type: string
+        required: true
+      - name: icon
+        type: string
+        required: false
+      - name: circle_color
+        type: string
+        required: false
+      - name: inner_color
+        type: string
+        required: false
+      - name: title_align
+        type: string
+        required: false
+  - id: menu_2
+    template: "Menu_2.html"
+    data_files:
+      - "menus.yaml"
+    render: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: grade
+        type: int
+        required: true
+      # rows: { slot, requirement, icon?, signature? } — Menu_2 shows icon + ★; omit icon to fall back to slot text
+      - name: ingredients
+        type: list
+        required: true
+      - name: normal_vp
+        type: int
+        required: true
+      - name: normal_effect
+        type: string
+        required: true
+      - name: normal_effect_id
+        type: string
+        required: false
+      - name: perfect_vp
+        type: int
+        required: true
+      - name: perfect_effect
+        type: string
+        required: true
+      - name: perfect_effect_id
+        type: string
+        required: false
+      - name: flavor_text
+        type: string
+        required: true
+      - name: icon
+        type: string
+        required: false
+      - name: circle_color
+        type: string
+        required: false
+      - name: inner_color
+        type: string
+        required: false
+      - name: title_align
+        type: string
         required: false

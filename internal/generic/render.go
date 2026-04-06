@@ -24,6 +24,31 @@ type TemplateContext struct {
 // (parsing "X:Y" to get "X"), returns the returnField value. Templates specify which fields to use.
 func buildTemplateFuncMap(refData map[string]interface{}) template.FuncMap {
 	return template.FuncMap{
+		// menuGradeStars returns n copies of ★ for menu grade (2–5 typical); clamps 1–5; "?" if unset.
+		"menuGradeStars": func(v interface{}) string {
+			n := 0
+			switch x := v.(type) {
+			case int:
+				n = x
+			case int64:
+				n = int(x)
+			case float64:
+				n = int(x)
+			}
+			if n < 1 {
+				return "?"
+			}
+			if n > 5 {
+				n = 5
+			}
+			return strings.Repeat("★", n)
+		},
+		// menuBoldOR wraps spaced " OR " in <strong> for requirement/effect lines (trusted YAML).
+		"menuBoldOR": func(v interface{}) template.HTML {
+			s := fmt.Sprint(v)
+			s = strings.ReplaceAll(s, " OR ", " <strong>OR</strong> ")
+			return template.HTML(s)
+		},
 		"refLookup": func(refKey string, lookupValue interface{}, keyField, returnField string) interface{} {
 			data, ok := refData[refKey]
 			if !ok {

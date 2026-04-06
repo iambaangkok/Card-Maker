@@ -1,0 +1,21 @@
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="
+M 4 18 A 1 1 0 0 0 18 4 Z 
+    " fill="#20442b" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/>
+
+<path d="
+M 5 17 A 1 1 0 0 0 17 5 Z 
+    "  fill="#7ecf3c" stroke="#0d0d0d"  stroke-width="0.85" stroke-linejoin="round"/>
+
+
+    <path d="
+M 10 12 A 1 1 0 0 0 12 10 
+    " fill="#ebe4d4" stroke="#0d0d0d"  stroke-width="0.85" stroke-linejoin="round"/>
+
+
+<path d="
+M 12.389 10.804 L 19.394 9.964 M 16.974 16.968 L 12.032 12.027 M 9.969 19.388 L 10.784 12.384
+    "  stroke="#0d0d0d"  stroke-width="0.85" stroke-linejoin="round"/>
+
+
+</svg>

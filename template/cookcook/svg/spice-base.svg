@@ -1,0 +1,21 @@
+<svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="
+        M 11.395 4.36
+        C 25.125 7.06 24.106 21.63 11.421 22.521
+        C 9.994 22.572 4.824 22.165 3.041 17.656
+        C 2.659 14.141 11.625 21.706 13.764 16.561 C 14.121 13.784 10.071 13.861 7.626 11.721
+    " fill="#ffffff" stroke="#0d0d0d" stroke-width="1" stroke-linecap="round"/>
+    
+    <path d="
+        M 8.211 11.212
+        C 9.561 9.48 11.854 6.652 11.421 4.385
+        C 11.09 3.239 7.575 4.411 6.505 5.404
+        L 1.869 8.206
+        L 3.346 10.422
+        L 5.715 9.021
+        C 5.792 9.964 6.377 12.205 7.6 11.747
+        z
+    " fill="#ffffff" stroke="#0d0d0d" stroke-width="1.25"/>
+    
+    
+</svg>

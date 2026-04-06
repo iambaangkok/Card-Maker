@@ -1,0 +1,106 @@
+# Sample menus aligned with Cook-food-cardgame rulebook (MenuCards.md).
+# type_id matches Card-Maker schema id menu.
+# inner_color: sample decks use #fff7ed for all menus (Menu_2 inner panel).
+#
+# ingredients rows:
+#   slot: short label (a11y aria-label on icons; not printed on Menu_2)
+#   requirement: OR text (Menu_2 prints this only for Signature lines; Core is icon-only on card)
+#   icon: optional slug for SVG; Menu_2: non-sig icons in one Core row, sig icon per Signature row
+#   signature: true = ★ perfect Name line (★ + icon + requirement on Menu_2)
+# Style: no bracketed extras on requirements; no ellipsis; use ANY for open-type lines.
+
+- type_id: menu
+  id: tom-yum
+  fields:
+    name: Tom Yum
+    grade: 3
+    ingredients:
+      - slot: Spice base
+        icon: chili-curry-paste
+        requirement: Chillies OR Curry paste
+      - slot: Aromatics
+        icon: aromatics
+        signature: true
+        requirement: Galangal OR Lemongrass OR Kaffir lime
+      - slot: Sour agents
+        icon: tamarind-lime
+        signature: true
+        requirement: Lime
+      - slot: Terrestrial / Aquatic protein
+        icon: meat-poultry
+        requirement: Chicken OR Pork OR Shrimp OR Fish OR Squid
+    normal_vp: 4
+    normal_effect: Draw 1 Ingredient from the deck
+    normal_effect_id: E-DRAW-1
+    perfect_vp: 6
+    perfect_effect: Next Gather, +1 extra base coin
+    perfect_effect_id: E-COIN-NEXT-1
+    flavor_text: Intensely hot and sour with bright citrusy aromatics. Sharp, clean, thin broth — the hallmark Thai spicy-sour balance.
+    icon: tamarind-lime
+    circle_color: "#ea580c"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: tom-kha
+  fields:
+    name: Tom Kha
+    grade: 3
+    ingredients:
+      - slot: Creamy broth
+        icon: coconut-milk
+        requirement: Coconut milk
+      - slot: Aromatics
+        icon: aromatics
+        signature: true
+        requirement: Galangal OR Lemongrass OR Kaffir lime
+      - slot: Sour agents
+        icon: tamarind-lime
+        signature: true
+        requirement: Lime
+      - slot: Terrestrial / Aquatic protein
+        icon: meat-poultry
+        requirement: Chicken OR Pork OR ANY Aquatic
+    normal_vp: 4
+    normal_effect: Next Gather, +1 extra base coin
+    normal_effect_id: E-COMFORT-COIN
+    perfect_vp: 6
+    perfect_effect: Draw 2 Ingredients
+    perfect_effect_id: E-DRAW-2
+    flavor_text: Creamy, mellow, and gently sour. Rich coconut body tempers the galangal’s warmth — the gentle sibling of Tom Yum.
+    icon: coconut-milk
+    circle_color: "#0f766e"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: khao-soi
+  fields:
+    name: Khao Soi
+    grade: 3
+    ingredients:
+      - slot: Creamy broth
+        icon: coconut-milk
+        requirement: Coconut milk
+      - slot: Spice base
+        icon: chili-curry-paste
+        signature: true
+        requirement: Curry paste
+      - slot: Carbs
+        icon: carbs
+        signature: true
+        requirement: Noodles
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        requirement: Chicken OR Beef OR Pork
+      - slot: Warm spices
+        icon: warm-spices-nuts
+        requirement: Star anise OR Cinnamon
+    normal_vp: 4
+    normal_effect: First Market buy on your next turn costs 1 fewer coin (min 2)
+    normal_effect_id: E-BARGAIN-BUY
+    perfect_vp: 6
+    perfect_effect: Final scoring +1 VP per other scored Menu with Creamy broth + Spice base in Core (max +2)
+    perfect_effect_id: E-CURRY-SYNERGY
+    flavor_text: Rich and warming with mild curry spice. Creamy coconut over soft noodles — Northern comfort with crispy contrast.
+    icon: carbs
+    circle_color: "#b45309"
+    inner_color: "#fff7ed"
