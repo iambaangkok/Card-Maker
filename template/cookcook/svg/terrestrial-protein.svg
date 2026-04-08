@@ -1,11 +1,11 @@
 <svg class="circle-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="
 M 8 9 C 7 4 15 0 19 4 C 22 7 24 14 12 22 C 9 24 2 23 3 18 C 4 14 9 14 8 9 Z
-    " fill="#eb6e6e" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/>
+    " fill="#ffffff" stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/>
     
     <path d="
 M 10 9 C 9 5 15 3 17 5 C 22 9 19 14 12 20 C 9 23 4 20 5 18 C 7 14 11 13 10 9 Z 
-    " stroke="#ffffff" stroke-width="1" stroke-linejoin="round"/>
+    " stroke="#0d0d0d" stroke-width="1" stroke-linejoin="round"/>
 
 <path d="
 M 15 10 A 1 1 0 0 0 14 7 A 1 1 0 0 0 15 10 Z

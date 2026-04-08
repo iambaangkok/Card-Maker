@@ -1,13 +1,14 @@
-# Sample menus aligned with Cook-food-cardgame rulebook (MenuCards.md).
-# type_id matches Card-Maker schema id menu.
-# inner_color: sample decks use #fff7ed for all menus (Menu_2 inner panel).
+# Menus aligned with Cook-food-cardgame rulebook MenuCards.md (*In Play* list).
+# type_id matches Card-Maker schema id menu / menu_2.
+# inner_color: print decks use #fff7ed for menu inner panel.
 #
 # ingredients rows:
-#   slot: short label (a11y aria-label on icons; not printed on Menu_2)
-#   requirement: OR text (Menu_2 prints this only for Signature lines; Core is icon-only on card)
-#   icon: optional slug for SVG; Menu_2: non-sig icons in one Core row, sig icon per Signature row
-#   signature: true = ★ perfect Name line (★ + icon + requirement on Menu_2)
-# Style: no bracketed extras on requirements; no ellipsis; use ANY for open-type lines.
+#   slot: short label (a11y; Core order matches rulebook)
+#   requirement: printed for Signature lines on Menu_2; Core is icon-led
+#   icon: slug for SVG (see Menu_2 menu2-icon-ring)
+#   signature: true = ★ perfect Name line
+# Style: no bracketed effect refs in requirements; no ellipsis; ANY for open lists.
+# Print fields (name, flavor_text, effects) kept short for card layout.
 
 - type_id: menu
   id: tom-yum
@@ -30,12 +31,12 @@
         icon: meat-poultry
         requirement: Chicken OR Pork OR Shrimp OR Fish OR Squid
     normal_vp: 4
-    normal_effect: Draw 1 Ingredient from the deck
+    normal_effect: Draw 1 Ingredient
     normal_effect_id: E-DRAW-1
     perfect_vp: 6
-    perfect_effect: Next Gather, +1 extra base coin
+    perfect_effect: Next Gather +1 base coin
     perfect_effect_id: E-COIN-NEXT-1
-    flavor_text: Intensely hot and sour with bright citrusy aromatics. Sharp, clean, thin broth — the hallmark Thai spicy-sour balance.
+    flavor_text: Hot, sour, aromatic — thin spicy-sour broth that opens the appetite.
     icon: tamarind-lime
     circle_color: "#ea580c"
     inner_color: "#fff7ed"
@@ -59,14 +60,14 @@
         requirement: Lime
       - slot: Terrestrial / Aquatic protein
         icon: meat-poultry
-        requirement: Chicken OR Pork OR ANY Aquatic
+        requirement: Chicken OR Pork OR ANY Terrestrial OR ANY Aquatic
     normal_vp: 4
-    normal_effect: Next Gather, +1 extra base coin
+    normal_effect: Next Gather +1 base coin
     normal_effect_id: E-COMFORT-COIN
     perfect_vp: 6
     perfect_effect: Draw 2 Ingredients
     perfect_effect_id: E-DRAW-2
-    flavor_text: Creamy, mellow, and gently sour. Rich coconut body tempers the galangal’s warmth — the gentle sibling of Tom Yum.
+    flavor_text: Creamy coconut, gentle sour — milder, velvety cousin to Tom Yum.
     icon: coconut-milk
     circle_color: "#0f766e"
     inner_color: "#fff7ed"
@@ -95,12 +96,632 @@
         icon: warm-spices-nuts
         requirement: Star anise OR Cinnamon
     normal_vp: 4
-    normal_effect: First Market buy on your next turn costs 1 fewer coin (min 2)
+    normal_effect: Next turn first Market buy −1 coin (min 2)
     normal_effect_id: E-BARGAIN-BUY
     perfect_vp: 6
-    perfect_effect: Final scoring +1 VP per other scored Menu with Creamy broth + Spice base in Core (max +2)
+    perfect_effect: End scoring +1 VP per other scored Menu with Creamy broth + Spice base (max +2)
     perfect_effect_id: E-CURRY-SYNERGY
-    flavor_text: Rich and warming with mild curry spice. Creamy coconut over soft noodles — Northern comfort with crispy contrast.
+    flavor_text: Northern curry noodles — soft noodles in coconut broth, crisp topping.
     icon: carbs
     circle_color: "#b45309"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: gaeng-som
+  fields:
+    name: Gaeng Som
+    grade: 5
+    ingredients:
+      - slot: Spice base
+        icon: chili-curry-paste
+        signature: true
+        requirement: Chillies OR Curry paste
+      - slot: Sour agents
+        icon: tamarind-lime
+        signature: true
+        requirement: Tamarind
+      - slot: Umami base
+        icon: umami-base
+        signature: true
+        requirement: Shrimp paste
+      - slot: Produce
+        icon: vegetables-fruits
+        requirement: Green papaya OR Water morning glory OR ANY Produce
+      - slot: Terrestrial / Aquatic protein
+        icon: meat-poultry
+        requirement: Fish OR Shrimp OR ANY Protein
+    normal_vp: 6
+    normal_effect: Any player discards 1 Ingredient
+    normal_effect_id: E-SOUR-PINCH
+    perfect_vp: 8
+    perfect_effect: Draw 2, discard 1 shared, take 1 random from chosen hand
+    perfect_effect_id: E-DRAW-2-DISCARD-1
+    flavor_text: Sour curry without coconut — sharp, thin, vegetal crunch.
+    icon: tamarind-lime
+    circle_color: "#c2410c"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: kuay-tiew-reua
+  fields:
+    name: Kuay Tiew Reua
+    grade: 5
+    ingredients:
+      - slot: Warm spices
+        icon: warm-spices-nuts
+        requirement: Star anise AND Cinnamon
+      - slot: Clear broth
+        icon: clear-broth
+        signature: true
+        requirement: Bone stock
+      - slot: Carbs
+        icon: carbs
+        requirement: Noodles
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        requirement: Beef OR Pork
+      - slot: Specialty
+        icon: specialty-extras
+        signature: true
+        requirement: Blood
+    normal_vp: 8
+    normal_effect: Each Gather +1 base coin (rest of game)
+    normal_effect_id: E-PERSIST-COIN-1
+    perfect_vp: 11
+    perfect_effect: Take top shared Ingredient discard or draw 1
+    perfect_effect_id: E-SALVAGE-TOP-DISCARD
+    flavor_text: Dark boat noodles — blood-thickened broth, star anise, cinnamon.
+    icon: clear-broth
+    circle_color: "#1e3a5f"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: massaman-curry
+  fields:
+    name: Massaman curry
+    grade: 4
+    ingredients:
+      - slot: Creamy broth
+        icon: coconut-milk
+        requirement: Coconut milk
+      - slot: Spice base
+        icon: chili-curry-paste
+        signature: true
+        requirement: Curry paste
+      - slot: Warm spices
+        icon: warm-spices-nuts
+        signature: true
+        requirement: Cardamom OR Cinnamon OR Star anise
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        requirement: Beef OR Chicken
+      - slot: Carbs
+        icon: carbs
+        requirement: Potatoes
+      - slot: Sour agents
+        icon: tamarind-lime
+        requirement: Tamarind
+    normal_vp: 6
+    normal_effect: Each Gather +1 base coin (rest of game)
+    normal_effect_id: E-PERSIST-COIN-1-B
+    perfect_vp: 8
+    perfect_effect: Top discard Produce/Carbs take else draw 1; swap 1 Ingredient with chosen opponent
+    perfect_effect_id: E-PANTRY-PICK
+    flavor_text: Thick coconut curry — warm spices, sweet-savory, Persian-Indian lean.
+    icon: coconut-milk
+    circle_color: "#7c2d12"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: green-curry
+  fields:
+    name: Green curry
+    grade: 3
+    ingredients:
+      - slot: Creamy broth
+        icon: coconut-milk
+        requirement: Coconut milk
+      - slot: Spice base
+        icon: chili-curry-paste
+        signature: true
+        requirement: Curry paste
+      - slot: Fresh herbs
+        icon: fresh-herbs
+        signature: true
+        requirement: Sweet basil
+      - slot: Terrestrial / Aquatic protein
+        icon: meat-poultry
+        requirement: Chicken OR Pork OR Beef OR Fish OR ANY Protein
+      - slot: Produce
+        icon: vegetables-fruits
+        requirement: Eggplant OR Bamboo shoots
+    normal_vp: 4
+    normal_effect: Draw 1; swap 1 Ingredient each with chosen opponent
+    normal_effect_id: E-DRAW-1-HERB
+    perfect_vp: 6
+    perfect_effect: Reorder top 2 Menu deck cards
+    perfect_effect_id: E-SCRY-MENUS
+    flavor_text: Green chili heat, sweet basil, creamy coconut — iconic Thai balance.
+    icon: fresh-herbs
+    circle_color: "#15803d"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: panang-curry
+  fields:
+    name: Panang curry
+    grade: 5
+    ingredients:
+      - slot: Creamy broth
+        icon: coconut-milk
+        requirement: Coconut milk
+      - slot: Spice base
+        icon: chili-curry-paste
+        signature: true
+        requirement: Curry paste
+      - slot: Aromatics
+        icon: aromatics
+        signature: true
+        requirement: Kaffir lime
+      - slot: Warm spices
+        icon: warm-spices-nuts
+        requirement: Peanuts OR Mace
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        requirement: Beef OR Pork OR Chicken
+    normal_vp: 8
+    normal_effect: Each Gather +1 base coin (rest of game)
+    normal_effect_id: E-PERSIST-COIN-1-C
+    perfect_vp: 14
+    perfect_effect: VP only
+    flavor_text: Thick, nutty-sweet red curry — almost a sauce, kaffir lime on top.
+    icon: coconut-milk
+    circle_color: "#9f1239"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: gaeng-tai-pla
+  fields:
+    name: Gaeng Tai Pla
+    grade: 5
+    ingredients:
+      - slot: Spice base
+        icon: chili-curry-paste
+        requirement: Chillies OR Curry paste
+      - slot: Umami base
+        icon: umami-base
+        signature: true
+        requirement: Shrimp paste
+      - slot: Produce
+        icon: vegetables-fruits
+        requirement: Bamboo shoots OR Yardlong beans OR Eggplant
+      - slot: Aquatic protein
+        icon: seafood
+        requirement: Fish
+      - slot: Specialty
+        icon: specialty-extras
+        signature: true
+        requirement: Tai pla
+    normal_vp: 9
+    normal_effect: You discard 1, draw 2; each other player discards 1
+    normal_effect_id: E-FUNK-TAX
+    perfect_vp: 12
+    perfect_effect: Random foe with ≥2 cooked Menus loses one cooked Menu at random
+    perfect_effect_id: E-RUIN-RANDOM-MENU
+    flavor_text: Southern funk — fermented fish, fierce heat, acquired-taste depth.
+    icon: umami-base
+    circle_color: "#422006"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: kao-man-gai-broth
+  fields:
+    name: Kao Man Gai broth
+    grade: 2
+    ingredients:
+      - slot: Clear broth
+        icon: clear-broth
+        signature: true
+        requirement: Bone stock
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        signature: true
+        requirement: Chicken
+      - slot: Fresh herbs
+        icon: fresh-herbs
+        requirement: Cilantro
+      - slot: Produce
+        icon: vegetables-fruits
+        requirement: Winter melon OR Daikon
+      - slot: Carbs
+        icon: carbs
+        requirement: Rice
+    normal_vp: 3
+    normal_effect: Draw 1 Ingredient
+    normal_effect_id: E-DRAW-1-SIMPLE
+    perfect_vp: 5
+    perfect_effect: Draw 1; take 1 random from chosen hand
+    perfect_effect_id: E-DRAW-1-KMG
+    flavor_text: Clear chicken rice soup — light, peppery, restorative.
+    icon: clear-broth
+    circle_color: "#64748b"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: gaeng-pa
+  fields:
+    name: Gaeng Pa
+    grade: 5
+    ingredients:
+      - slot: Spice base
+        icon: chili-curry-paste
+        requirement: Curry paste
+      - slot: Fresh herbs
+        icon: fresh-herbs
+        signature: true
+        requirement: Holy basil
+      - slot: Produce
+        icon: vegetables-fruits
+        requirement: Eggplant OR Bamboo shoots
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        requirement: Pork OR Beef
+      - slot: Specialty
+        icon: specialty-extras
+        signature: true
+        requirement: Green peppercorns
+    normal_vp: 8
+    normal_effect: Each Gather +1 base coin (rest of game)
+    normal_effect_id: E-PERSIST-COIN-1-D
+    perfect_vp: 13
+    perfect_effect: VP only
+    flavor_text: Jungle curry — no coconut, holy basil, green peppercorns, raw heat.
+    icon: chili-curry-paste
+    circle_color: "#14532d"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: gaeng-phed
+  fields:
+    name: Gaeng Phed
+    grade: 4
+    ingredients:
+      - slot: Creamy broth
+        icon: coconut-milk
+        requirement: Coconut milk
+      - slot: Spice base
+        icon: chili-curry-paste
+        signature: true
+        requirement: Curry paste
+      - slot: Fresh herbs
+        icon: fresh-herbs
+        signature: true
+        requirement: Sweet basil
+      - slot: Produce
+        icon: vegetables-fruits
+        requirement: Bamboo shoots OR ANY similar Produce
+      - slot: Terrestrial / Aquatic protein
+        icon: meat-poultry
+        requirement: Duck OR Pork OR Beef OR ANY Aquatic
+      - slot: Aromatics
+        icon: aromatics
+        requirement: Kaffir lime
+      - slot: Warm spices
+        icon: warm-spices-nuts
+        requirement: Peanuts
+    normal_vp: 6
+    normal_effect: Draw 1 OR next Gather +1 base coin
+    normal_effect_id: E-FLEX-TEMPO
+    perfect_vp: 8
+    perfect_effect: Each Gather +1 base coin (rest of game)
+    perfect_effect_id: E-PERSIST-COIN-1-E
+    flavor_text: Classic red curry — coconut, basil, versatile crowd-pleaser.
+    icon: chili-curry-paste
+    circle_color: "#b91c1c"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: gaeng-hang-lay
+  fields:
+    name: Gaeng Hang Lay
+    grade: 4
+    ingredients:
+      - slot: Spice base
+        icon: chili-curry-paste
+        signature: true
+        requirement: Curry paste
+      - slot: Sour agents
+        icon: tamarind-lime
+        requirement: Tamarind
+      - slot: Warm spices
+        icon: warm-spices-nuts
+        requirement: Coriander seed OR Cumin
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        signature: true
+        requirement: Pork
+      - slot: Aromatics
+        icon: aromatics
+        requirement: Ginger
+    normal_vp: 6
+    normal_effect: Scry 3 Ingredient deck, bottom 1; take 1 random from chosen hand
+    normal_effect_id: E-DECK-SCRY-3
+    perfect_vp: 8
+    perfect_effect: Swap 1 hand Ingredient with 1 from shared discard (if any)
+    perfect_effect_id: E-DISCARD-SWAP
+    flavor_text: Northern pork curry — Burmese spices, tamarind, ginger, dark braise.
+    icon: warm-spices-nuts
+    circle_color: "#78350f"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: tom-saep
+  fields:
+    name: Tom Saep
+    grade: 4
+    ingredients:
+      - slot: Spice base
+        icon: chili-curry-paste
+        requirement: Chillies
+      - slot: Sour agents
+        icon: tamarind-lime
+        signature: true
+        requirement: Lime
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        requirement: Pork
+      - slot: Specialty
+        icon: specialty-extras
+        signature: true
+        requirement: Khao khua
+      - slot: Aromatics
+        icon: aromatics
+        requirement: Lemongrass OR Galangal
+      - slot: Clear broth
+        icon: clear-broth
+        requirement: Bone stock
+      - slot: Fresh herbs
+        icon: fresh-herbs
+        requirement: Culantro OR Cilantro
+    normal_vp: 6
+    normal_effect: Discard 1, draw 2
+    normal_effect_id: E-TOAST-GAMBLE
+    perfect_vp: 8
+    perfect_effect: Chosen player discards 1 random from hand
+    perfect_effect_id: E-RANDOM-PINCH
+    flavor_text: Isan hot-sour soup — toasted rice powder, lime, chili.
+    icon: clear-broth
+    circle_color: "#a16207"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: gaeng-jued
+  fields:
+    name: Gaeng Jued
+    grade: 2
+    ingredients:
+      - slot: Clear broth
+        icon: clear-broth
+        signature: true
+        requirement: Clear stock
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        signature: true
+        requirement: Pork
+      - slot: Fresh herbs
+        icon: fresh-herbs
+        requirement: Cilantro
+      - slot: Umami base
+        icon: umami-base
+        requirement: Fish sauce OR Soy sauce
+      - slot: Produce
+        icon: vegetables-fruits
+        requirement: Napa cabbage OR ANY plain soup vegetables
+      - slot: Carbs
+        icon: carbs
+        requirement: Noodles
+    normal_vp: 2
+    normal_effect: In turn order, each may discard 1 to shared to draw 1 (once)
+    normal_effect_id: E-ROUND-DRAW
+    perfect_vp: 3
+    perfect_effect: Draw 2 Ingredients
+    perfect_effect_id: E-DRAW-2-CLEAN
+    flavor_text: Mild clear soup — home-style, resets the palate between rich dishes.
+    icon: clear-broth
+    circle_color: "#94a3b8"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: gaeng-khua
+  fields:
+    name: Gaeng Khua
+    grade: 4
+    ingredients:
+      - slot: Creamy broth
+        icon: coconut-milk
+        requirement: Coconut milk
+      - slot: Spice base
+        icon: chili-curry-paste
+        requirement: Curry paste
+      - slot: Produce
+        icon: vegetables-fruits
+        signature: true
+        requirement: Pineapple OR Rambutan
+      - slot: Terrestrial / Aquatic protein
+        icon: meat-poultry
+        requirement: Duck OR ANY Terrestrial OR Prawns OR Mussels OR ANY Aquatic
+      - slot: Aromatics
+        icon: aromatics
+        requirement: Kaffir lime
+    normal_vp: 4
+    normal_effect: Swap 2 Market cards; take 1 random from chosen hand
+    normal_effect_id: E-MARKET-SWAP
+    perfect_vp: 6
+    perfect_effect: End scoring +1 VP per your scored Menu with Produce in Core (max +3, count this)
+    perfect_effect_id: E-FRUIT-SCORE
+    flavor_text: Fruity red curry — pineapple or rambutan in coconut cream.
+    icon: vegetables-fruits
+    circle_color: "#c026d3"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: gaeng-run-juan
+  fields:
+    name: Gaeng Run Juan
+    grade: 3
+    ingredients:
+      - slot: Fresh herbs
+        icon: fresh-herbs
+        requirement: Holy basil
+      - slot: Umami base
+        icon: umami-base
+        signature: true
+        requirement: Shrimp paste
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        signature: true
+        requirement: Beef
+      - slot: Aromatics
+        icon: aromatics
+        requirement: Lemongrass
+      - slot: Clear broth
+        icon: clear-broth
+        requirement: Bone stock
+      - slot: Spice base
+        icon: chili-curry-paste
+        requirement: Chillies
+      - slot: Sour agents
+        icon: tamarind-lime
+        requirement: Lime
+    normal_vp: 4
+    normal_effect: Draw 1, discard 1
+    normal_effect_id: E-CYCLE-1
+    perfect_vp: 6
+    perfect_effect: Each Gather +1 base coin (rest of game)
+    perfect_effect_id: E-PERSIST-COIN-1-F
+    flavor_text: Beef soup built on shrimp paste — funky, herbal, deeply savory.
+    icon: umami-base
+    circle_color: "#713f12"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: gaeng-om
+  fields:
+    name: Gaeng Om
+    grade: 2
+    ingredients:
+      - slot: Fresh herbs
+        icon: fresh-herbs
+        signature: true
+        requirement: Dill OR Lemongrass
+      - slot: Clear broth
+        icon: clear-broth
+        requirement: Vegetable stock
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        requirement: Pork OR Chicken OR ANY Terrestrial
+      - slot: Produce
+        icon: vegetables-fruits
+        requirement: Green beans
+    normal_vp: 3
+    normal_effect: Draw 1 Ingredient
+    normal_effect_id: E-DRAW-1-OM
+    perfect_vp: 5
+    perfect_effect: Next Gather +1 base coin
+    perfect_effect_id: E-COIN-NEXT-1-OM
+    flavor_text: Dill-forward herbal soup — Isan/Northern rustic bowl.
+    icon: fresh-herbs
+    circle_color: "#4d7c0f"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: kuay-tiew-nam-sai
+  fields:
+    name: Kuay Tiew Nam Sai
+    grade: 2
+    ingredients:
+      - slot: Clear broth
+        icon: clear-broth
+        signature: true
+        requirement: Bone stock
+      - slot: Carbs
+        icon: carbs
+        signature: true
+        requirement: Noodles
+      - slot: Terrestrial protein
+        icon: meat-poultry
+        requirement: Pork OR Chicken OR ANY Terrestrial
+      - slot: Umami base
+        icon: umami-base
+        requirement: Fish sauce OR Soy sauce
+    normal_vp: 3
+    normal_effect: Swap 2 Market cards or move 1 Market slot
+    normal_effect_id: E-MARKET-ROTATE
+    perfect_vp: 5
+    perfect_effect: Draw 1 Ingredient
+    perfect_effect_id: E-DRAW-1-NOODLE
+    flavor_text: Clear noodle soup — light, umami from stock, street-simple.
+    icon: carbs
+    circle_color: "#0369a1"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: nam-prik-kapi
+  fields:
+    name: Nam Prik Kapi
+    grade: 2
+    ingredients:
+      - slot: Sour agents
+        icon: tamarind-lime
+        signature: true
+        requirement: Lime
+      - slot: Umami base
+        icon: umami-base
+        signature: true
+        requirement: Shrimp paste
+      - slot: Aquatic protein
+        icon: seafood
+        requirement: Fish
+      - slot: Produce
+        icon: vegetables-fruits
+        requirement: Long beans
+    normal_vp: 3
+    normal_effect: Top discard if Umami/Sour type take else draw 1
+    normal_effect_id: E-SALVAGE-UMAMI-SOUR
+    perfect_vp: 5
+    perfect_effect: Copy another scored Menu’s normal effect (else draw 1)
+    perfect_effect_id: E-COPY-SCORED
+    flavor_text: Shrimp-paste dip — salty-sour funk with lime and chili.
+    icon: umami-base
+    circle_color: "#4338ca"
+    inner_color: "#fff7ed"
+
+- type_id: menu
+  id: tom-klong
+  fields:
+    name: Tom Klong
+    grade: 2
+    ingredients:
+      - slot: Clear broth
+        icon: clear-broth
+        requirement: Fish stock
+      - slot: Sour agents
+        icon: tamarind-lime
+        signature: true
+        requirement: Tamarind
+      - slot: Terrestrial / Aquatic protein
+        icon: meat-poultry
+        requirement: ANY Terrestrial OR Fish OR ANY Aquatic
+      - slot: Fresh herbs
+        icon: fresh-herbs
+        requirement: Cilantro OR Culantro
+    normal_vp: 3
+    normal_effect: Peek top Ingredient deck; discard to shared or leave
+    normal_effect_id: E-PEEK-BURN
+    perfect_vp: 5
+    perfect_effect: Steal 1 random Menu from player with ≥2 Menus in hand (else draw 1)
+    perfect_effect_id: E-MENU-YOINK
+    flavor_text: Smoky-sour Northern soup — tamarind, herbs, often smoked fish.
+    icon: clear-broth
+    circle_color: "#0e7490"
     inner_color: "#fff7ed"

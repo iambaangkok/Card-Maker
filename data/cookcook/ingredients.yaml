@@ -1,114 +1,17 @@
-# - type_id: ingredient
-#   id: bubu
-#   fields:
-#     name: Bubu Motka
-#     category: My Love
-#     description: My very lovely wifey with knifey. 
-#     flavor_text: "My very lovely wifey with knifey."
-#     icon: coconut-milk
-#     circle_color: "#ea580c"
-#     inner_color: "#ffedd5"
-#     market_price: 2
-#     sell_value: 1
+# Ingredient cards filtered to IngredientCards.md §2: only Names with Deck > 0.
+# Every Type has at least one generic card (name = category) for layout / print preview; some may
+# not appear in the shipped deck per rulebook suggested counts (—), but the card exists in data.
+# fields.name = fields.category for generic rows. Generic ids: {type-kebab}-generic.
+# sell_value = market_price - 1.
 
+# --- Clear broth (Deck>0: Bone stock, Clear stock; + generic) ---
 - type_id: ingredient
-  id: coconut-milk
+  id: clear-broth-bone-stock
   fields:
-    name: Coconut Milk
-    category: Soup Base
-    description: Rich coconut cream base for soups and curries.
-    flavor_text: "e.g. Chaokoh coconut cream — adds creamy richness to curries"
-    icon: coconut-milk
-    circle_color: "#ea580c"
-    inner_color: "#ffedd5"
-    market_price: 2
-    sell_value: 1
-
-- type_id: ingredient
-  id: chili-curry-paste
-  fields:
-    name: Curry Paste
-    category: Spice Base
-    description: The foundation of Thai curries and stir-fries.
-    flavor_text: "(Chili / Curry Paste) e.g. Red curry paste — defines heat and depth of the dish"
-    icon: chili-curry-paste
-    circle_color: "#b91c1c"
-    inner_color: "#fee2e2"
-    market_price: 3
-    sell_value: 2
-
-- type_id: ingredient
-  id: aromatics
-  fields:
-    name: Flavor Base
-    category: Aromatics
-    description: Essential Thai aromatics for soups, curries, and salads.
-    flavor_text: "(Lemongrass / Galangal / Kaffir Lime) e.g. Fresh lemongrass — brings citrusy, herbal notes"
-    icon: aromatics
-    circle_color: "#16a34a"
-    inner_color: "#dcfce7"
-    market_price: 3
-    sell_value: 2
-
-- type_id: ingredient
-  id: fresh-herbs
-  fields:
-    name: Fresh Herbs
-    category: Fresh Herbs
-    description: Sweet basil, holy basil, and cilantro for vibrant finish.
-    flavor_text: "(Basil / Cilantro) e.g. Holy basil — adds peppery kick to stir-fries"
-    icon: fresh-herbs
-    circle_color: "#22c55e"
-    inner_color: "#d1fae5"
-    market_price: 3
-    sell_value: 2
-
-- type_id: ingredient
-  id: tamarind-lime
-  fields:
-    name: Sour Agents
-    category: Sour Agents
-    description: Sour agents for pad thai, som tam, and soups.
-    flavor_text: "(Tamarind / Lime) e.g. Tamarind pulp — balances sweetness in pad thai"
-    icon: tamarind-lime
-    circle_color: "#d97706"
-    inner_color: "#fef3c7"
-    market_price: 3
-    sell_value: 2
-
-- type_id: ingredient
-  id: umami-base
-  fields:
-    name: Umami Base
-    category: Umami Base
-    description: Fermented umami base for authentic Thai flavor.
-    flavor_text: "(Shrimp Paste / Fish Sauce) e.g. Nam pla — the soul of Thai savory dishes"
-    icon: umami-base
-    circle_color: "#7c3aed"
-    inner_color: "#ede9fe"
-    market_price: 4
-    sell_value: 3
-
-- type_id: ingredient
-  id: warm-spices-nuts
-  fields:
-    name: Warm Spices
-    category: Warm Spices
-    description: Roasted peanuts and warm spices for massaman and khao soi.
-    flavor_text: "(Peanuts / Cinnamon / Star Anise) e.g. Roasted peanuts — crunch and depth in massaman"
-    icon: warm-spices-nuts
-    circle_color: "#92400e"
-    inner_color: "#fed7aa"
-    market_price: 3
-    sell_value: 2
-
-- type_id: ingredient
-  id: clear-broth
-  fields:
-    name: Clear Broth
-    category: Soup Base
-    description: For gaeng jued, tom saep, and khao man gai.
-    flavor_text: "e.g. Chicken stock — light base for clear soups"
+    name: Bone stock
+    category: Clear broth
+    description: Signature clear base for boat noodles, noodle soups, and chicken rice soup.
+    flavor_text: Rich bone extraction — body without cream.
     icon: clear-broth
     circle_color: "#2563eb"
     inner_color: "#dbeafe"
@@ -116,25 +19,66 @@
     sell_value: 1
 
 - type_id: ingredient
-  id: vegetables-fruits
+  id: clear-broth-clear-stock
   fields:
-    name: Produce
-    category: Produce
-    description: Fresh produce for stir-fries, curries, and salads.
-    flavor_text: "(Bamboo / Eggplant / Pineapple) e.g. Thai eggplant — soaks up curry, adds texture"
-    icon: vegetables-fruits
-    circle_color: "#0d9488"
-    inner_color: "#ccfbf1"
+    name: Clear stock
+    category: Clear broth
+    description: Plain clear soup stock for gaeng jued–style bowls.
+    flavor_text: Mild everyday broth.
+    icon: clear-broth
+    circle_color: "#2563eb"
+    inner_color: "#dbeafe"
     market_price: 2
     sell_value: 1
 
 - type_id: ingredient
-  id: carbs
+  id: clear-broth-generic
   fields:
-    name: Carbs
+    name: Clear broth
+    category: Clear broth
+    description: Generic clear broth — normal cook Type match; not a Signature Name.
+    flavor_text: Any light stock on the menu line.
+    icon: clear-broth
+    circle_color: "#2563eb"
+    inner_color: "#dbeafe"
+    market_price: 2
+    sell_value: 1
+
+# --- Creamy broth (Deck>0: Coconut milk; + generic) ---
+- type_id: ingredient
+  id: creamy-broth-coconut-milk
+  fields:
+    name: Coconut milk
+    category: Creamy broth
+    description: Creamy curry and soup base across Thai cooking.
+    flavor_text: Coconut cream body for curries and tom kha.
+    icon: coconut-milk
+    circle_color: "#ea580c"
+    inner_color: "#ffedd5"
+    market_price: 2
+    sell_value: 1
+
+- type_id: ingredient
+  id: creamy-broth-generic
+  fields:
+    name: Creamy broth
+    category: Creamy broth
+    description: Generic creamy base — normal cook Type match; not a Signature Name.
+    flavor_text: Any coconut-cream line on the menu.
+    icon: coconut-milk
+    circle_color: "#ea580c"
+    inner_color: "#ffedd5"
+    market_price: 2
+    sell_value: 1
+
+# --- Carbs (Deck>0: Noodles; + generic) ---
+- type_id: ingredient
+  id: carbs-noodles
+  fields:
+    name: Noodles
     category: Carbs
-    description: Rice, noodles, and potatoes for hearty Thai dishes.
-    flavor_text: "(Rice / Noodles / Potatoes) e.g. Jasmine rice — the foundation of every meal"
+    description: Rice noodles, egg noodles, boat noodles, kuay tiew.
+    flavor_text: Slurpable vehicle for broth.
     icon: carbs
     circle_color: "#ca8a04"
     inner_color: "#fef9c3"
@@ -142,12 +86,211 @@
     sell_value: 1
 
 - type_id: ingredient
-  id: meat-poultry
+  id: carbs-generic
   fields:
-    name: Meat
-    category: Protein
-    description: Chicken, pork, or beef for curries and stir-fries.
-    flavor_text: "(Meat / Poultry) e.g. Chicken thigh — stays tender in curries"
+    name: Carbs
+    category: Carbs
+    description: Generic carb — normal cook Type match; not a Signature Name.
+    flavor_text: Rice, noodles, or potato on the line.
+    icon: carbs
+    circle_color: "#ca8a04"
+    inner_color: "#fef9c3"
+    market_price: 2
+    sell_value: 1
+
+# --- Spice base (Deck>0: Chillies, Curry paste; + generic) ---
+- type_id: ingredient
+  id: spice-base-chillies
+  fields:
+    name: Chillies
+    category: Spice base
+    description: Fresh or dried heat for soups, jungle curry, dips.
+    flavor_text: Straight chili burn and color.
+    icon: chili-curry-paste
+    circle_color: "#b91c1c"
+    inner_color: "#fee2e2"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: spice-base-curry-paste
+  fields:
+    name: Curry paste
+    category: Spice base
+    description: Red, green, panang, and regional curry foundations.
+    flavor_text: Pounded aromatics + chilies in one paste.
+    icon: chili-curry-paste
+    circle_color: "#b91c1c"
+    inner_color: "#fee2e2"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: spice-base-generic
+  fields:
+    name: Spice base
+    category: Spice base
+    description: Generic spice base — normal cook Type match; not a Signature Name.
+    flavor_text: Chillies or curry paste on the line.
+    icon: chili-curry-paste
+    circle_color: "#b91c1c"
+    inner_color: "#fee2e2"
+    market_price: 3
+    sell_value: 2
+
+# --- Aromatics (Deck>0: Galangal, Kaffir lime, Lemongrass; + generic) ---
+- type_id: ingredient
+  id: aromatics-galangal
+  fields:
+    name: Galangal
+    category: Aromatics
+    description: Citrus-pine rhizome for tom yum, tom kha, tom saep.
+    flavor_text: Sharper than ginger; Thai soup signature.
+    icon: aromatics
+    circle_color: "#16a34a"
+    inner_color: "#dcfce7"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: aromatics-kaffir-lime
+  fields:
+    name: Kaffir lime
+    category: Aromatics
+    description: Leaves and zest for curries and soups.
+    flavor_text: Intense citrus perfume.
+    icon: aromatics
+    circle_color: "#16a34a"
+    inner_color: "#dcfce7"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: aromatics-lemongrass
+  fields:
+    name: Lemongrass
+    category: Aromatics
+    description: Stalk aromatics for soups and curry paste support.
+    flavor_text: Lemon-herbal backbone.
+    icon: aromatics
+    circle_color: "#16a34a"
+    inner_color: "#dcfce7"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: aromatics-generic
+  fields:
+    name: Aromatics
+    category: Aromatics
+    description: Generic aromatics — normal cook Type match; not a Signature Name.
+    flavor_text: Lemongrass, galangal, kaffir lime, or ginger on the line.
+    icon: aromatics
+    circle_color: "#16a34a"
+    inner_color: "#dcfce7"
+    market_price: 3
+    sell_value: 2
+
+# --- Fresh herbs (all §2 rows Deck>0; + generic) ---
+- type_id: ingredient
+  id: fresh-herbs-cilantro
+  fields:
+    name: Cilantro
+    category: Fresh herbs
+    description: Fresh finish for soups, dips, and noodles.
+    flavor_text: Bright herbal pop.
+    icon: fresh-herbs
+    circle_color: "#22c55e"
+    inner_color: "#d1fae5"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: fresh-herbs-culantro
+  fields:
+    name: Culantro
+    category: Fresh herbs
+    description: Saw-tooth herb for Isan soups and tom saep.
+    flavor_text: Earthier than cilantro.
+    icon: fresh-herbs
+    circle_color: "#22c55e"
+    inner_color: "#d1fae5"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: fresh-herbs-dill
+  fields:
+    name: Dill
+    category: Fresh herbs
+    description: Regional herbal note in gaeng om.
+    flavor_text: Unusual Thai accent — Isan/Northern.
+    icon: fresh-herbs
+    circle_color: "#22c55e"
+    inner_color: "#d1fae5"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: fresh-herbs-holy-basil
+  fields:
+    name: Holy basil
+    category: Fresh herbs
+    description: Peppery basil for jungle curry and stir-fries.
+    flavor_text: Gaeng pa and pad krapow star.
+    icon: fresh-herbs
+    circle_color: "#22c55e"
+    inner_color: "#d1fae5"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: fresh-herbs-lemongrass
+  fields:
+    name: Lemongrass
+    category: Fresh herbs
+    description: Fresh herbs line (e.g. regional herbal profile / Gaeng Om).
+    flavor_text: Same plant as Aromatics lemongrass — type follows menu line.
+    icon: fresh-herbs
+    circle_color: "#22c55e"
+    inner_color: "#d1fae5"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: fresh-herbs-sweet-basil
+  fields:
+    name: Sweet basil
+    category: Fresh herbs
+    description: Fragrant basil for green and red curries.
+    flavor_text: Thai sweet basil — not Italian genovese.
+    icon: fresh-herbs
+    circle_color: "#22c55e"
+    inner_color: "#d1fae5"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: fresh-herbs-generic
+  fields:
+    name: Fresh herbs
+    category: Fresh herbs
+    description: Generic fresh herbs — normal cook Type match; not a Signature Name.
+    flavor_text: Cilantro, basil, dill, lemongrass on the Fresh herbs line.
+    icon: fresh-herbs
+    circle_color: "#22c55e"
+    inner_color: "#d1fae5"
+    market_price: 3
+    sell_value: 2
+
+# --- Terrestrial protein (Deck>0: Beef, Chicken, Duck, Pork; + generic) ---
+- type_id: ingredient
+  id: terrestrial-protein-beef
+  fields:
+    name: Beef
+    category: Terrestrial protein
+    description: Brisket, stew cuts, run juan, hang lay variants.
+    flavor_text: Deep savory protein for curries and soups.
     icon: meat-poultry
     circle_color: "#dc2626"
     inner_color: "#fecaca"
@@ -155,12 +298,65 @@
     sell_value: 4
 
 - type_id: ingredient
-  id: seafood
+  id: terrestrial-protein-chicken
   fields:
-    name: Seafood
-    category: Protein
-    description: Shrimp, fish, and shellfish for tom yum and curries.
-    flavor_text: "(Seafood) e.g. Tiger prawns — sweet, firm, perfect for tom yum"
+    name: Chicken
+    category: Terrestrial protein
+    description: Kao man gai, khao soi, tom kha, ubiquitous curry filler.
+    flavor_text: Mild protein that takes spice.
+    icon: meat-poultry
+    circle_color: "#dc2626"
+    inner_color: "#fecaca"
+    market_price: 5
+    sell_value: 4
+
+- type_id: ingredient
+  id: terrestrial-protein-duck
+  fields:
+    name: Duck
+    category: Terrestrial protein
+    description: Rich poultry for red curry and gaeng khua.
+    flavor_text: Gamey contrast to coconut.
+    icon: meat-poultry
+    circle_color: "#dc2626"
+    inner_color: "#fecaca"
+    market_price: 5
+    sell_value: 4
+
+- type_id: ingredient
+  id: terrestrial-protein-pork
+  fields:
+    name: Pork
+    category: Terrestrial protein
+    description: Most common land protein in Thai decks — soups to curries.
+    flavor_text: Belly, shoulder, mince across the board.
+    icon: meat-poultry
+    circle_color: "#dc2626"
+    inner_color: "#fecaca"
+    market_price: 5
+    sell_value: 4
+
+- type_id: ingredient
+  id: terrestrial-protein-generic
+  fields:
+    name: Terrestrial protein
+    category: Terrestrial protein
+    description: Generic land protein — normal cook Type match; not a Signature Name.
+    flavor_text: Chicken, pork, beef, or duck on the Terrestrial protein line.
+    icon: meat-poultry
+    circle_color: "#dc2626"
+    inner_color: "#fecaca"
+    market_price: 5
+    sell_value: 4
+
+# --- Aquatic protein (Deck>0: Fish, Shrimp; + generic) ---
+- type_id: ingredient
+  id: aquatic-protein-fish
+  fields:
+    name: Fish
+    category: Aquatic protein
+    description: Aquatic-line fish for tai pla, nam prik, tom klong.
+    flavor_text: Mackerel, firm fillets, soup fish.
     icon: seafood
     circle_color: "#0369a1"
     inner_color: "#bae6fd"
@@ -168,14 +364,318 @@
     sell_value: 4
 
 - type_id: ingredient
-  id: specialty-extras
+  id: aquatic-protein-shrimp
   fields:
-    name: Specialty
+    name: Shrimp
+    category: Aquatic protein
+    description: Tom yum, gaeng som, everyday seafood.
+    flavor_text: Default crustacean for hot-sour soups.
+    icon: seafood
+    circle_color: "#0369a1"
+    inner_color: "#bae6fd"
+    market_price: 5
+    sell_value: 4
+
+- type_id: ingredient
+  id: aquatic-protein-generic
+  fields:
+    name: Aquatic protein
+    category: Aquatic protein
+    description: Generic seafood — normal cook Type match; not a Signature Name.
+    flavor_text: Fish, shrimp, squid, shellfish on the aquatic line.
+    icon: seafood
+    circle_color: "#0369a1"
+    inner_color: "#bae6fd"
+    market_price: 5
+    sell_value: 4
+
+# --- Specialty (all four Deck>0; + generic) ---
+- type_id: ingredient
+  id: specialty-blood
+  fields:
+    name: Blood
     category: Specialty
-    description: Blood, fermented items, and roasted rice powder.
-    flavor_text: "(Blood / Fermented / Roasted Rice) e.g. Khao khua — toasted rice adds nutty crunch"
+    description: Boat noodle body and iron note.
+    flavor_text: Thickened dark broth signature.
     icon: specialty-extras
     circle_color: "#475569"
     inner_color: "#e2e8f0"
     market_price: 4
     sell_value: 3
+
+- type_id: ingredient
+  id: specialty-green-peppercorns
+  fields:
+    name: Green peppercorns
+    category: Specialty
+    description: Jungle curry bite and numbing heat.
+    flavor_text: Fresh pepper spike without black-pepper dust.
+    icon: specialty-extras
+    circle_color: "#475569"
+    inner_color: "#e2e8f0"
+    market_price: 4
+    sell_value: 3
+
+- type_id: ingredient
+  id: specialty-khao-khua
+  fields:
+    name: Khao khua
+    category: Specialty
+    description: Toasted rice powder for tom saep and Isan dishes.
+    flavor_text: Nutty grit and smoke.
+    icon: specialty-extras
+    circle_color: "#475569"
+    inner_color: "#e2e8f0"
+    market_price: 4
+    sell_value: 3
+
+- type_id: ingredient
+  id: specialty-tai-pla
+  fields:
+    name: Tai pla
+    category: Specialty
+    description: Fermented fish visceral paste — gaeng tai pla boss ingredient.
+    flavor_text: Funk-forward Southern Thai.
+    icon: specialty-extras
+    circle_color: "#475569"
+    inner_color: "#e2e8f0"
+    market_price: 4
+    sell_value: 3
+
+- type_id: ingredient
+  id: specialty-generic
+  fields:
+    name: Specialty
+    category: Specialty
+    description: Generic specialty — normal cook Type match; not a Signature Name.
+    flavor_text: Blood, tai pla, khao khua, peppercorns on the line.
+    icon: specialty-extras
+    circle_color: "#475569"
+    inner_color: "#e2e8f0"
+    market_price: 4
+    sell_value: 3
+
+# --- Umami base (Deck>0: all three; + generic) ---
+- type_id: ingredient
+  id: umami-base-fish-sauce
+  fields:
+    name: Fish sauce
+    category: Umami base
+    description: Nam pla for gaeng jued, clear noodles, everywhere seasoning.
+    flavor_text: Salty fermented anchovy backbone.
+    icon: umami-base
+    circle_color: "#7c3aed"
+    inner_color: "#ede9fe"
+    market_price: 4
+    sell_value: 3
+
+- type_id: ingredient
+  id: umami-base-shrimp-paste
+  fields:
+    name: Shrimp paste
+    category: Umami base
+    description: Kapi for curries, dips, and funky soups.
+    flavor_text: Pounded shrimp ferment — irreplaceable depth.
+    icon: umami-base
+    circle_color: "#7c3aed"
+    inner_color: "#ede9fe"
+    market_price: 4
+    sell_value: 3
+
+- type_id: ingredient
+  id: umami-base-soy-sauce
+  fields:
+    name: Soy sauce
+    category: Umami base
+    description: Dark/light soy for plain soups and noodle seasoning.
+    flavor_text: Chinese-Thai pantry bridge.
+    icon: umami-base
+    circle_color: "#7c3aed"
+    inner_color: "#ede9fe"
+    market_price: 4
+    sell_value: 3
+
+- type_id: ingredient
+  id: umami-base-generic
+  fields:
+    name: Umami base
+    category: Umami base
+    description: Generic umami — normal cook Type match; not a Signature Name.
+    flavor_text: Shrimp paste, fish sauce, or soy sauce on the line.
+    icon: umami-base
+    circle_color: "#7c3aed"
+    inner_color: "#ede9fe"
+    market_price: 4
+    sell_value: 3
+
+# --- Produce (Deck>0: Bamboo shoots, Eggplant, Pineapple, Rambutan; + generic) ---
+- type_id: ingredient
+  id: produce-bamboo-shoots
+  fields:
+    name: Bamboo shoots
+    category: Produce
+    description: Curry filler and crunch in many plates.
+    flavor_text: Earthy canned or fresh strips.
+    icon: vegetables-fruits
+    circle_color: "#0d9488"
+    inner_color: "#ccfbf1"
+    market_price: 2
+    sell_value: 1
+
+- type_id: ingredient
+  id: produce-eggplant
+  fields:
+    name: Eggplant
+    category: Produce
+    description: Thai eggplant or larger varieties in curries.
+    flavor_text: Sponge for coconut sauce.
+    icon: vegetables-fruits
+    circle_color: "#0d9488"
+    inner_color: "#ccfbf1"
+    market_price: 2
+    sell_value: 1
+
+- type_id: ingredient
+  id: produce-pineapple
+  fields:
+    name: Pineapple
+    category: Produce
+    description: Fruity red curry (gaeng khua) signature option.
+    flavor_text: Sweet-savory tropical swing.
+    icon: vegetables-fruits
+    circle_color: "#0d9488"
+    inner_color: "#ccfbf1"
+    market_price: 2
+    sell_value: 1
+
+- type_id: ingredient
+  id: produce-rambutan
+  fields:
+    name: Rambutan
+    category: Produce
+    description: Alternative fruit for gaeng khua.
+    flavor_text: Juicy lychee cousin in curry.
+    icon: vegetables-fruits
+    circle_color: "#0d9488"
+    inner_color: "#ccfbf1"
+    market_price: 2
+    sell_value: 1
+
+- type_id: ingredient
+  id: produce-generic
+  fields:
+    name: Produce
+    category: Produce
+    description: Generic produce — normal cook Type match; not a Signature Name.
+    flavor_text: Any veg or fruit on the Produce line.
+    icon: vegetables-fruits
+    circle_color: "#0d9488"
+    inner_color: "#ccfbf1"
+    market_price: 2
+    sell_value: 1
+
+# --- Warm spices (Deck>0: Cardamom, Cinnamon, Peanuts, Star anise; + generic) ---
+- type_id: ingredient
+  id: warm-spices-cardamom
+  fields:
+    name: Cardamom
+    category: Warm spices
+    description: Massaman warm-spice signature option.
+    flavor_text: Green-pod citrus spice.
+    icon: warm-spices-nuts
+    circle_color: "#92400e"
+    inner_color: "#fed7aa"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: warm-spices-cinnamon
+  fields:
+    name: Cinnamon
+    category: Warm spices
+    description: Boat noodles, massaman, baking-spice curries.
+    flavor_text: Sweet wood bark warmth.
+    icon: warm-spices-nuts
+    circle_color: "#92400e"
+    inner_color: "#fed7aa"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: warm-spices-peanuts
+  fields:
+    name: Peanuts
+    category: Warm spices
+    description: Massaman and panang crunch.
+    flavor_text: Roasted nut coating and body.
+    icon: warm-spices-nuts
+    circle_color: "#92400e"
+    inner_color: "#fed7aa"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: warm-spices-star-anise
+  fields:
+    name: Star anise
+    category: Warm spices
+    description: Boat noodles and massaman licorice note.
+    flavor_text: Whole-star pho-adjacent aroma.
+    icon: warm-spices-nuts
+    circle_color: "#92400e"
+    inner_color: "#fed7aa"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: warm-spices-generic
+  fields:
+    name: Warm spices
+    category: Warm spices
+    description: Generic warm spices — normal cook Type match; not a Signature Name.
+    flavor_text: Star anise, cinnamon, peanuts, mace, seeds on the line.
+    icon: warm-spices-nuts
+    circle_color: "#92400e"
+    inner_color: "#fed7aa"
+    market_price: 3
+    sell_value: 2
+
+# --- Sour agents (Deck>0: Lime, Tamarind; + generic) ---
+- type_id: ingredient
+  id: sour-agents-lime
+  fields:
+    name: Lime
+    category: Sour agents
+    description: Fresh citrus for tom yum, tom kha, dips.
+    flavor_text: Squeeze-at-table brightness.
+    icon: tamarind-lime
+    circle_color: "#d97706"
+    inner_color: "#fef3c7"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: sour-agents-tamarind
+  fields:
+    name: Tamarind
+    category: Sour agents
+    description: Sour pulp for som, gaeng som, hang lay.
+    flavor_text: Fruity tang without dairy.
+    icon: tamarind-lime
+    circle_color: "#d97706"
+    inner_color: "#fef3c7"
+    market_price: 3
+    sell_value: 2
+
+- type_id: ingredient
+  id: sour-agents-generic
+  fields:
+    name: Sour agents
+    category: Sour agents
+    description: Generic sour — normal cook Type match; not a Signature Name.
+    flavor_text: Lime or tamarind on the line.
+    icon: tamarind-lime
+    circle_color: "#d97706"
+    inner_color: "#fef3c7"
+    market_price: 3
+    sell_value: 2
