@@ -69,6 +69,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    min-height: 0;
   }
   .circle {
     position: absolute;
@@ -140,6 +141,17 @@
   .sell-value { color: #b91c1c; }
   .buy-value { color: #15803d; }
 
+  .deck-count {
+    text-align: center;
+    padding: 2px 12px 2;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  }
+
   /* Default: saturated ring, softer inner panel */
   .ingredient-card-v4 .circle { background-color: #64748b; }
   .ingredient-card-v4 .card-inner { background-color: #8b9cb0; }
@@ -174,6 +186,7 @@
   .ingredient-card-v4.ing4--carbs .flavor-text { color: #3d3830; text-shadow: none; }
   .ingredient-card-v4.ing4--carbs .sell-value { color: #991b1b; }
   .ingredient-card-v4.ing4--carbs .buy-value { color: #166534; }
+  .ingredient-card-v4.ing4--carbs .deck-count { color: #3d3830; text-shadow: none; }
 
   /* Fresh herbs: minty teal */
   .ingredient-card-v4.ing4--fresh-herbs .circle { background-color: #0d9488; }
@@ -210,6 +223,7 @@
   .ingredient-card-v4.ing4--tamarind-lime .flavor-text { color: #14532d; text-shadow: none; }
   .ingredient-card-v4.ing4--tamarind-lime .sell-value { color: #991b1b; }
   .ingredient-card-v4.ing4--tamarind-lime .buy-value { color: #166534; }
+  .ingredient-card-v4.ing4--tamarind-lime .deck-count { color: #14532d; text-shadow: none; }
 
   .ingredient-card-v4.ing4--default .circle { background-color: #64748b; }
   .ingredient-card-v4.ing4--default .card-inner { background-color: #8b9cb0; }
@@ -218,6 +232,7 @@
 
 {{$icon := printf "%v" (or (index .Card.Fields "icon") "default")}}
 {{$cta := printf "%v" (or (index .Card.Fields "center_type_align") "left")}}
+{{$deck := index .Card.Fields "deck_count"}}
 
 <div class="card ingredient-card-v4 ing4--{{$icon}}">
   <div class="circle" role="img" aria-label="{{ index .Card.Fields "name" }}">
@@ -242,7 +257,9 @@
     <div class="flavor-text">{{ or (index .Card.Fields "flavor_text") (index .Card.Fields "description") "" }}</div>
     <div class="price-bar">
       <span class="sell-value">Sell {{ index .Card.Fields "sell_value" }}</span>
+      {{if ne $deck nil}}<span class="deck-count">×{{$deck}}</span>{{end}}
       <span class="buy-value">Buy {{ index .Card.Fields "market_price" }}</span>
     </div>
+    
   </div>
 </div>

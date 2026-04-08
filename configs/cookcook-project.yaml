@@ -140,6 +140,9 @@ card_types:
       - name: sell_value
         type: int
         required: false
+      - name: deck_count
+        type: int
+        required: false
   - id: menu
     template: "Menu.html"
     data_files:
