@@ -108,7 +108,7 @@ card_types:
     template: "Ingredient_4.html"
     data_files:
       - "ingredients.yaml"
-    render: true
+    render: false
     fields:
       - name: name
         type: string
@@ -147,7 +147,7 @@ card_types:
     template: "Menu.html"
     data_files:
       - "menus.yaml"
-    render: true
+    render: false
     fields:
       - name: name
         type: string
@@ -162,6 +162,7 @@ card_types:
       - name: normal_vp
         type: int
         required: true
+      # Effect blurbs: plain English, full words (no “I” for ingredient), not code-style
       - name: normal_effect
         type: string
         required: true
@@ -211,6 +212,7 @@ card_types:
       - name: normal_vp
         type: int
         required: true
+      # Effect blurbs: plain English, full words (no “I” for ingredient), not code-style
       - name: normal_effect
         type: string
         required: true

@@ -8,7 +8,9 @@
 #   icon: slug for SVG (see Menu_2 menu2-icon-ring)
 #   signature: true = ★ perfect Name line
 # Style: no bracketed effect refs in requirements; no ellipsis; ANY for open lists.
-# Print fields (name, flavor_text, effects) kept short for card layout.
+# Effect blurbs (normal_effect / perfect_effect): full words (no “I” for Ingredient); plain
+# English sentences, not code (e.g. “no more than 2” not “≤2 I”).
+# Persistent coin: “For the rest of the game, each Gather, gain N extra base coin(s)” — stacks (Effects.md).
 
 - type_id: menu
   id: tom-yum
@@ -31,11 +33,11 @@
         icon: meat-poultry
         requirement: Chicken OR Pork OR Shrimp OR Fish OR Squid
     normal_vp: 4
-    normal_effect: Draw 1 Ingredient
+    normal_effect: Draw 1 ingredient
     normal_effect_id: E-DRAW-1
     perfect_vp: 6
-    perfect_effect: Next Gather +1 base coin
-    perfect_effect_id: E-COIN-NEXT-1
+    perfect_effect: Draw 1 ingredient, then choose an opponent; they discard 1 ingredient from hand (their choice)
+    perfect_effect_id: E-DRAW-OPPINCH
     flavor_text: Hot, sour, aromatic — thin spicy-sour broth that opens the appetite.
     icon: tamarind-lime
     circle_color: "#ea580c"
@@ -62,11 +64,11 @@
         icon: meat-poultry
         requirement: Chicken OR Pork OR ANY Terrestrial OR ANY Aquatic
     normal_vp: 4
-    normal_effect: Next Gather +1 base coin
-    normal_effect_id: E-COMFORT-COIN
+    normal_effect: Next Gather, gain 2 extra base coins
+    normal_effect_id: E-COIN-NEXT-2
     perfect_vp: 6
-    perfect_effect: Draw 2 Ingredients
-    perfect_effect_id: E-DRAW-2
+    perfect_effect: For the rest of the game, each Gather, gain 1 extra base coin
+    perfect_effect_id: E-PERSIST-COIN-1
     flavor_text: Creamy coconut, gentle sour — milder, velvety cousin to Tom Yum.
     icon: coconut-milk
     circle_color: "#0f766e"
@@ -96,11 +98,11 @@
         icon: warm-spices-nuts
         requirement: Star anise OR Cinnamon
     normal_vp: 4
-    normal_effect: Next turn first Market buy −1 coin (min 2)
-    normal_effect_id: E-BARGAIN-BUY
+    normal_effect: Next Gather, your Market buys of Warm spices cost 1 fewer coin (minimum 2)
+    normal_effect_id: E-DISCOUNT-WARM-NEXT
     perfect_vp: 6
-    perfect_effect: End scoring +1 VP per other scored Menu with Creamy broth + Spice base (max +2)
-    perfect_effect_id: E-CURRY-SYNERGY
+    perfect_effect: Draw 1 Menu into your menu hand
+    perfect_effect_id: E-D1M
     flavor_text: Northern curry noodles — soft noodles in coconut broth, crisp topping.
     icon: carbs
     circle_color: "#b45309"
@@ -131,11 +133,11 @@
         icon: meat-poultry
         requirement: Fish OR Shrimp OR ANY Protein
     normal_vp: 6
-    normal_effect: Any player discards 1 Ingredient
-    normal_effect_id: E-SOUR-PINCH
+    normal_effect: Draw 2 ingredients
+    normal_effect_id: E-DRAW-2-SOM
     perfect_vp: 8
-    perfect_effect: Draw 2, discard 1 shared, take 1 random from chosen hand
-    perfect_effect_id: E-DRAW-2-DISCARD-1
+    perfect_effect: Draw 3 ingredients
+    perfect_effect_id: E-DRAW-3
     flavor_text: Sour curry without coconut — sharp, thin, vegetal crunch.
     icon: tamarind-lime
     circle_color: "#c2410c"
@@ -165,11 +167,11 @@
         signature: true
         requirement: Blood
     normal_vp: 8
-    normal_effect: Each Gather +1 base coin (rest of game)
+    normal_effect: For the rest of the game, each Gather, gain 1 extra base coins
     normal_effect_id: E-PERSIST-COIN-1
     perfect_vp: 11
-    perfect_effect: Take top shared Ingredient discard or draw 1
-    perfect_effect_id: E-SALVAGE-TOP-DISCARD
+    perfect_effect: Look through the ingredient discard; take up to 2 Produce or Carbs into your hand; shuffle the discard (if only 1 matches, take it and draw 1 ingredient; if none match, draw 2 ingredients)
+    perfect_effect_id: E-SALVAGE-2-PRODUCE
     flavor_text: Dark boat noodles — blood-thickened broth, star anise, cinnamon.
     icon: clear-broth
     circle_color: "#1e3a5f"
@@ -202,11 +204,11 @@
         icon: tamarind-lime
         requirement: Tamarind
     normal_vp: 6
-    normal_effect: Each Gather +1 base coin (rest of game)
-    normal_effect_id: E-PERSIST-COIN-1-B
+    normal_effect: Choose an opponent; they choose to either discard 1 ingredient or let you draw 1 ingredient
+    normal_effect_id: E-POLITICAL-PINCH
     perfect_vp: 8
-    perfect_effect: Top discard Produce/Carbs take else draw 1; swap 1 Ingredient with chosen opponent
-    perfect_effect_id: E-PANTRY-PICK
+    perfect_effect: Discard any number of ingredients from your hand; draw that many ingredients
+    perfect_effect_id: E-HAND-SYNC
     flavor_text: Thick coconut curry — warm spices, sweet-savory, Persian-Indian lean.
     icon: coconut-milk
     circle_color: "#7c2d12"
@@ -236,11 +238,11 @@
         icon: vegetables-fruits
         requirement: Eggplant OR Bamboo shoots
     normal_vp: 4
-    normal_effect: Draw 1; swap 1 Ingredient each with chosen opponent
-    normal_effect_id: E-DRAW-1-HERB
+    normal_effect: Draw 2 ingredients
+    normal_effect_id: E-DRAW-2-GREEN
     perfect_vp: 6
-    perfect_effect: Reorder top 2 Menu deck cards
-    perfect_effect_id: E-SCRY-MENUS
+    perfect_effect: Draw 1 Menu
+    perfect_effect_id: E-D1M
     flavor_text: Green chili heat, sweet basil, creamy coconut — iconic Thai balance.
     icon: fresh-herbs
     circle_color: "#15803d"
@@ -270,10 +272,10 @@
         icon: meat-poultry
         requirement: Beef OR Pork OR Chicken
     normal_vp: 8
-    normal_effect: Each Gather +1 base coin (rest of game)
-    normal_effect_id: E-PERSIST-COIN-1-C
+    normal_effect: Draw 2 ingredients
+    normal_effect_id: E-DRAW-2-PANANG
     perfect_vp: 14
-    perfect_effect: VP only
+    perfect_effect: Victory points only (no effect)
     flavor_text: Thick, nutty-sweet red curry — almost a sauce, kaffir lime on top.
     icon: coconut-milk
     circle_color: "#9f1239"
@@ -303,10 +305,10 @@
         signature: true
         requirement: Tai pla
     normal_vp: 9
-    normal_effect: You discard 1, draw 2; each other player discards 1
-    normal_effect_id: E-FUNK-TAX
+    normal_effect: All opponents discard 1 ingredient from hand (their choice)
+    normal_effect_id: E-TABLE-DISCARD
     perfect_vp: 12
-    perfect_effect: Random foe with ≥2 cooked Menus loses one cooked Menu at random
+    perfect_effect: Choose a random opponent who has at least 2 cooked Menus; they discard 1 cooked Menu at random (it stops scoring)
     perfect_effect_id: E-RUIN-RANDOM-MENU
     flavor_text: Southern funk — fermented fish, fierce heat, acquired-taste depth.
     icon: umami-base
@@ -337,11 +339,11 @@
         icon: carbs
         requirement: Rice
     normal_vp: 3
-    normal_effect: Draw 1 Ingredient
-    normal_effect_id: E-DRAW-1-SIMPLE
+    normal_effect: Choose an opponent; say aloud how many ingredients you think they hold. If correct, they give you 1 ingredient (their choice)
+    normal_effect_id: E-GUESS-HAND-D1
     perfect_vp: 5
-    perfect_effect: Draw 1; take 1 random from chosen hand
-    perfect_effect_id: E-DRAW-1-KMG
+    perfect_effect: Choose an opponent; look at 1 random ingredient in their hand, return it, then draw 1 ingredient
+    perfect_effect_id: E-PEEK-RAND-D1
     flavor_text: Clear chicken rice soup — light, peppery, restorative.
     icon: clear-broth
     circle_color: "#64748b"
@@ -371,10 +373,11 @@
         signature: true
         requirement: Green peppercorns
     normal_vp: 8
-    normal_effect: Each Gather +1 base coin (rest of game)
-    normal_effect_id: E-PERSIST-COIN-1-D
+    normal_effect: Next Gather, gain 3 extra base coins
+    normal_effect_id: E-COIN-NEXT-3
     perfect_vp: 13
-    perfect_effect: VP only
+    perfect_effect: For the rest of the game, each Gather, gain 2 extra base coins
+    perfect_effect_id: E-PERSIST-COIN-2
     flavor_text: Jungle curry — no coconut, holy basil, green peppercorns, raw heat.
     icon: chili-curry-paste
     circle_color: "#14532d"
@@ -410,11 +413,11 @@
         icon: warm-spices-nuts
         requirement: Peanuts
     normal_vp: 6
-    normal_effect: Draw 1 OR next Gather +1 base coin
+    normal_effect: Choose one — draw 1 ingredient, or Next Gather, gain 2 extra base coins
     normal_effect_id: E-FLEX-TEMPO
     perfect_vp: 8
-    perfect_effect: Each Gather +1 base coin (rest of game)
-    perfect_effect_id: E-PERSIST-COIN-1-E
+    perfect_effect: At final scoring, gain +1 VP per normal-cooked Menu in your score pile (Max +4)
+    perfect_effect_id: E-EOG-NCOM
     flavor_text: Classic red curry — coconut, basil, versatile crowd-pleaser.
     icon: chili-curry-paste
     circle_color: "#b91c1c"
@@ -444,11 +447,11 @@
         icon: aromatics
         requirement: Ginger
     normal_vp: 6
-    normal_effect: Scry 3 Ingredient deck, bottom 1; take 1 random from chosen hand
-    normal_effect_id: E-DECK-SCRY-3
+    normal_effect: Look at the top 3 ingredient cards; put 1 on the bottom of the draw pile and the rest on top in any order; then draw 1 ingredient
+    normal_effect_id: E-SCRY-3-D1
     perfect_vp: 8
-    perfect_effect: Swap 1 hand Ingredient with 1 from shared discard (if any)
-    perfect_effect_id: E-DISCARD-SWAP
+    perfect_effect: Discard any number of ingredients from your hand; draw that many ingredients
+    perfect_effect_id: E-HAND-SYNC
     flavor_text: Northern pork curry — Burmese spices, tamarind, ginger, dark braise.
     icon: warm-spices-nuts
     circle_color: "#78350f"
@@ -484,11 +487,11 @@
         icon: fresh-herbs
         requirement: Culantro OR Cilantro
     normal_vp: 6
-    normal_effect: Discard 1, draw 2
-    normal_effect_id: E-TOAST-GAMBLE
+    normal_effect: Discard all ingredients from your hand; draw that many ingredients
+    normal_effect_id: E-DISALL-DRAW
     perfect_vp: 8
-    perfect_effect: Chosen player discards 1 random from hand
-    perfect_effect_id: E-RANDOM-PINCH
+    perfect_effect: Each player with more victory points than you gives you 1 ingredient (their choice)
+    perfect_effect_id: E-CATCH-UP-GIVE
     flavor_text: Isan hot-sour soup — toasted rice powder, lime, chili.
     icon: clear-broth
     circle_color: "#a16207"
@@ -521,10 +524,10 @@
         icon: carbs
         requirement: Noodles
     normal_vp: 2
-    normal_effect: In turn order, each may discard 1 to shared to draw 1 (once)
-    normal_effect_id: E-ROUND-DRAW
+    normal_effect: If you have no more than 2 ingredients in hand after this cook, draw 1 ingredient
+    normal_effect_id: E-COND-DRAW-LE2
     perfect_vp: 3
-    perfect_effect: Draw 2 Ingredients
+    perfect_effect: Draw 2 ingredients
     perfect_effect_id: E-DRAW-2-CLEAN
     flavor_text: Mild clear soup — home-style, resets the palate between rich dishes.
     icon: clear-broth
@@ -554,11 +557,11 @@
         icon: aromatics
         requirement: Kaffir lime
     normal_vp: 4
-    normal_effect: Swap 2 Market cards; take 1 random from chosen hand
-    normal_effect_id: E-MARKET-SWAP
+    normal_effect: Draw 2 ingredients
+    normal_effect_id: E-DRAW-2-KHUA
     perfect_vp: 6
-    perfect_effect: End scoring +1 VP per your scored Menu with Produce in Core (max +3, count this)
-    perfect_effect_id: E-FRUIT-SCORE
+    perfect_effect: At final scoring, gain +1 VP for every 2 cooked menus with Produce in Core (Max +2)
+    perfect_effect_id: E-EOG-PAIR-PRODUCE
     flavor_text: Fruity red curry — pineapple or rambutan in coconut cream.
     icon: vegetables-fruits
     circle_color: "#c026d3"
@@ -594,11 +597,11 @@
         icon: tamarind-lime
         requirement: Lime
     normal_vp: 4
-    normal_effect: Draw 1, discard 1
-    normal_effect_id: E-CYCLE-1
+    normal_effect: Next Gather, gain 1 extra base coin per ingredient you sell from hand (Max +3)
+    normal_effect_id: E-NEXT-SELL-BONUS
     perfect_vp: 6
-    perfect_effect: Each Gather +1 base coin (rest of game)
-    perfect_effect_id: E-PERSIST-COIN-1-F
+    perfect_effect: Next Gather, your Market buys of Umami base cost 1 fewer coin (minimum 2)
+    perfect_effect_id: E-NEXT-UMAMI-DISCOUNT
     flavor_text: Beef soup built on shrimp paste — funky, herbal, deeply savory.
     icon: umami-base
     circle_color: "#713f12"
@@ -624,11 +627,11 @@
         icon: vegetables-fruits
         requirement: Green beans
     normal_vp: 3
-    normal_effect: Draw 1 Ingredient
-    normal_effect_id: E-DRAW-1-OM
+    normal_effect: Draw 2 ingredients
+    normal_effect_id: E-DRAW-2-OM
     perfect_vp: 5
-    perfect_effect: Next Gather +1 base coin
-    perfect_effect_id: E-COIN-NEXT-1-OM
+    perfect_effect: Next Gather, gain 2 extra base coins
+    perfect_effect_id: E-COIN-NEXT-2
     flavor_text: Dill-forward herbal soup — Isan/Northern rustic bowl.
     icon: fresh-herbs
     circle_color: "#4d7c0f"
@@ -655,11 +658,11 @@
         icon: umami-base
         requirement: Fish sauce OR Soy sauce
     normal_vp: 3
-    normal_effect: Swap 2 Market cards or move 1 Market slot
-    normal_effect_id: E-MARKET-ROTATE
+    normal_effect: Draw 2 ingredients
+    normal_effect_id: E-DRAW-2-NAMSAI
     perfect_vp: 5
-    perfect_effect: Draw 1 Ingredient
-    perfect_effect_id: E-DRAW-1-NOODLE
+    perfect_effect: Draw 1 ingredient. Next Gather, gain 1 extra base coin
+    perfect_effect_id: E-D1-COIN-NEXT
     flavor_text: Clear noodle soup — light, umami from stock, street-simple.
     icon: carbs
     circle_color: "#0369a1"
@@ -686,10 +689,10 @@
         icon: vegetables-fruits
         requirement: Long beans
     normal_vp: 3
-    normal_effect: Top discard if Umami/Sour type take else draw 1
-    normal_effect_id: E-SALVAGE-UMAMI-SOUR
+    normal_effect: Look through the ingredient discard; take 1 Umami base or Sour agents card; shuffle the discard (if you cannot, draw 1 ingredient)
+    normal_effect_id: E-SALVAGE-SEARCH-UMAMI-SOUR
     perfect_vp: 5
-    perfect_effect: Copy another scored Menu’s normal effect (else draw 1)
+    perfect_effect: Copy another scored Menu’s normal-cook effect once; if you cannot, draw 1 ingredient
     perfect_effect_id: E-COPY-SCORED
     flavor_text: Shrimp-paste dip — salty-sour funk with lime and chili.
     icon: umami-base
@@ -716,11 +719,11 @@
         icon: fresh-herbs
         requirement: Cilantro OR Culantro
     normal_vp: 3
-    normal_effect: Peek top Ingredient deck; discard to shared or leave
-    normal_effect_id: E-PEEK-BURN
+    normal_effect: Draw 1 ingredient
+    normal_effect_id: E-DRAW-1-SIMPLE
     perfect_vp: 5
-    perfect_effect: Steal 1 random Menu from player with ≥2 Menus in hand (else draw 1)
-    perfect_effect_id: E-MENU-YOINK
+    perfect_effect: Choose an opponent; if you both have at least 1 Menu in hand, swap 1 Menu each; otherwise draw 1 ingredient
+    perfect_effect_id: E-SWAP-MENU-OPP
     flavor_text: Smoky-sour Northern soup — tamarind, herbs, often smoked fish.
     icon: clear-broth
     circle_color: "#0e7490"
