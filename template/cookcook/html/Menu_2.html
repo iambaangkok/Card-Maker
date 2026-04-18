@@ -308,12 +308,13 @@
   .flavor-text {
     flex-shrink: 0;
     padding: 6px 10px 8px;
-    font-family: "Cardo", "Times New Roman", serif;
-    font-size: 8px;
-    font-weight: 400;
-    font-style: italic;
-    color: #444;
-    line-height: 1.4;
+    font-family: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    font-style: normal;
+    color: #374151;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
     border-top: 1px solid rgba(0,0,0,0.06);
   }
   /* Menu_2: main column + right rail with vertical Perfect (landscape-read cue) */
@@ -411,7 +412,7 @@
           <span class="outcome-tag outcome-tag--normal">Normal</span>
           <span class="outcome-vp">{{ index .Card.Fields "normal_vp" }} VP</span>
           — {{ menuBoldOR (index .Card.Fields "normal_effect") }}
-          {{$ne := index .Card.Fields "normal_effect_id"}}{{if $ne}}<span class="effect-code">({{ $ne }})</span>{{end}}
+          {{/* {{$ne := index .Card.Fields "normal_effect_id"}}{{if $ne}}<span class="effect-code">({{ $ne }})</span>{{end}} */}}
         </div>
       </div>
       <div class="flavor-text">{{ index .Card.Fields "flavor_text" }}</div>
@@ -421,7 +422,7 @@
         <span class="perfect-rail__tag">Perfect</span>
         <span class="perfect-rail__vp">{{ index .Card.Fields "perfect_vp" }} VP</span>
         — {{ menuBoldOR (index .Card.Fields "perfect_effect") }}
-        {{$pe := index .Card.Fields "perfect_effect_id"}}{{if $pe}}<span class="effect-code">({{ $pe }})</span>{{end}}
+        {{/* {{$pe := index .Card.Fields "perfect_effect_id"}}{{if $pe}}<span class="effect-code">({{ $pe }})</span>{{end}} */}}
       </div>
     </aside>
   </div>

@@ -108,7 +108,7 @@ card_types:
     template: "Ingredient_4.html"
     data_files:
       - "ingredients.yaml"
-    render: false
+    render: true
     fields:
       - name: name
         type: string

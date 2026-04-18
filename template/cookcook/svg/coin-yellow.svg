@@ -1,0 +1,5 @@
+<!-- CookCook ingredient: market price coin (matches svg-ing4-coin-yellow in Ingredient_4.html) -->
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+  <circle cx="9" cy="9" r="7.25" fill="#eab308" stroke="#92400e" stroke-width="1.15"/>
+  <ellipse cx="6.8" cy="6.3" rx="3.2" ry="2.1" fill="#fff" opacity="0.38"/>
+</svg>

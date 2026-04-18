@@ -167,7 +167,7 @@
         signature: true
         requirement: Blood
     normal_vp: 8
-    normal_effect: For the rest of the game, each Gather, gain 1 extra base coins
+    normal_effect: For the rest of the game, each Gather, gain 1 extra base coin
     normal_effect_id: E-PERSIST-COIN-1
     perfect_vp: 11
     perfect_effect: Look through the ingredient discard; take up to 2 Produce or Carbs into your hand; shuffle the discard (if only 1 matches, take it and draw 1 ingredient; if none match, draw 2 ingredients)
@@ -616,7 +616,7 @@
       - slot: Fresh herbs
         icon: fresh-herbs
         signature: true
-        requirement: Dill OR Lemongrass
+        requirement: Dill OR Culantro
       - slot: Clear broth
         icon: clear-broth
         requirement: Vegetable stock
@@ -632,7 +632,7 @@
     perfect_vp: 5
     perfect_effect: Next Gather, gain 2 extra base coins
     perfect_effect_id: E-COIN-NEXT-2
-    flavor_text: Dill-forward herbal soup — Isan/Northern rustic bowl.
+    flavor_text: Dill or culantro herbal soup — Isan/Northern rustic bowl.
     icon: fresh-herbs
     circle_color: "#4d7c0f"
     inner_color: "#fff7ed"

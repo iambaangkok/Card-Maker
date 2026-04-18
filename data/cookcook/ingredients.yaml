@@ -1,4 +1,5 @@
 # Ingredient cards filtered to IngredientCards.md §2: only Names with Deck > 0.
+# v1.6: +4× Rainbow wildcard (id rainbow-wildcard, icon rainbow-wild) — any Type/Name for one line; Buy 4 Sell 3.
 # Every Type has at least one generic card (name = category) for layout / print preview; some may
 # not appear in the shipped deck per rulebook suggested counts (—), but the card exists in data.
 # fields.name = fields.category for generic rows. Generic ids: {type-kebab}-generic.
@@ -269,20 +270,6 @@
     deck_count: 1
 
 - type_id: ingredient
-  id: fresh-herbs-lemongrass
-  fields:
-    name: Lemongrass
-    category: Fresh herbs
-    description: Fresh herbs line (e.g. regional herbal profile / Gaeng Om).
-    flavor_text: Same plant as Aromatics lemongrass — type follows menu line.
-    icon: fresh-herbs
-    circle_color: "#22c55e"
-    inner_color: "#d1fae5"
-    market_price: 5
-    sell_value: 4
-    deck_count: 1
-
-- type_id: ingredient
   id: fresh-herbs-sweet-basil
   fields:
     name: Sweet basil
@@ -302,7 +289,7 @@
     name: Fresh herbs
     category: Fresh herbs
     description: Generic fresh herbs — normal cook Type match; not a Signature Name.
-    flavor_text: Cilantro, basil, dill, lemongrass on the Fresh herbs line.
+    flavor_text: Cilantro, basil, dill, culantro on the Fresh herbs line.
     icon: fresh-herbs
     circle_color: "#22c55e"
     inner_color: "#d1fae5"
@@ -736,3 +723,18 @@
     market_price: 3
     sell_value: 2
     deck_count: 0
+
+# --- Rainbow wildcard (v1.6): any Type + any Name for one assigned line; 4 copies in deck ---
+- type_id: ingredient
+  id: rainbow-wildcard
+  fields:
+    name: '?!X*/#'
+    category: '#####'
+    description: Wildcard — counts as any Type and any Name on one Core line (normal or perfect).
+    flavor_text: Premium flex slot — any line, any signature. Buy 4, sell 3.
+    icon: rainbow-wild
+    circle_color: "#ec4899"
+    inner_color: "#fdf4ff"
+    market_price: 4
+    sell_value: 3
+    deck_count: 4

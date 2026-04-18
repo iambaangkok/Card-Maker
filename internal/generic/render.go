@@ -49,6 +49,38 @@ func buildTemplateFuncMap(refData map[string]interface{}) template.FuncMap {
 			s = strings.ReplaceAll(s, " OR ", " <strong>OR</strong> ")
 			return template.HTML(s)
 		},
+		// asInt parses YAML/JSON numeric or string values for template loops (e.g. coin stacks).
+		"asInt": func(v interface{}) int {
+			if v == nil {
+				return 0
+			}
+			switch x := v.(type) {
+			case int:
+				return x
+			case int64:
+				return int(x)
+			case float64:
+				return int(x)
+			case string:
+				var n int
+				_, _ = fmt.Sscanf(strings.TrimSpace(x), "%d", &n)
+				return n
+			default:
+				var n int
+				_, _ = fmt.Sscanf(strings.TrimSpace(fmt.Sprint(v)), "%d", &n)
+				return n
+			}
+		},
+		// repeatCount returns a slice of length n (capped) so templates can {{ range }} n times.
+		"repeatCount": func(n int) []struct{} {
+			if n < 1 {
+				return nil
+			}
+			if n > 12 {
+				n = 12
+			}
+			return make([]struct{}, n)
+		},
 		"refLookup": func(refKey string, lookupValue interface{}, keyField, returnField string) interface{} {
 			data, ok := refData[refKey]
 			if !ok {
